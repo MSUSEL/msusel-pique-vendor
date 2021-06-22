@@ -50,8 +50,8 @@ import utilities.helperFunctions;
 public class CVEBinToolWrapper extends Tool implements ITool  {
 	
 			
-	public CVEBinToolWrapper() {
-		super("cve-bin-tool", "C:/Users/ernes/AppData/Local/Programs/Python/Python38-32/Scripts/flawfinder.exe");
+	public CVEBinToolWrapper(Path toolRoot) {
+		super("cve-bin-tool", toolRoot);
 		
 	}
 

@@ -64,12 +64,13 @@ public class SingleProjectEvaluator {
         Path resultsDir = Paths.get(prop.getProperty("results.directory"));
 
         // Initialize objects
-        String projectRootFlag = ".txt";
+        String projectRootFlag = "C:/Users/ernes/AppData/Local/Programs/Python/Python38-32/Scripts/flawfinder.exe";
+        Path toolLocation = Paths.get(projectRootFlag);
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
         Path qmLocation = Paths.get("out/BinarySecurityQualityModelCWE-699.json");
 
-        ITool cveBinTool = new CVEBinToolWrapper();
+        ITool cveBinTool = new CVEBinToolWrapper(toolLocation);
         Set<ITool> tools = Stream.of(cveBinTool).collect(Collectors.toSet());
         Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
         System.out.println("output: " + outputPath.getFileName());

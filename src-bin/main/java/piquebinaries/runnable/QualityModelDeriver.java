@@ -69,9 +69,10 @@ public class QualityModelDeriver {
 
         // Initialize objects
         String projectRootFlag = "C:/Users/ernes/AppData/Local/Programs/Python/Python38-32/Scripts/flawfinder.exe";
+        Path toolLocation = Paths.get(projectRootFlag);
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
-        ITool cvebinToolWrapper = new CVEBinToolWrapper();
+        ITool cvebinToolWrapper = new CVEBinToolWrapper(toolLocation);
         Set<ITool> tools = Stream.of(cvebinToolWrapper).collect(Collectors.toSet());
 
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
