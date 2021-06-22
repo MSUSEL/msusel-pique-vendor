@@ -144,7 +144,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			//NOTE: the version of cve-bin-tool that is installed at the time of writing this will error when downloading CVEs
 			//However, this will be the command that should be run in the future. If this is failing, get the working
 			//version and make this cmd something unimportant. 
-			final String cmd = "flawfinder --csv flawFinderFile.c > flawResults.csv";
+			/*final String cmd = "flawfinder --csv flawFinderFile.c > flawResults.csv";
 			
 			Process p;
 			try {
@@ -159,7 +159,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				p.waitFor();
 			} catch (IOException | InterruptedException e) {
 				e.printStackTrace();
-			}
+			}*/
 
 			return toolRoot;
 		}
