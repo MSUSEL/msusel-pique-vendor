@@ -68,7 +68,7 @@ public class QualityModelDeriver {
         Path derivedModelFilePath = Paths.get(prop.getProperty("results.directory"));
 
         // Initialize objects
-        String projectRootFlag = "";
+        String projectRootFlag = "C:/Users/ernes/AppData/Local/Programs/Python/Python38-32/Scripts/flawfinder.exe";
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
         ITool cvebinToolWrapper = new CVEBinToolWrapper();
