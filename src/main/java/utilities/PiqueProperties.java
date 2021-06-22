@@ -31,7 +31,7 @@ public class PiqueProperties {
 
         Properties prop = new Properties();
         try {
-            prop.load(new FileReader("src/main/resources/descriptionFlawfinderDraft3.json"));
+            prop.load(new FileReader("src/main/resources/pique_bin.properties"));
 
         }catch(Exception e){
             e.printStackTrace();
