@@ -39,7 +39,7 @@
   <packaging>jar</packaging>
   <version>0.0.1</version>
   <name>msusel-pique-vendor</name>
-  <description>MSU PIQUE quality model implementation for c code</description>
+  <description>MSU PIQUE quality model implementation for C code</description>
   <url>https://msusel.github.io</url>
   
   <build>
