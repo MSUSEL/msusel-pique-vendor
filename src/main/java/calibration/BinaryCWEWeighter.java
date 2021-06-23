@@ -63,7 +63,7 @@ public class BinaryCWEWeighter implements IWeighter{
 				else { //QA weights, fill values for manWeights
 					for (int i = 1; i < data.length; i++) {
 						//parse out the integer for the CWE number and add appropriate prefix
-						pfNames[lineCount-numQA-1] = pfPrefix + Integer.toString(Integer.parseInt(data[0].replaceAll("[\\D]", "")));
+						pfNames[lineCount-numQA-1] = pfPrefix + Integer.toString(Integer.parseInt(data[i].replaceAll("[\\D]", "")));
 						manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
 					}
 				}

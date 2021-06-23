@@ -1,47 +1,19 @@
-﻿Criteria,Availability,Authenticity,Authorization,Confidentiality,Non-repudiation,Integrity
-Availability,1.000,3.000,3.000,8.000,8.000,5.000
-Authenticity,0.333,1.000,1.000,4.000,4.000,2.000
-Authorization,0.333,1.000,1.000,4.000,4.000,2.000
-Confidentiality,0.125,0.250,0.250,1.000,1.000,0.500
-Non-repudiation,0.125,0.250,0.250,1.000,1.000,0.500
-Integrity,0.200,0.500,0.500,2.000,2.000,1.000
-API / Function Errors - (1228),1.000,1.000,1.000,1.000,1.000,1.000
-Audit / Logging - (1210),0.000,0.000,0.000,0.000,1.000,0.000
-Authentication Errors - (1211),0.000,1.000,0.000,0.000,0.000,0.000
-Authorization Errors - (1212),0.000,0.000,1.000,0.000,0.000,0.000
-Bad Coding Practices - (1006),1.000,1.000,1.000,1.000,1.000,1.000
-Behavioral Problems - (438),1.000,0.000,0.000,0.000,0.000,0.000
-Business Logic Errors - (840),1.000,1.000,1.000,1.000,1.000,1.000
-Communication Channel Errors - (417),0.000,1.000,1.000,1.000,0.000,0.000
-Complexity Issues - (1226),1.000,1.000,1.000,1.000,1.000,1.000
-Concurrency Issues - (557),1.000,1.000,1.000,1.000,1.000,1.000
-Credentials Management Errors - (255),0.000,1.000,0.000,0.000,0.000,0.000
-Cryptographic Issues - (310),0.000,1.000,0.000,1.000,0.000,0.000
-Key Management Errors - (320),0.000,1.000,0.000,0.000,0.000,0.000
-Data Integrity Issues - (1214),0.000,0.000,0.000,0.000,0.000,1.000
-Data Processing Errors - (19),1.000,1.000,1.000,1.000,1.000,1.000
-Data Neutralization Issues - (137),1.000,1.000,1.000,1.000,1.000,1.000
-Documentation Issues - (1225),1.000,1.000,1.000,1.000,1.000,1.000
-File Handling Issues - (1219),1.000,1.000,1.000,1.000,1.000,1.000
-Encapsulation Issues - (1227),1.000,1.000,1.000,1.000,1.000,1.000
-Error Conditions Return Values Status Codes - (389),1.000,0.000,0.000,1.000,0.000,0.000
-Expression Issues - (569),1.000,1.000,1.000,1.000,1.000,1.000
-Handler Errors - (429),1.000,1.000,1.000,1.000,1.000,1.000
-Information Management Errors - (199),0.000,0.000,0.000,1.000,0.000,0.000
-Initialization and Cleanup Errors - (452),1.000,1.000,1.000,1.000,1.000,1.000
-Data Validation Issues - (1215),1.000,1.000,1.000,1.000,1.000,1.000
-Lockout Mechanism Errors - (1216),1.000,0.000,0.000,0.000,0.000,0.000
-Memory Buffer Errors - (1218),1.000,1.000,1.000,1.000,1.000,1.000
-Numeric Errors - (189),1.000,1.000,1.000,1.000,1.000,1.000
-Permission Issues - (275),0.000,0.000,1.000,0.000,0.000,0.000
-Pointer Issues - (465),1.000,1.000,1.000,1.000,1.000,1.000
-Privilege Issues - (265),0.000,0.000,1.000,0.000,0.000,0.000
-Random Number Issues - (1213),1.000,1.000,1.000,1.000,1.000,1.000
-Resource Locking Problems - (411),1.000,1.000,1.000,1.000,1.000,1.000
-Resource Management Errors - (399),1.000,1.000,1.000,1.000,1.000,1.000
-Signal Errors - (387),1.000,1.000,1.000,1.000,1.000,1.000
-State Issues - (371),1.000,1.000,1.000,1.000,1.000,1.000
-String Errors - (133),1.000,1.000,1.000,1.000,1.000,1.000
-Type Errors - (136),1.000,0.000,0.000,0.000,0.000,0.000
-User Interface Security Issues - (355),0.000,0.000,0.000,1.000,0.000,0.000
-User Session Errors - (1217),0.000,1.000,1.000,1.000,0.000,0.000
+﻿Criteria,Confidentiality,Authenticity,Integrity,Cross_cutting,Limit_exposure,CWE-710 Improper_adherance_to_coding_standards
+Confidentiality,1,4,4,4,1,9
+Authenticity,0.25,1,4,4,4,9
+Integrity,0.25,0.25,1,1,1,9
+Cross_cutting,0.25,0.25,1,1,1,4
+Limit_exposure,1,0.25,1,1,1,4
+CWE-710 Improper_adherance_to_coding_standards,0.1111,0.1111,0.1111,0.25,0.25,1
+Encrypt_data,1,1,1,1,1,1
+CWE-269 Improper_privilege_management,0,0,0,0,1,0
+CWE-668 Exposure_of_resource_to_wrong_sphere,0,1,0,0,0,0
+CWE-669 Incorrect_resource_transfer_between_spheres,0,0,1,0,0,0
+Validate_inputs,1,1,1,1,1,1
+CWE-807 Reliance_on_untrusted_inputs,1,0,0,0,0,0
+CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere,1,1,1,1,1,1
+CWE-1177 Use_of_prohibited_code,0,1,1,1,0,0
+CWE-77 OS-Command_injection,1,1,1,1,1,1
+CWE-20 Improper_input_validation,1,1,1,1,1,1
+CWE-190 Integer_wraparound,0,1,0,0,0,0
+CWE-119 Improper_restrictions_of_operations_in_memory,0,1,0,1,0,0
