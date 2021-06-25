@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.commons.lang3.ArrayUtils;
 
 import pique.calibration.IWeighter;
@@ -32,9 +33,11 @@ public class BinaryCWEWeighter implements IWeighter{
 	
 
 	@Override
-	public Set<WeightResult> elicitateWeights(QualityModel qualityModel, Path... externalInput) {
+	public Set<WeightResult> elicitateWeights(QualityModel qualityModel, Path... externalInput) { //Java varargs
 		numQA = qualityModel.getQualityAspects().size();
+		//System.out.println(numQA);
 		numPF = qualityModel.getProductFactors().size();
+		//System.out.println(numPF);
 		qaNames = new String[numQA];
 		pfNames = new String[numPF];
 		manWeights = new double[numPF][numQA];
@@ -44,27 +47,41 @@ public class BinaryCWEWeighter implements IWeighter{
 		String pfPrefix = "Category CWE-";
 		BufferedReader csvReader;
 		int lineCount = 0;
+		int pfNamesIndex = 0;
 		try {
 			csvReader = new BufferedReader(new FileReader(pathToCsv));
 		
 			String row;
 			while (( row = csvReader.readLine()) != null) {
 				String[] data = row.split(",");
+				/*for (int j = 0; j < data.length; j++){
+					System.out.println(data.length);
+				}*/
 				if (lineCount == 0) {
 					for (int i = 1; i < data.length; i++) {
 						qaNames[i-1] = data[i];
+						/*System.out.println("qaNames");
+						System.out.println(data[i]);*/
 					}
 				}
 				else if (lineCount < numQA+1) { //tqi weights, fill values for ahpMat
 					for (int i = 1; i < data.length; i++) {
 						comparisonMat[lineCount-1][i-1] = Double.parseDouble(data[i].trim());
+						/*System.out.println("comparisonMat");
+						System.out.println(data[i]);*/
 					}
 				}
 				else { //QA weights, fill values for manWeights
+					pfNames[pfNamesIndex] = data[0];
+					/*System.out.println("pfNames");
+					System.out.println(pfNames[pfNamesIndex]);*/
+					pfNamesIndex++;
 					for (int i = 1; i < data.length; i++) {
 						//parse out the integer for the CWE number and add appropriate prefix
-						pfNames[lineCount-numQA-1] = pfPrefix + Integer.toString(Integer.parseInt(data[i].replaceAll("[\\D]", "")));
+						//pfNames[lineCount-numQA-1] = pfPrefix + Integer.toString(Integer.parseInt(data[i].replaceAll("[\\D]", "")));
 						manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
+						/*System.out.println("manWeight");
+						System.out.println(data[i]);*/
 					}
 				}
 			    lineCount++;
@@ -176,13 +193,31 @@ public class BinaryCWEWeighter implements IWeighter{
 	//weights based on manual entry
 	private void manualWeights(Collection<ModelNode> nodes, Set<WeightResult> weights) {
 		double[][] normMat = normalizeByColSum(manWeights);
+		for (int i = 0; i < 12; i++){
+			for (int j = 0; j < 6; j++){
+				System.out.print(normMat[i][j]);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
 		
 
 		for (ModelNode node : nodes) {
-			WeightResult weightResult = new WeightResult(node.getName());	
-			node.getChildren().values().forEach(child -> 
-				weightResult.setWeight(child.getName(), normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]));
-	        weights.add(weightResult);
+			WeightResult weightResult = new WeightResult(node.getName());
+			//System.out.println(node.getName());
+			//System.out.println(node.getChildren().values());
+			for (ModelNode child : node.getChildren().values()) {
+				System.out.println(child);
+				System.out.println(node.getChildren().values());
+				System.out.println(child.getName());
+				System.out.println(normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
+				System.out.println(ArrayUtils.indexOf(pfNames, child.getName()));
+				System.out.println(ArrayUtils.indexOf(qaNames, node.getName()));
+				weightResult.setWeight(child.getName(), normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
+			}
+			System.out.println("Hello");
+			System.out.println(weightResult.getWeights());
+			weights.add(weightResult);
 		}
 	}
 	
