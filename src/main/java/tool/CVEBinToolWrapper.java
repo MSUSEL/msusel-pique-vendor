@@ -67,7 +67,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
 
-			String cmd = String.format("cmd /c python -m cve_bin_tool.cli -f json %s -o %s",
+			String cmd = String.format("cmd /c flawfinder.exe --sarif %s -o %s",
 					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 			
 			try {
