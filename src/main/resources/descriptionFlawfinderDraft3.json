@@ -33,7 +33,7 @@
 				"description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
 				"eval_strategy" : "evaluator.QualityAspectEvaluator"
 			},
-			"CWE-710 Improper_adherance_to_coding_standars": {
+			"CWE-710 Improper_adherence_to_coding_standards": {
 				"description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
 				"eval_strategy" : "evaluator.QualityAspectEvaluator"
 			}

@@ -104,6 +104,8 @@ public class BinaryCWEWeighter implements IWeighter{
 
 
 		//set the weights for edges going into quality aspects based on manual weighting
+		//System.out.println("Antes de llamar manualWeights: ");
+		//System.out.println(qualityModel.getQualityAspects().values().getClass());
 		manualWeights(qualityModel.getQualityAspects().values(),weights);
 		
 		//set the weights for edges going into tqi based on ahp
@@ -193,30 +195,42 @@ public class BinaryCWEWeighter implements IWeighter{
 	//weights based on manual entry
 	private void manualWeights(Collection<ModelNode> nodes, Set<WeightResult> weights) {
 		double[][] normMat = normalizeByColSum(manWeights);
-		for (int i = 0; i < 12; i++){
+		/*for (int i = 0; i < 12; i++){
 			for (int j = 0; j < 6; j++){
 				System.out.print(normMat[i][j]);
 				System.out.print(" ");
 			}
 			System.out.println();
-		}
+		}*/
 		
 
 		for (ModelNode node : nodes) {
 			WeightResult weightResult = new WeightResult(node.getName());
-			//System.out.println(node.getName());
-			//System.out.println(node.getChildren().values());
+			System.out.print("Quality aspect node: ");
+			System.out.println(node.getName());
+			System.out.print("QA node's children: ");
+			System.out.println(node.getChildren());
 			for (ModelNode child : node.getChildren().values()) {
 				System.out.println(child);
 				System.out.println(node.getChildren().values());
 				System.out.println(child.getName());
-				System.out.println(normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
-				System.out.println(ArrayUtils.indexOf(pfNames, child.getName()));
+				for(String pfname: pfNames){
+					System.out.print(pfname);
+					System.out.print(" ");
+				}
+				System.out.println();
+				for(String qaname: qaNames){
+					System.out.print(qaname);
+					System.out.print(" ");
+				}
+				System.out.println();
+				System.out.println(ArrayUtils.indexOf(pfNames,child.getName()));
 				System.out.println(ArrayUtils.indexOf(qaNames, node.getName()));
+				System.out.println(normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
 				weightResult.setWeight(child.getName(), normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
 			}
-			System.out.println("Hello");
-			System.out.println(weightResult.getWeights());
+			//System.out.println("Hello");
+			//System.out.println(weightResult.getWeights());
 			weights.add(weightResult);
 		}
 	}
