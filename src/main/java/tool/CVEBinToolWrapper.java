@@ -63,7 +63,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		 */
 		@Override
 		public Path analyze(Path projectLocation) {
-			File tempResults = new File(System.getProperty("user.dir") + "/out/cve-bin-tool.json");
+			File tempResults = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.json");
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
 
