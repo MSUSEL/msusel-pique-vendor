@@ -94,6 +94,8 @@ public class helperFunctions {
 	public static String readFileContent(Path filePath) throws IOException
     {
         StringBuilder contentBuilder = new StringBuilder();
+		System.out.println("En readFileContent");
+		System.out.println(filePath.toAbsolutePath());
  
         try (Stream<String> stream = Files.lines( filePath, StandardCharsets.UTF_8)) 
         {

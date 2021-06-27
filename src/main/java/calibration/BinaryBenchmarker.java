@@ -95,7 +95,10 @@ public class BinaryBenchmarker implements IBenchmarker {
             Map<String, Diagnostic> allDiagnostics = new HashMap<>();
             tools.forEach(tool -> {
                 Path analysisOutput = tool.analyze(projectPath);
+                System.out.println(analysisOutput.getFileName());
                 allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
+                System.out.println("En deriveThresholds");
+                System.out.println(allDiagnostics.values());
             });
 
             // Would normalize here if we do so in the future

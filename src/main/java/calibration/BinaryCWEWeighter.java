@@ -206,12 +206,12 @@ public class BinaryCWEWeighter implements IWeighter{
 
 		for (ModelNode node : nodes) {
 			WeightResult weightResult = new WeightResult(node.getName());
-			System.out.print("Quality aspect node: ");
+			/*System.out.print("Quality aspect node: ");
 			System.out.println(node.getName());
 			System.out.print("QA node's children: ");
-			System.out.println(node.getChildren());
+			System.out.println(node.getChildren());*/
 			for (ModelNode child : node.getChildren().values()) {
-				System.out.println(child);
+				/*System.out.println(child);
 				System.out.println(node.getChildren().values());
 				System.out.println(child.getName());
 				for(String pfname: pfNames){
@@ -226,7 +226,7 @@ public class BinaryCWEWeighter implements IWeighter{
 				System.out.println();
 				System.out.println(ArrayUtils.indexOf(pfNames,child.getName()));
 				System.out.println(ArrayUtils.indexOf(qaNames, node.getName()));
-				System.out.println(normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
+				System.out.println(normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);*/
 				weightResult.setWeight(child.getName(), normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
 			}
 			//System.out.println("Hello");

@@ -67,7 +67,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
 
-			String cmd = String.format("cmd /c flawfinder.exe --sarif %s -o %s",
+			String cmd = String.format("cmd /c flawfinder.exe --sarif %s -> %s",
 					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 			
 			try {
@@ -83,6 +83,8 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		@Override
 		public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 			Map<String, Diagnostic> diagnostics = initializeDiagnostics();
+			System.out.println("En parse");
+			System.out.println(diagnostics.values());
 
 			String results = "";
 
@@ -178,7 +180,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 	        // add it to the list of diagnostics
 	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
 	        	Diagnostic diag = (Diagnostic) x;
-	        	if (diag.getToolName().equals("cve-bin-tool")) {
+	        	if (diag.getToolName().equals("flawfinder")) {
 	        		diagnostics.put(diag.getName(),diag);
 	        	}
 	        }
