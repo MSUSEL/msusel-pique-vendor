@@ -95,9 +95,8 @@ public class BinaryBenchmarker implements IBenchmarker {
             Map<String, Diagnostic> allDiagnostics = new HashMap<>();
             tools.forEach(tool -> {
                 Path analysisOutput = tool.analyze(projectPath);
-                System.out.println(analysisOutput.getFileName());
                 allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
-                System.out.println("En deriveThresholds");
+                System.out.println("En deriveThresholds, allDiagnostics, luego de parseAnalysis");
                 System.out.println(allDiagnostics.values());
             });
 
@@ -108,11 +107,15 @@ public class BinaryBenchmarker implements IBenchmarker {
                 project.addFindings(diagnostic);
             });
 
+            System.out.println("En deriveThresholds, project.getQM");
+            System.out.println(project.getQualityModel().getMeasures());
+
             // Evaluate project up to Measure level
             project.evaluateMeasures();
+            System.out.println(project.getQualityModel().getMeasures());
 
             // Add new project (with tool findings information included) to the list
-             projects.add(project);
+             projects.add(project); //Un arrayList de proyectos
 
             // Print information
             System.out.println("\n\tFinished analyzing project " + project.getName());
@@ -133,6 +136,10 @@ public class BinaryBenchmarker implements IBenchmarker {
                     }
             );
         });
+
+        System.out.println("measureBenchmarkData: ");   //Aqui nos devuelve un arreglo, que tiene 10 arreglos
+        //y cada uno solo tiene un elemento, 0.0.
+        System.out.println(measureBenchmarkData.values());
 
         
         // Identify the 1st and 3rd quartiles of each measure value
