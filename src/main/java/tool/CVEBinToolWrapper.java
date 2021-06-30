@@ -130,14 +130,6 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				cveList.add(findingName);
 			}
 
-			//make a string of all the CWE names to pass to getCWE function
-			/*String findingsString = "";
-			for (String x : cveList) {
-				findingsString = findingsString +" " + x;
-			}
-			//get CWE names
-			String[] findingNames = helperFunctions.getCWE(findingsString);*/
-
 			for (int i = 0; i < cveList.size(); i++) {
 
 
@@ -181,26 +173,6 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 	@Override
 	public Path initialize(Path toolRoot) {
-		//NOTE: the version of cve-bin-tool that is installed at the time of writing this will error when downloading CVEs
-		//However, this will be the command that should be run in the future. If this is failing, get the working
-		//version and make this cmd something unimportant.
-			/*final String cmd = "flawfinder --csv flawFinderFile.c > flawResults.csv";
-
-			Process p;
-			try {
-				p = Runtime.getRuntime().exec(cmd);
-	            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-				String line;
-
-				while ((line = stdInput.readLine()) != null) {
-					System.out.println("cve-bin-tool install: " + line);
-				}
-				stdInput.close();
-				p.waitFor();
-			} catch (IOException | InterruptedException e) {
-				e.printStackTrace();
-			}*/
-
 		return toolRoot;
 	}
 
