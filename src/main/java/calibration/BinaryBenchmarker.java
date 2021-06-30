@@ -148,6 +148,7 @@ public class BinaryBenchmarker implements IBenchmarker {
                         } else {
                             measureBenchmarkData.get(m.getName()).add(m.getValue());
                         }
+                System.out.println(m.getChildren());
                     }
             );
         });

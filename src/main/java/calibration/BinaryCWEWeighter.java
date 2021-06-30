@@ -110,6 +110,8 @@ public class BinaryCWEWeighter implements IWeighter{
 		
 		//set the weights for edges going into tqi based on ahp
 		ahpWeights(qualityModel.getTqi(), weights);
+
+		//System.out.println(weights.toString());
 		
         return weights;
 	}
