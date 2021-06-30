@@ -121,8 +121,8 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		try {
 			JSONArray jsonResults = new JSONArray(results);
 
-			for (int i = 0; i < jsonResults.length(); i++) {
-				JSONObject jsonFinding = (JSONObject) jsonResults.get(i);
+			for (int k = 1; k < jsonResults.length(); k += 2) {
+				JSONObject jsonFinding = (JSONObject) jsonResults.get(k);
 				//Need to change this for this tool.
 				String findingName = jsonFinding.get("CWEs").toString();
 				String findingSeverity = jsonFinding.get("DefaultLevel").toString();
@@ -131,17 +131,17 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			}
 
 			//make a string of all the CWE names to pass to getCWE function
-			String findingsString = "";
+			/*String findingsString = "";
 			for (String x : cveList) {
 				findingsString = findingsString +" " + x;
 			}
 			//get CWE names
-			String[] findingNames = helperFunctions.getCWE(findingsString);
+			String[] findingNames = helperFunctions.getCWE(findingsString);*/
 
-			for (int i = 0; i < findingNames.length; i++) {
+			for (int i = 0; i < cveList.size(); i++) {
 
 
-				Diagnostic diag = diagnostics.get(("CVE-" +findingNames[i]));
+				Diagnostic diag = diagnostics.get((cveList.get(i)));
 				if (diag == null) {
 					//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
 					//We may want to treat this in another way.
@@ -149,7 +149,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				}
 				Finding finding = new Finding("",0,0,severityList.get(i));
 				finding.setName(cveList.get(i));
-				diag.setChild(finding);
+				diag.setChild(finding); //Null pointer
 			}
 
 
