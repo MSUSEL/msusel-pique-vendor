@@ -108,8 +108,10 @@ public class QualityModelDeriver {
         // TODO (1.0): Support now in place to apply thresholds to all nodes (if they exist), not just measures. Just
         //  need to implement.
         measureNameThresholdMappings.forEach((measureName, thresholds) -> {
-            Measure measure = (Measure) qmDesign.getMeasure(measureName);
-            measure.setThresholds(thresholds);
+            qmDesign.getMeasure(measureName).setThresholds(thresholds);
+
+            //Measure measure = (Measure) qmDesign.getMeasure(measureName);
+            //measure.setThresholds(thresholds);
         });
 
         // Weights (TQI and QualityAspect nodes)

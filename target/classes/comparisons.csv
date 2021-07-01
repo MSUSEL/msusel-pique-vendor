@@ -6,16 +6,16 @@ Cross_cutting,0.25,0.25,1,1,1,4,1
 Limit_exposure,1,0.25,1,1,1,4,1
 CWE-710 Improper_adherence_to_coding_standards,0.1111,0.1111,0.1111,0.25,0.25,1,1
 CWE-691 Insufficient_control_flow_management,0.25,0.25,0.25,1,1,1,1
-Encrypt_data,1,1,1,1,1,1,0
-CWE-269 Improper_privilege_management,0,0,0,0,1,0,1
+Encrypt_data,1,0,0,0,0,0,0
+CWE-269 Improper_privilege_management,0,1,0,0,0,0,0
 CWE-668 Exposure_of_resource_to_wrong_sphere,0,1,0,0,0,0,0
-CWE-669 Incorrect_resource_transfer_between_spheres,0,0,1,0,0,0,1
-Validate_inputs,1,1,1,1,1,1,0
-CWE-807 Reliance_on_untrusted_inputs,1,0,0,0,0,0,1
-CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere,1,1,1,1,1,1,0
-CWE-1177 Use_of_prohibited_code,0,1,1,1,0,0,1
-CWE-77 OS_command_injection,1,1,1,1,1,1,0
-CWE-20 Improper_input_validation,1,1,1,1,1,1,1
-CWE-190 Integer_wraparound,0,1,0,0,0,0,0
-CWE-119 Improper_restriction_of_operations_in_memory,0,1,0,1,0,0,1
-CWE-362 race_conditions,0,1,0,1,0,1,0
+CWE-669 Incorrect_resource_transfer_between_spheres,0,1,0,0,0,0,0
+Validate_inputs,0,0,1,0,0,0,0
+CWE-807 Reliance_on_untrusted_inputs,0,0,0,1,0,0,0
+CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere,0,0,0,0,1,0,0
+CWE-1177 Use_of_prohibited_code,0,0,0,0,0,1,0
+CWE-77 OS_command_injection,0,0,0,0,0,0,0
+CWE-20 Improper_input_validation,0,0,0,0,0,0,0
+CWE-190 Integer_wraparound,0,0,0,0,0,0,0
+CWE-119 Improper_restriction_of_operations_in_memory,0,0,0,0,0,0,0
+CWE-362 race_conditions,0,0,0,0,0,0,1

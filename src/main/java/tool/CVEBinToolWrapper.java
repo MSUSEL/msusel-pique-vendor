@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.List;
+import java.lang.Integer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -93,8 +94,9 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-		Map<String, Diagnostic> diagnostics = initializeDiagnostics();
-
+		Map<String, Diagnostic> diagnosticsUniverseForTool = initializeDiagnostics();
+		Map<String, Diagnostic> diagnosticsFound = new HashMap<>();
+		
 		//Adapted from: https://kalliphant.com/jackson-convert-csv-json-example/
 		File input = new File(toolResults.toString());
 		File output = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.json");
@@ -112,7 +114,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		} catch (IOException e) {
 			System.err.println("No results to read.");
-			return diagnostics;
+			return diagnosticsUniverseForTool;
 		}
 
 		ArrayList<String> cveList = new ArrayList<String>();
@@ -130,18 +132,26 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				cveList.add(findingName);
 			}
 
+			/*for(int j = 0; j < cveList.size(); j++){
+				System.out.println(cveList.get(j));
+			}
+			for(int j = 0; j < severityList.size(); j++){
+				System.out.println(severityList.get(j));
+			}*/
+
 			for (int i = 0; i < cveList.size(); i++) {
 
 
-				Diagnostic diag = diagnostics.get((cveList.get(i)));
+				Diagnostic diag = diagnosticsUniverseForTool.get((cveList.get(i)));
 				if (diag == null) {
 					//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
 					//We may want to treat this in another way.
-					diag = diagnostics.get("CVE-CWE-Unknown-Other");
+					diag = diagnosticsUniverseForTool.get("CVE-CWE-Unknown-Other");
 				}
 				Finding finding = new Finding("",0,0,severityList.get(i));
 				finding.setName(cveList.get(i));
 				diag.setChild(finding); //Null pointer
+				diagnosticsFound.put(diag.getName(), diag);
 			}
 
 
@@ -149,7 +159,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			e.printStackTrace();
 		}
 
-		return diagnostics;
+		return diagnosticsFound;
 	}
 
 	public List<Object> returnCsvReadList(CsvSchema csvSchema, CsvMapper csvMapper, File input) {
@@ -206,34 +216,9 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		return diagnostics;
 	}
 
-	//private ArrayList<String> identifyCWEs() {
-	// identify all relevant diagnostics from the model structure
-	//	ArrayList<String> cweList = new ArrayList<String>();
-	//}
-
-	//maps low-critical to numeric values based on the highest value for each range.
 	private Integer severityToInt(String severity) {
-		Integer severityInt = 1;
-		switch(severity.toLowerCase()) {
-			case "low": {
-				severityInt = 4;
-				break;
-			}
-			case "medium": {
-				severityInt = 7;
-				break;
-			}
-			case "high": {
-				severityInt = 9;
-				break;
-			}
-			case "critical": {
-				severityInt = 10;
-				break;
-			}
-		}
-
-		return severityInt;
+		Integer severityInt = 0;
+		return severityInt.parseInt(severity);
 	}
 
 

@@ -145,6 +145,10 @@
 			"parents": [
 				"Encrypt_data"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-327" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -164,6 +168,11 @@
 			"parents": [
 				"CWE-269 Improper_privilege_management"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-250" : { },
+				"CWE-250, CWE-22" : {}
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -188,6 +197,14 @@
 			"parents": [
 				"CWE-668 Exposure_of_resource_to_wrong_sphere"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-377" : { },
+				"CWE-732" : { },
+				"CWE-134" : { },
+				"CWE-22" : { },
+				"CWE-250, CWE-22" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -227,6 +244,11 @@
 			"parents": [
 				"CWE-807 Reliance_on_untrusted_inputs"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-807" : { },
+				"CWE-807, CWE-20" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -251,6 +273,11 @@
 			"parents": [
 				"CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-829" : { },
+				"CWE-829, CWE-20" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -275,6 +302,11 @@
 			"parents": [
 				"CWE-669 Incorrect_resource_transfer_between_spheres"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-829" : { },
+				"CWE-829, CWE-20" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -299,6 +331,10 @@
 			"parents": [
 				"CWE-77 OS_command_injection"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-78" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -318,6 +354,19 @@
 			"parents": [
 				"CWE-119 Improper_restriction_of_operations_in_memory"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-120" : { },
+				"CWE-119!/CWE-120" : { },
+				"CWE-120, CWE-20" : { },
+				"CWE-676, CWE-120" : { },
+				"CWE-125" : { },
+				"CWE-788" : { },
+				"CWE-785" : { },
+				"CWE-120/CWE-785!" : { },
+				"CWE-126" : { },
+				"CWE-362, CWE-20" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -382,6 +431,10 @@
 			"parents": [
 				"CWE-190 Integer_wraparound"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-190" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -401,6 +454,13 @@
 			"parents": [
 				"CWE-1177 Use_of_prohibited_code"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-676" : { },
+				"CWE-676, CWE-120" : { },
+				"CWE-785" : { },
+				"CWE-120/CWE-785!" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -436,6 +496,12 @@
 			"parents": [
 				"CWE-362 race_conditions"
 			],
+			"children" : {
+				"loc" : { },
+				"CWE-362/CWE-367!" : { },
+				"CWE-362, CWE-20" : { },
+				"CWE-362" : { }
+			},
 			"diagnostics": [{
 				"name": "loc",
 				"description": "Normalizer diagnostic lines of code",
@@ -522,6 +588,10 @@
 		},
 		"CWE-676": {
 			"description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
+			"toolName": "flawfinder"
+		},
+		"CWE-362": {
+			"description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
 			"toolName": "flawfinder"
 		},
 
