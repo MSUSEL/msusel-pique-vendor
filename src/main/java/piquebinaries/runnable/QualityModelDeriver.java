@@ -109,6 +109,9 @@ public class QualityModelDeriver {
         //  need to implement.
         measureNameThresholdMappings.forEach((measureName, thresholds) -> {
             qmDesign.getMeasure(measureName).setThresholds(thresholds);
+            //System.out.println("En qmDesign:");
+            //System.out.println(qmDesign.getMeasure(measureName).getName());
+            //System.out.println(qmDesign.getMeasure(measureName).getThresholds());
 
             //Measure measure = (Measure) qmDesign.getMeasure(measureName);
             //measure.setThresholds(thresholds);

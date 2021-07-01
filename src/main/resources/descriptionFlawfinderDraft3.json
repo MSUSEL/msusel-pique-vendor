@@ -9,37 +9,73 @@
 	"factors": {
 		"tqi": {
 			"Vendor Security Quality": {
-				"description": "The total security quality value representing the entire system"
+				"description": "The total security quality value representing the entire system",
+				"children" : {
+					"Confidentiality" : { },
+					"Authenticity" : { },
+					"Integrity" : { },
+					"Cross_cutting" : { },
+					"Limit_exposure" : { },
+					"CWE-710 Improper_adherence_to_coding_standards" : { },
+					"CWE-691 Insufficient_control_flow_management": { }
+				}
 			}
 		},
 		"quality_aspects": {
 			"Confidentiality": {
 				"description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"Encrypt_data" : { }
+				}
 			},
 			"Authenticity": {
 				"description": "The property that data originated from its purported source.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-269 Improper_privilege_management" : { },
+					"CWE-668 Exposure_of_resource_to_wrong_sphere" : { },
+					"CWE-669 Incorrect_resource_transfer_between_spheres" : { }
+				}
 			},
 			"Integrity": {
 				"description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"Validate_inputs" : { },
+					"CWE-77 OS_command_injection" : { },
+					"CWE-20 Improper_input_validation" : { },
+					"CWE-190 Integer_wraparound" : { },
+					"CWE-119 Improper_restriction_of_operations_in_memory" : { }
+				}
 			},
 			"Cross_cutting": {
 				"description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-807 Reliance_on_untrusted_inputs" : { }
+				}
 			},
 			"Limit_exposure": {
 				"description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere" : { }
+				}
 			},
 			"CWE-710 Improper_adherence_to_coding_standards": {
 				"description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-1177 Use_of_prohibited_code" : { }
+				}
 			},
 			"CWE-691 Insufficient_control_flow_management": {
 				"description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
-				"eval_strategy": "evaluator.QualityAspectEvaluator"
+				"eval_strategy": "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-362 race_conditions" : { }
+				}
 			}
 		},
 		"product_factors": {
