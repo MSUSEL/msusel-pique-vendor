@@ -113,6 +113,7 @@ public class SingleProjectEvaluator {
         Map<String, Diagnostic> allDiagnostics = new HashMap<>();
         tools.forEach(tool -> {
             allDiagnostics.putAll(runTool(projectDir, tool));
+            System.out.println(allDiagnostics.keySet());
         });
 
 

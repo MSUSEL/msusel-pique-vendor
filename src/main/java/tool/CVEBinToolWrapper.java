@@ -150,7 +150,8 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				}
 				Finding finding = new Finding("",0,0,severityList.get(i));
 				finding.setName(cveList.get(i));
-				diag.setChild(finding); //Null pointer
+				finding.setValue(1.0);
+				diag.setChild(finding);
 				diagnosticsFound.put(diag.getName(), diag);
 			}
 

@@ -103,6 +103,7 @@ public class QualityModelDeriver {
         Set<WeightResult> weights = weighter.elicitateWeights(qmDesign);
         // TODO: assert WeightResult names match expected TQI, QualityAspect, and ProductFactor names from quality model description
 
+
         // (3) Apply results to nodes in quality model by matching names
         // Thresholds (ProductFactor nodes)
         // TODO (1.0): Support now in place to apply thresholds to all nodes (if they exist), not just measures. Just
