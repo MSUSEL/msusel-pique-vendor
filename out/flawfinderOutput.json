@@ -1,161 +1,9 @@
 [ {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "24",
-  "Column" : "5",
-  "DefaultLevel" : "5",
-  "Level" : "5",
-  "Category" : "buffer",
-  "Name" : "gets",
-  "Warning" : "Does not check for buffer overflows (CWE-120, CWE-20).",
-  "Suggestion" : "Use fgets() instead.",
-  "Note" : "",
-  "CWEs" : "CWE-120, CWE-20",
-  "Context" : "    gets(buffer);",
-  "Fingerprint" : "8574681bcf016b459efe0a123d75643927688f096b753ca762978b7c7aa81c29",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1014",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "27",
-  "Column" : "5",
-  "DefaultLevel" : "4",
-  "Level" : "4",
-  "Category" : "format",
-  "Name" : "printf",
-  "Warning" : "If format strings can be influenced by an attacker, they can be exploited (CWE-134).",
-  "Suggestion" : "Use a constant for the format specification.",
-  "Note" : "",
-  "CWEs" : "CWE-134",
-  "Context" : "    printf(buffer);",
-  "Fingerprint" : "d430831c6b6c716522cba331e1862141f630a5eccbf08fd654ca584fa612b767",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1016",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/134.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "33",
-  "Column" : "5",
-  "DefaultLevel" : "4",
-  "Level" : "4",
-  "Category" : "buffer",
-  "Name" : "scanf",
-  "Warning" : "The scanf() family's %s operation, without a limit specification, permits buffer overflows (CWE-120, CWE-20).",
-  "Suggestion" : "Specify a limit to %s, or use a different input function.",
-  "Note" : "If the scanf format is influenceable by an attacker, it's exploitable.",
-  "CWEs" : "CWE-120, CWE-20",
-  "Context" : "    scanf(string);",
-  "Fingerprint" : "24d830b3d95c2c9d40f91f713a0e3a786a744a3df0110b303127b1584d904424",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1020",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "36",
-  "Column" : "13",
-  "DefaultLevel" : "4",
-  "Level" : "4",
-  "Category" : "shell",
-  "Name" : "system",
-  "Warning" : "This causes a new program to execute and is difficult to use safely (CWE-78).",
-  "Suggestion" : "try using a library call that implements the same functionality if available.",
-  "Note" : "",
-  "CWEs" : "CWE-78",
-  "Context" : "    int a = system(string);",
-  "Fingerprint" : "64fc3f4c7944ea1d237e62bf6963063b06d1cd8a5f7ae85d1baa7890bc9552ad",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1044",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/78.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "69",
-  "Column" : "5",
-  "DefaultLevel" : "3",
-  "Level" : "3",
-  "Category" : "random",
-  "Name" : "srand",
-  "Warning" : "This function is not sufficiently random for security-related functions such as key and nonce creation (CWE-327).",
-  "Suggestion" : "Use a more secure technique for acquiring random values.",
-  "Note" : "",
-  "CWEs" : "CWE-327",
-  "Context" : "    srand(1);",
-  "Fingerprint" : "015daba21766afa74125b803c8568f9d2df9d2ec081cdbeeb0b363bfba0fd6ff",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1048",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/327.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "73",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "48",
   "Column" : "11",
-  "DefaultLevel" : "3",
-  "Level" : "3",
-  "Category" : "buffer",
-  "Name" : "realpath",
-  "Warning" : "This function does not protect against buffer overflows, and some implementations can overflow internally (CWE-120/CWE-785!).",
-  "Suggestion" : "Ensure that the destination buffer is at least of size MAXPATHLEN, andto protect against implementation problems, the input argument should also be checked to ensure it is no larger than MAXPATHLEN.",
-  "Note" : "",
-  "CWEs" : "CWE-120/CWE-785!",
-  "Context" : "    cwd = realpath(\".\", NULL);",
-  "Fingerprint" : "169461aa5bcb9dd7b063b67ca5c003cd4acdd04c71e28360a286dc5487f681f4",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1026",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.htmlhttps://cwe.mitre.org/data/definitions/785.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "83",
-  "Column" : "5",
-  "DefaultLevel" : "3",
-  "Level" : "3",
-  "Category" : "misc",
-  "Name" : "chroot",
-  "Warning" : "chroot can be very helpful, but is hard to use correctly (CWE-250, CWE-22).",
-  "Suggestion" : "Make sure the program immediately chdir(\"/\"), closes file descriptors, and drops root privileges, and that all necessary files (and no more!) are in the new root.",
-  "Note" : "",
-  "CWEs" : "CWE-250, CWE-22",
-  "Context" : "    chroot (path);",
-  "Fingerprint" : "0c74d51c87ca333563c57db494319d4c0e1a6663305e04e28238b66013756950",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1052",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/250.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "87",
-  "Column" : "21",
-  "DefaultLevel" : "3",
-  "Level" : "3",
-  "Category" : "buffer",
-  "Name" : "getenv",
-  "Warning" : "Environment variables are untrustable input if they can be set by an attacker.  They can have any content and length, and the same variable can be set more than once (CWE-807, CWE-20).",
-  "Suggestion" : "Check environment variables carefully before using them.",
-  "Note" : "",
-  "CWEs" : "CWE-807, CWE-20",
-  "Context" : "    char *env_var = getenv( \"PATH\");",
-  "Fingerprint" : "d6b723209ea34ed57bfcd57c1b1bdcee94bf9c8e81939b2464c4cdd919b41de6",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1053",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/807.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "19",
-  "Column" : "5",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -164,144 +12,220 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "    char buffer[10];",
-  "Fingerprint" : "c5748bf7f3dab336ad90d5885cdcab0861a3c047a8d9693edf61b871ebe7cba3",
+  "Context" : "\tunsigned char rand_data[DEFAULT_BLK_SZ];",
+  "Fingerprint" : "61a5bc87ab876675baab0133ad8cce95cd6fd02b63f58bdbcd88548a22c16071",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "42",
-  "Column" : "15",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "49",
+  "Column" : "11",
   "DefaultLevel" : "2",
   "Level" : "2",
-  "Category" : "misc",
-  "Name" : "fopen",
-  "Warning" : "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (CWE-362).",
-  "Suggestion" : "",
-  "Note" : "",
-  "CWEs" : "CWE-362",
-  "Context" : "    pointer = fopen(\"newfile.txt\", \"wb+\");",
-  "Fingerprint" : "625de0852720736e2ca4105bac8cdc17a0b14395bb0f5ee28cbb22822f4ad6f0",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1040",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/362.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "60",
-  "Column" : "5",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "tmpfile",
-  "Name" : "mkstemp",
-  "Warning" : "Potential for temporary file vulnerability in some circumstances.  Some older Unix-like systems create temp files with permission to write by all by default, so be sure to set the umask to override this. Also, some older Unix systems might fail to use O_EXCL when opening the file, so make sure that O_EXCL is used by the library (CWE-377).",
-  "Suggestion" : "",
-  "Note" : "",
-  "CWEs" : "CWE-377",
-  "Context" : "    mkstemp(template);",
-  "Fingerprint" : "c4201b17324f1c8fee69711f994dfc2443d24e2b2e1c954119535cf7fa1d8c24",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1039",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/377.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "77",
-  "Column" : "13",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "integer",
-  "Name" : "atoi",
-  "Warning" : "Unless checked, the resulting number can exceed the expected range (CWE-190).",
-  "Suggestion" : "If source untrusted, check both minimum and maximum, even if the input had no minus sign (large numbers can roll over into negative number; consider saving to an unsigned value if that is intended).",
-  "Note" : "",
-  "CWEs" : "CWE-190",
-  "Context" : "    int b = atoi(stringNumber);",
-  "Fingerprint" : "c3680fd6b9656ff4f8b20542cb668b9de48bfe9efae4316514fb77e205cbbc4f",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1047",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/190.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "46",
-  "Column" : "5",
-  "DefaultLevel" : "4",
-  "Level" : "1",
   "Category" : "buffer",
-  "Name" : "scanf",
-  "Warning" : "It's unclear if the %s limit in the format string is small enough (CWE-120).",
-  "Suggestion" : "Check that the limit is sufficiently small, or use a different input function.",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tunsigned char last_rand_data[DEFAULT_BLK_SZ];",
+  "Fingerprint" : "392f9a68c34d190d6c7c97449e76ee9bc4cc9907e10b1ccc22a305c9fe13e3be",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "50",
+  "Column" : "11",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tunsigned char DT[DEFAULT_BLK_SZ];",
+  "Fingerprint" : "75e8db78dce457377f4a89ac42705afe442ff0c53f99d442be8c3598231ecca3",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "51",
+  "Column" : "11",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tunsigned char I[DEFAULT_BLK_SZ];",
+  "Fingerprint" : "026d514ae59f15576c555e4230b11c3a014ad5e9fdd700ff0a684a9de79e4cda",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "52",
+  "Column" : "11",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tunsigned char V[DEFAULT_BLK_SZ];",
+  "Fingerprint" : "c7f1898883c41414a5b86e37602fc5b5efd5fd12ccfb3e1cee481094fdc46a7e",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "91",
+  "Column" : "11",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tunsigned char tmp[DEFAULT_BLK_SZ];",
+  "Fingerprint" : "678b4d3f16ea6f0f52dd0f089ef0fd463790c63ca422d4077454e1822e69b000",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "113",
+  "Column" : "4",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
   "CWEs" : "CWE-120",
-  "Context" : "    scanf(\"%20s\", userInput);",
-  "Fingerprint" : "4e61bedfd365c8ddf53ef9b03274b0cccdbdead75d7cf466e851ac6962f5abaa",
+  "Context" : "\t\t\tmemcpy(tmp, ctx->DT, DEFAULT_BLK_SZ);",
+  "Fingerprint" : "34f0aad7f2b295976e5e492de8ec4016c40fa698a7f8fe4d1fd30caf7a703e56",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1020",
+  "RuleId" : "FF1004",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "56",
-  "Column" : "18",
-  "DefaultLevel" : "1",
-  "Level" : "1",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "147",
+  "Column" : "4",
+  "DefaultLevel" : "2",
+  "Level" : "2",
   "Category" : "buffer",
-  "Name" : "strlen",
-  "Warning" : "Does not handle strings that are not \\0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (CWE-126).",
-  "Suggestion" : "",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
-  "CWEs" : "CWE-126",
-  "Context" : "    int length = strlen(password);",
-  "Fingerprint" : "90784b68f8cc71369a6ec611559119eb81421743e85cfb18661f1f4278d0420d",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\tmemcpy(ctx->last_rand_data, ctx->rand_data,",
+  "Fingerprint" : "0d3d5b90d468571e493a2b91ebc30dfd869aa24631bac1495edb9fb81389d37a",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1022",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "66",
-  "Column" : "5",
-  "DefaultLevel" : "1",
-  "Level" : "1",
-  "Category" : "obsolete",
-  "Name" : "usleep",
-  "Warning" : "This C routine is considered obsolete (as opposed to the shell command by the same name).   The interaction of this function with SIGALRM and other timer functions such as sleep(), alarm(), setitimer(), and nanosleep() is unspecified (CWE-676).",
-  "Suggestion" : "Use nanosleep(2) or setitimer(2) instead.",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "258",
+  "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
-  "CWEs" : "CWE-676",
-  "Context" : "    usleep(seconds);",
-  "Fingerprint" : "19556565de0fb3939d33ffb5a01416ae9b45b40ca925268510240e12625ac229",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(ptr, ctx->rand_data, DEFAULT_BLK_SZ);",
+  "Fingerprint" : "d2fafd3e77b631db82d98d14529b756323476e81bc652e2181a36db1512671b8",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1069",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/676.html"
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\binaries\\weak.c",
-  "Line" : "91",
-  "Column" : "5",
-  "DefaultLevel" : "1",
-  "Level" : "1",
-  "Category" : "access",
-  "Name" : "umask",
-  "Warning" : "Ensure that umask is given most restrictive possible setting (e.g., 066 or 077) (CWE-732).",
-  "Suggestion" : "",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "297",
+  "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
-  "CWEs" : "CWE-732",
-  "Context" : "    umask(x);",
-  "Fingerprint" : "c595091bfe801e05a326dfe685b7292bd1243582974796593fa2a413cd56dd21",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(ctx->V, V, DEFAULT_BLK_SZ);",
+  "Fingerprint" : "f21abecfb599b1dd12d1623dcf493ead0908a739c3cafcd897151be706958c99",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1041",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/732.html"
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "299",
+  "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(ctx->V, DEFAULT_V_SEED, DEFAULT_BLK_SZ);",
+  "Fingerprint" : "35f35641409fca16f45aaf8d455a8eaa0ebd324baedb260891243e959edb1a6c",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor\\src\\main\\resources\\benchmark\\ansi_cprng.c",
+  "Line" : "302",
+  "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(ctx->DT, DT, DEFAULT_BLK_SZ);",
+  "Fingerprint" : "81ca98ba9c8f084fefd401f4fa3ac1b3cf08be3f30f16ffcee08cda0f9c15e70",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 } ]

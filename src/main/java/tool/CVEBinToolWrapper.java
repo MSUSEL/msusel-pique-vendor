@@ -152,6 +152,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				finding.setName(cveList.get(i));
 				finding.setValue(1.0);
 				diag.setChild(finding);
+				//diag.setValue(diag.getValue());
 				diagnosticsFound.put(diag.getName(), diag);
 			}
 

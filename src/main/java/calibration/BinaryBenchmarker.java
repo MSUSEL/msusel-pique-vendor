@@ -97,14 +97,27 @@ public class BinaryBenchmarker implements IBenchmarker {
             tools.forEach(tool -> {
                 Path analysisOutput = tool.analyze(projectPath);
                 allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
+               /* System.out.println("Despues de parse, allDiagnostics dentro de loop:");
                 System.out.println(allDiagnostics.keySet());
+                System.out.println(allDiagnostics.values());*/
             });
 
             // Would normalize here if we do so in the future
             
             // Apply collected diagnostics (containing findings) to the project
-            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
+            /*allDiagnostics.forEach((diagnosticName, diagnostic) -> {
                 project.addFindings(diagnostic);
+            });*/
+
+            /*project.updateDiagnosticsWithFindings(allDiagnostics);*/
+
+            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
+                System.out.println("Diagnostic antes de anadir hijos");
+                System.out.println(diagnostic.getChildren());
+                project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
+                project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
+                //System.out.println("Diagnostic despues de anadir hijos");
+                //System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getChildren().values());
             });
 
             // Evaluate project up to Measure level
@@ -149,6 +162,12 @@ public class BinaryBenchmarker implements IBenchmarker {
         Map<String, Double[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             measureThresholds.putIfAbsent(measureName, new Double[2]);
+
+            System.out.println("mean de measure values en el benchmark: ");
+            System.out.println(mean(measureValues));
+            System.out.println("standard deviation: ");
+            System.out.println(calculateSD(measureValues));
+            System.out.println();
             
             measureThresholds.get(measureName)[0] = mean(measureValues)-calculateSD(measureValues);
             measureThresholds.get(measureName)[1] = mean(measureValues)+calculateSD(measureValues);
