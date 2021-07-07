@@ -11,13 +11,13 @@
     "product_factors": {
       "CWE-362 race_conditions": {
         "name": "CWE-362 race_conditions",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
         "children": {
           "Race_condition_smells": {
             "positive": false,
             "name": "Race_condition_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to possible race conditions",
             "children": {
               "CWE-362/CWE-367!": {
@@ -83,8 +83,8 @@
               "CWE-362, CWE-20": 0.25
             },
             "thresholds": [
-              2.0,
-              2.0
+              0.0,
+              0.2542172115222209
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -100,18 +100,18 @@
       },
       "CWE-20 Improper_input_validation": {
         "name": "CWE-20 Improper_input_validation",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
         "children": {
           "CWE-119 Improper_restriction_of_operations_in_memory": {
             "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
             "children": {
               "Memory_use_smells": {
                 "positive": false,
                 "name": "Memory_use_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to the use of memory",
                 "children": {
                   "CWE-125": {
@@ -305,8 +305,8 @@
                   "CWE-676, CWE-120": 0.09090909090909091
                 },
                 "thresholds": [
-                  14.0,
-                  14.0
+                  0.0,
+                  3.632290055086499
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -330,13 +330,13 @@
       },
       "CWE-190 Integer_wraparound": {
         "name": "CWE-190 Integer_wraparound",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
         "children": {
           "Integer_overflow_smells": {
             "positive": false,
             "name": "Integer_overflow_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to data data encryption",
             "children": {
               "loc": {
@@ -378,8 +378,8 @@
               "CWE-190": 0.5
             },
             "thresholds": [
-              2.0,
-              2.0
+              0.0,
+              0.2542172115222209
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -490,8 +490,8 @@
               "CWE-676, CWE-120": 0.2
             },
             "thresholds": [
-              1.0,
-              1.0
+              0.0,
+              0.12710860576111044
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -507,13 +507,13 @@
       },
       "CWE-119 Improper_restriction_of_operations_in_memory": {
         "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
         "children": {
           "Memory_use_smells": {
             "positive": false,
             "name": "Memory_use_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to the use of memory",
             "children": {
               "CWE-125": {
@@ -707,8 +707,8 @@
               "CWE-676, CWE-120": 0.09090909090909091
             },
             "thresholds": [
-              14.0,
-              14.0
+              0.0,
+              3.632290055086499
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -790,13 +790,13 @@
       },
       "Encrypt_data": {
         "name": "Encrypt_data",
-        "value": 1.0,
+        "value": 0.0,
         "description": "Weaknesses in this category are related to the design and architecture of data confidentiality in a system. Frequently these deal with the use of encryption libraries.",
         "children": {
           "Encryption_smells": {
             "positive": false,
             "name": "Encryption_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to data data encryption",
             "children": {
               "loc": {
@@ -838,8 +838,8 @@
               "CWE-327": 0.5
             },
             "thresholds": [
-              3.0,
-              3.0
+              0.0,
+              1.0406036826322174
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -932,23 +932,23 @@
       },
       "Validate_inputs": {
         "name": "Validate_inputs",
-        "value": 1.0,
+        "value": 0.0,
         "description": "Weaknesses in this category are related to the design and architecture of a system’s input validation components. ",
         "children": {
           "CWE-20 Improper_input_validation": {
             "name": "CWE-20 Improper_input_validation",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
             "children": {
               "CWE-119 Improper_restriction_of_operations_in_memory": {
                 "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                 "children": {
                   "Memory_use_smells": {
                     "positive": false,
                     "name": "Memory_use_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to the use of memory",
                     "children": {
                       "CWE-125": {
@@ -1142,8 +1142,8 @@
                       "CWE-676, CWE-120": 0.09090909090909091
                     },
                     "thresholds": [
-                      14.0,
-                      14.0
+                      0.0,
+                      3.632290055086499
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -1167,13 +1167,13 @@
           },
           "CWE-190 Integer_wraparound": {
             "name": "CWE-190 Integer_wraparound",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
             "children": {
               "Integer_overflow_smells": {
                 "positive": false,
                 "name": "Integer_overflow_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to data data encryption",
                 "children": {
                   "loc": {
@@ -1215,8 +1215,8 @@
                   "CWE-190": 0.5
                 },
                 "thresholds": [
-                  2.0,
-                  2.0
+                  0.0,
+                  0.2542172115222209
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -1232,13 +1232,13 @@
           },
           "CWE-77 OS_command_injection": {
             "name": "CWE-77 OS_command_injection",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
             "children": {
               "OS_command_injection_smells": {
                 "positive": false,
                 "name": "OS_command_injection_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to OS command injection",
                 "children": {
                   "loc": {
@@ -1280,8 +1280,8 @@
                   "CWE-78": 0.5
                 },
                 "thresholds": [
-                  4.0,
-                  4.0
+                  0.0,
+                  0.5084344230444418
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -1373,13 +1373,13 @@
       },
       "CWE-77 OS_command_injection": {
         "name": "CWE-77 OS_command_injection",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
         "children": {
           "OS_command_injection_smells": {
             "positive": false,
             "name": "OS_command_injection_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to OS command injection",
             "children": {
               "loc": {
@@ -1421,8 +1421,8 @@
               "CWE-78": 0.5
             },
             "thresholds": [
-              4.0,
-              4.0
+              0.0,
+              0.5084344230444418
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -1438,13 +1438,13 @@
       },
       "CWE-807 Reliance_on_untrusted_inputs": {
         "name": "CWE-807 Reliance_on_untrusted_inputs",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
         "children": {
           "Cross_cutting_smells": {
             "positive": false,
             "name": "Cross_cutting_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to design and architecture of security tactics",
             "children": {
               "CWE-807, CWE-20": {
@@ -1498,8 +1498,8 @@
               "CWE-807": 0.3333333333333333
             },
             "thresholds": [
-              3.0,
-              3.0
+              0.0,
+              0.38132581728333115
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -1515,13 +1515,13 @@
       },
       "CWE-668 Exposure_of_resource_to_wrong_sphere": {
         "name": "CWE-668 Exposure_of_resource_to_wrong_sphere",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
         "children": {
           "Exposure_to_wrong_sphere_smells": {
             "positive": false,
             "name": "Exposure_to_wrong_sphere_smells",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Code smells related to the control sphere of resources",
             "children": {
               "loc": {
@@ -1644,8 +1644,8 @@
               "CWE-377": 0.16666666666666666
             },
             "thresholds": [
-              10.0,
-              10.0
+              0.0,
+              1.271086057611104
             ],
             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -1663,7 +1663,7 @@
     "quality_aspects": {
       "Authenticity": {
         "name": "Authenticity",
-        "value": 0.6666666666666666,
+        "value": 0.3333333333333333,
         "description": "The property that data originated from its purported source.",
         "children": {
           "CWE-269 Improper_privilege_management": {
@@ -1745,13 +1745,13 @@
           },
           "CWE-668 Exposure_of_resource_to_wrong_sphere": {
             "name": "CWE-668 Exposure_of_resource_to_wrong_sphere",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
             "children": {
               "Exposure_to_wrong_sphere_smells": {
                 "positive": false,
                 "name": "Exposure_to_wrong_sphere_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to the control sphere of resources",
                 "children": {
                   "loc": {
@@ -1874,8 +1874,8 @@
                   "CWE-377": 0.16666666666666666
                 },
                 "thresholds": [
-                  10.0,
-                  10.0
+                  0.0,
+                  1.271086057611104
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2067,8 +2067,8 @@
                   "CWE-676, CWE-120": 0.2
                 },
                 "thresholds": [
-                  1.0,
-                  1.0
+                  0.0,
+                  0.12710860576111044
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2092,18 +2092,18 @@
       },
       "CWE-691 Insufficient_control_flow_management": {
         "name": "CWE-691 Insufficient_control_flow_management",
-        "value": 1.0,
+        "value": 0.0,
         "description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
         "children": {
           "CWE-362 race_conditions": {
             "name": "CWE-362 race_conditions",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
             "children": {
               "Race_condition_smells": {
                 "positive": false,
                 "name": "Race_condition_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to possible race conditions",
                 "children": {
                   "CWE-362/CWE-367!": {
@@ -2169,8 +2169,8 @@
                   "CWE-362, CWE-20": 0.25
                 },
                 "thresholds": [
-                  2.0,
-                  2.0
+                  0.0,
+                  0.2542172115222209
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2194,18 +2194,18 @@
       },
       "Confidentiality": {
         "name": "Confidentiality",
-        "value": 1.0,
+        "value": 0.0,
         "description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
         "children": {
           "Encrypt_data": {
             "name": "Encrypt_data",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Weaknesses in this category are related to the design and architecture of data confidentiality in a system. Frequently these deal with the use of encryption libraries.",
             "children": {
               "Encryption_smells": {
                 "positive": false,
                 "name": "Encryption_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to data data encryption",
                 "children": {
                   "loc": {
@@ -2247,8 +2247,8 @@
                   "CWE-327": 0.5
                 },
                 "thresholds": [
-                  3.0,
-                  3.0
+                  0.0,
+                  1.0406036826322174
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2272,18 +2272,18 @@
       },
       "Cross_cutting": {
         "name": "Cross_cutting",
-        "value": 1.0,
+        "value": 0.0,
         "description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
         "children": {
           "CWE-807 Reliance_on_untrusted_inputs": {
             "name": "CWE-807 Reliance_on_untrusted_inputs",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
             "children": {
               "Cross_cutting_smells": {
                 "positive": false,
                 "name": "Cross_cutting_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to design and architecture of security tactics",
                 "children": {
                   "CWE-807, CWE-20": {
@@ -2337,8 +2337,8 @@
                   "CWE-807": 0.3333333333333333
                 },
                 "thresholds": [
-                  3.0,
-                  3.0
+                  0.0,
+                  0.38132581728333115
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2441,23 +2441,23 @@
       },
       "Integrity": {
         "name": "Integrity",
-        "value": 1.0,
+        "value": 0.0,
         "description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
         "children": {
           "CWE-20 Improper_input_validation": {
             "name": "CWE-20 Improper_input_validation",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
             "children": {
               "CWE-119 Improper_restriction_of_operations_in_memory": {
                 "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                 "children": {
                   "Memory_use_smells": {
                     "positive": false,
                     "name": "Memory_use_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to the use of memory",
                     "children": {
                       "CWE-125": {
@@ -2651,8 +2651,8 @@
                       "CWE-676, CWE-120": 0.09090909090909091
                     },
                     "thresholds": [
-                      14.0,
-                      14.0
+                      0.0,
+                      3.632290055086499
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2676,23 +2676,23 @@
           },
           "Validate_inputs": {
             "name": "Validate_inputs",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Weaknesses in this category are related to the design and architecture of a system’s input validation components. ",
             "children": {
               "CWE-20 Improper_input_validation": {
                 "name": "CWE-20 Improper_input_validation",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
                 "children": {
                   "CWE-119 Improper_restriction_of_operations_in_memory": {
                     "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                     "children": {
                       "Memory_use_smells": {
                         "positive": false,
                         "name": "Memory_use_smells",
-                        "value": 1.0,
+                        "value": 0.0,
                         "description": "Code smells related to the use of memory",
                         "children": {
                           "CWE-125": {
@@ -2886,8 +2886,8 @@
                           "CWE-676, CWE-120": 0.09090909090909091
                         },
                         "thresholds": [
-                          14.0,
-                          14.0
+                          0.0,
+                          3.632290055086499
                         ],
                         "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                         "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2911,13 +2911,13 @@
               },
               "CWE-190 Integer_wraparound": {
                 "name": "CWE-190 Integer_wraparound",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
                 "children": {
                   "Integer_overflow_smells": {
                     "positive": false,
                     "name": "Integer_overflow_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to data data encryption",
                     "children": {
                       "loc": {
@@ -2959,8 +2959,8 @@
                       "CWE-190": 0.5
                     },
                     "thresholds": [
-                      2.0,
-                      2.0
+                      0.0,
+                      0.2542172115222209
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2976,13 +2976,13 @@
               },
               "CWE-77 OS_command_injection": {
                 "name": "CWE-77 OS_command_injection",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
                 "children": {
                   "OS_command_injection_smells": {
                     "positive": false,
                     "name": "OS_command_injection_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to OS command injection",
                     "children": {
                       "loc": {
@@ -3024,8 +3024,8 @@
                       "CWE-78": 0.5
                     },
                     "thresholds": [
-                      4.0,
-                      4.0
+                      0.0,
+                      0.5084344230444418
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3051,13 +3051,13 @@
           },
           "CWE-190 Integer_wraparound": {
             "name": "CWE-190 Integer_wraparound",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
             "children": {
               "Integer_overflow_smells": {
                 "positive": false,
                 "name": "Integer_overflow_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to data data encryption",
                 "children": {
                   "loc": {
@@ -3099,8 +3099,8 @@
                   "CWE-190": 0.5
                 },
                 "thresholds": [
-                  2.0,
-                  2.0
+                  0.0,
+                  0.2542172115222209
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3116,13 +3116,13 @@
           },
           "CWE-77 OS_command_injection": {
             "name": "CWE-77 OS_command_injection",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
             "children": {
               "OS_command_injection_smells": {
                 "positive": false,
                 "name": "OS_command_injection_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to OS command injection",
                 "children": {
                   "loc": {
@@ -3164,8 +3164,8 @@
                   "CWE-78": 0.5
                 },
                 "thresholds": [
-                  4.0,
-                  4.0
+                  0.0,
+                  0.5084344230444418
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3181,13 +3181,13 @@
           },
           "CWE-119 Improper_restriction_of_operations_in_memory": {
             "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
             "children": {
               "Memory_use_smells": {
                 "positive": false,
                 "name": "Memory_use_smells",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Code smells related to the use of memory",
                 "children": {
                   "CWE-125": {
@@ -3381,8 +3381,8 @@
                   "CWE-676, CWE-120": 0.09090909090909091
                 },
                 "thresholds": [
-                  14.0,
-                  14.0
+                  0.0,
+                  3.632290055086499
                 ],
                 "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3412,12 +3412,12 @@
     "tqi": {
       "Vendor Security Quality": {
         "name": "Vendor Security Quality",
-        "value": 0.8833249910729506,
+        "value": 0.2038286267950977,
         "description": "The total security quality value representing the entire system",
         "children": {
           "Authenticity": {
             "name": "Authenticity",
-            "value": 0.6666666666666666,
+            "value": 0.3333333333333333,
             "description": "The property that data originated from its purported source.",
             "children": {
               "CWE-269 Improper_privilege_management": {
@@ -3499,13 +3499,13 @@
               },
               "CWE-668 Exposure_of_resource_to_wrong_sphere": {
                 "name": "CWE-668 Exposure_of_resource_to_wrong_sphere",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
                 "children": {
                   "Exposure_to_wrong_sphere_smells": {
                     "positive": false,
                     "name": "Exposure_to_wrong_sphere_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to the control sphere of resources",
                     "children": {
                       "loc": {
@@ -3628,8 +3628,8 @@
                       "CWE-377": 0.16666666666666666
                     },
                     "thresholds": [
-                      10.0,
-                      10.0
+                      0.0,
+                      1.271086057611104
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3821,8 +3821,8 @@
                       "CWE-676, CWE-120": 0.2
                     },
                     "thresholds": [
-                      1.0,
-                      1.0
+                      0.0,
+                      0.12710860576111044
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3846,18 +3846,18 @@
           },
           "CWE-691 Insufficient_control_flow_management": {
             "name": "CWE-691 Insufficient_control_flow_management",
-            "value": 1.0,
+            "value": 0.0,
             "description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
             "children": {
               "CWE-362 race_conditions": {
                 "name": "CWE-362 race_conditions",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
                 "children": {
                   "Race_condition_smells": {
                     "positive": false,
                     "name": "Race_condition_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to possible race conditions",
                     "children": {
                       "CWE-362/CWE-367!": {
@@ -3923,8 +3923,8 @@
                       "CWE-362, CWE-20": 0.25
                     },
                     "thresholds": [
-                      2.0,
-                      2.0
+                      0.0,
+                      0.2542172115222209
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3948,18 +3948,18 @@
           },
           "Confidentiality": {
             "name": "Confidentiality",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
             "children": {
               "Encrypt_data": {
                 "name": "Encrypt_data",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Weaknesses in this category are related to the design and architecture of data confidentiality in a system. Frequently these deal with the use of encryption libraries.",
                 "children": {
                   "Encryption_smells": {
                     "positive": false,
                     "name": "Encryption_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to data data encryption",
                     "children": {
                       "loc": {
@@ -4001,8 +4001,8 @@
                       "CWE-327": 0.5
                     },
                     "thresholds": [
-                      3.0,
-                      3.0
+                      0.0,
+                      1.0406036826322174
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4026,18 +4026,18 @@
           },
           "Cross_cutting": {
             "name": "Cross_cutting",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
             "children": {
               "CWE-807 Reliance_on_untrusted_inputs": {
                 "name": "CWE-807 Reliance_on_untrusted_inputs",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
                 "children": {
                   "Cross_cutting_smells": {
                     "positive": false,
                     "name": "Cross_cutting_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to design and architecture of security tactics",
                     "children": {
                       "CWE-807, CWE-20": {
@@ -4091,8 +4091,8 @@
                       "CWE-807": 0.3333333333333333
                     },
                     "thresholds": [
-                      3.0,
-                      3.0
+                      0.0,
+                      0.38132581728333115
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4195,23 +4195,23 @@
           },
           "Integrity": {
             "name": "Integrity",
-            "value": 1.0,
+            "value": 0.0,
             "description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
             "children": {
               "CWE-20 Improper_input_validation": {
                 "name": "CWE-20 Improper_input_validation",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
                 "children": {
                   "CWE-119 Improper_restriction_of_operations_in_memory": {
                     "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                     "children": {
                       "Memory_use_smells": {
                         "positive": false,
                         "name": "Memory_use_smells",
-                        "value": 1.0,
+                        "value": 0.0,
                         "description": "Code smells related to the use of memory",
                         "children": {
                           "CWE-125": {
@@ -4405,8 +4405,8 @@
                           "CWE-676, CWE-120": 0.09090909090909091
                         },
                         "thresholds": [
-                          14.0,
-                          14.0
+                          0.0,
+                          3.632290055086499
                         ],
                         "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                         "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4430,23 +4430,23 @@
               },
               "Validate_inputs": {
                 "name": "Validate_inputs",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "Weaknesses in this category are related to the design and architecture of a system’s input validation components. ",
                 "children": {
                   "CWE-20 Improper_input_validation": {
                     "name": "CWE-20 Improper_input_validation",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
                     "children": {
                       "CWE-119 Improper_restriction_of_operations_in_memory": {
                         "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                        "value": 1.0,
+                        "value": 0.0,
                         "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                         "children": {
                           "Memory_use_smells": {
                             "positive": false,
                             "name": "Memory_use_smells",
-                            "value": 1.0,
+                            "value": 0.0,
                             "description": "Code smells related to the use of memory",
                             "children": {
                               "CWE-125": {
@@ -4640,8 +4640,8 @@
                               "CWE-676, CWE-120": 0.09090909090909091
                             },
                             "thresholds": [
-                              14.0,
-                              14.0
+                              0.0,
+                              3.632290055086499
                             ],
                             "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                             "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4665,13 +4665,13 @@
                   },
                   "CWE-190 Integer_wraparound": {
                     "name": "CWE-190 Integer_wraparound",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
                     "children": {
                       "Integer_overflow_smells": {
                         "positive": false,
                         "name": "Integer_overflow_smells",
-                        "value": 1.0,
+                        "value": 0.0,
                         "description": "Code smells related to data data encryption",
                         "children": {
                           "loc": {
@@ -4713,8 +4713,8 @@
                           "CWE-190": 0.5
                         },
                         "thresholds": [
-                          2.0,
-                          2.0
+                          0.0,
+                          0.2542172115222209
                         ],
                         "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                         "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4730,13 +4730,13 @@
                   },
                   "CWE-77 OS_command_injection": {
                     "name": "CWE-77 OS_command_injection",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
                     "children": {
                       "OS_command_injection_smells": {
                         "positive": false,
                         "name": "OS_command_injection_smells",
-                        "value": 1.0,
+                        "value": 0.0,
                         "description": "Code smells related to OS command injection",
                         "children": {
                           "loc": {
@@ -4778,8 +4778,8 @@
                           "CWE-78": 0.5
                         },
                         "thresholds": [
-                          4.0,
-                          4.0
+                          0.0,
+                          0.5084344230444418
                         ],
                         "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                         "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4805,13 +4805,13 @@
               },
               "CWE-190 Integer_wraparound": {
                 "name": "CWE-190 Integer_wraparound",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
                 "children": {
                   "Integer_overflow_smells": {
                     "positive": false,
                     "name": "Integer_overflow_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to data data encryption",
                     "children": {
                       "loc": {
@@ -4853,8 +4853,8 @@
                       "CWE-190": 0.5
                     },
                     "thresholds": [
-                      2.0,
-                      2.0
+                      0.0,
+                      0.2542172115222209
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4870,13 +4870,13 @@
               },
               "CWE-77 OS_command_injection": {
                 "name": "CWE-77 OS_command_injection",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
                 "children": {
                   "OS_command_injection_smells": {
                     "positive": false,
                     "name": "OS_command_injection_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to OS command injection",
                     "children": {
                       "loc": {
@@ -4918,8 +4918,8 @@
                       "CWE-78": 0.5
                     },
                     "thresholds": [
-                      4.0,
-                      4.0
+                      0.0,
+                      0.5084344230444418
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -4935,13 +4935,13 @@
               },
               "CWE-119 Improper_restriction_of_operations_in_memory": {
                 "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                "value": 1.0,
+                "value": 0.0,
                 "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                 "children": {
                   "Memory_use_smells": {
                     "positive": false,
                     "name": "Memory_use_smells",
-                    "value": 1.0,
+                    "value": 0.0,
                     "description": "Code smells related to the use of memory",
                     "children": {
                       "CWE-125": {
@@ -5135,8 +5135,8 @@
                       "CWE-676, CWE-120": 0.09090909090909091
                     },
                     "thresholds": [
-                      14.0,
-                      14.0
+                      0.0,
+                      3.632290055086499
                     ],
                     "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5182,7 +5182,7 @@
     "Race_condition_smells": {
       "positive": false,
       "name": "Race_condition_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to possible race conditions",
       "children": {
         "CWE-362/CWE-367!": {
@@ -5248,8 +5248,8 @@
         "CWE-362, CWE-20": 0.25
       },
       "thresholds": [
-        2.0,
-        2.0
+        0.0,
+        0.2542172115222209
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5311,7 +5311,7 @@
     "Encryption_smells": {
       "positive": false,
       "name": "Encryption_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to data data encryption",
       "children": {
         "loc": {
@@ -5353,8 +5353,8 @@
         "CWE-327": 0.5
       },
       "thresholds": [
-        3.0,
-        3.0
+        0.0,
+        1.0406036826322174
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5516,8 +5516,8 @@
         "CWE-676, CWE-120": 0.2
       },
       "thresholds": [
-        1.0,
-        1.0
+        0.0,
+        0.12710860576111044
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5526,7 +5526,7 @@
     "Integer_overflow_smells": {
       "positive": false,
       "name": "Integer_overflow_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to data data encryption",
       "children": {
         "loc": {
@@ -5568,8 +5568,8 @@
         "CWE-190": 0.5
       },
       "thresholds": [
-        2.0,
-        2.0
+        0.0,
+        0.2542172115222209
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5578,7 +5578,7 @@
     "Memory_use_smells": {
       "positive": false,
       "name": "Memory_use_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to the use of memory",
       "children": {
         "CWE-125": {
@@ -5772,8 +5772,8 @@
         "CWE-676, CWE-120": 0.09090909090909091
       },
       "thresholds": [
-        14.0,
-        14.0
+        0.0,
+        3.632290055086499
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5782,7 +5782,7 @@
     "Exposure_to_wrong_sphere_smells": {
       "positive": false,
       "name": "Exposure_to_wrong_sphere_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to the control sphere of resources",
       "children": {
         "loc": {
@@ -5905,8 +5905,8 @@
         "CWE-377": 0.16666666666666666
       },
       "thresholds": [
-        10.0,
-        10.0
+        0.0,
+        1.271086057611104
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5915,7 +5915,7 @@
     "Cross_cutting_smells": {
       "positive": false,
       "name": "Cross_cutting_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to design and architecture of security tactics",
       "children": {
         "CWE-807, CWE-20": {
@@ -5969,8 +5969,8 @@
         "CWE-807": 0.3333333333333333
       },
       "thresholds": [
-        3.0,
-        3.0
+        0.0,
+        0.38132581728333115
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -6032,7 +6032,7 @@
     "OS_command_injection_smells": {
       "positive": false,
       "name": "OS_command_injection_smells",
-      "value": 1.0,
+      "value": 0.0,
       "description": "Code smells related to OS command injection",
       "children": {
         "loc": {
@@ -6074,8 +6074,8 @@
         "CWE-78": 0.5
       },
       "thresholds": [
-        4.0,
-        4.0
+        0.0,
+        0.5084344230444418
       ],
       "eval_strategy": "pique.evaluation.DefaultMeasureEvaluator",
       "normalizer": "pique.evaluation.DefaultNormalizer",
