@@ -119,6 +119,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		ArrayList<String> cveList = new ArrayList<String>();
 		ArrayList<Integer> severityList = new ArrayList<Integer>();
+		//ArrayList<Double> severityList = new ArrayList<Double>();
 
 		try {
 			JSONArray jsonResults = new JSONArray(results);
@@ -128,6 +129,8 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				//Need to change this for this tool.
 				String findingName = jsonFinding.get("CWEs").toString();
 				String findingSeverity = jsonFinding.get("DefaultLevel").toString();
+				//Integer temp = this.severityToInt(findingSeverity);
+				//severityList.add(temp.doubleValue()/5.0);
 				severityList.add(this.severityToInt(findingSeverity));
 				cveList.add(findingName);
 			}
@@ -148,7 +151,8 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 					//We may want to treat this in another way.
 					diag = diagnosticsUniverseForTool.get("CVE-CWE-Unknown-Other");
 				}
-				Finding finding = new Finding("",0,0,severityList.get(i));
+				//Integer severityOfFinfing = severityList.get(i).intValue();
+				Finding finding = new Finding("",0,0, severityList.get(i));
 				finding.setName(cveList.get(i));
 				finding.setValue(1.0);
 				diag.setChild(finding);

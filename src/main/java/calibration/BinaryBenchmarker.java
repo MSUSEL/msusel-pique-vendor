@@ -97,34 +97,28 @@ public class BinaryBenchmarker implements IBenchmarker {
             tools.forEach(tool -> {
                 Path analysisOutput = tool.analyze(projectPath);
                 allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
-               /* System.out.println("Despues de parse, allDiagnostics dentro de loop:");
-                System.out.println(allDiagnostics.keySet());
-                System.out.println(allDiagnostics.values());*/
             });
 
-            // Would normalize here if we do so in the future
-            
-            // Apply collected diagnostics (containing findings) to the project
+            //No sirve
+            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
+                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName));
+                System.out.println(diagnostic.getChildren());
+                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());
+                project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
+                project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
+                //System.out.println(project.getQualityModel().getDiagnostic(diagnosticName)); //Esta en null??
+                //System.out.println(diagnostic.getChildren());
+                //System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());
+            });
+
+            //project.updateDiagnosticsWithFindings(allDiagnostics);
+
             /*allDiagnostics.forEach((diagnosticName, diagnostic) -> {
                 project.addFindings(diagnostic);
             });*/
 
-            /*project.updateDiagnosticsWithFindings(allDiagnostics);*/
-
-            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
-                System.out.println("Diagnostic antes de anadir hijos");
-                System.out.println(diagnostic.getChildren());
-                project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
-                project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
-                //System.out.println("Diagnostic despues de anadir hijos");
-                //System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getChildren().values());
-            });
-
             // Evaluate project up to Measure level
             project.evaluateMeasures();
-
-            //System.out.println("Measures despues de evaluar");
-            //System.out.println(project.getQualityModel().getMeasure("Memory_use_smells").getChildren().values());
 
             // Add new project (with tool findings information included) to the list
              projects.add(project); //Un arrayList de proyectos

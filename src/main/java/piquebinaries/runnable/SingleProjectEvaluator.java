@@ -120,8 +120,13 @@ public class SingleProjectEvaluator {
             project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
             project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
         });
+
         // Evaluate project up to Measure level
-        project.evaluateMeasures();
+        //project.evaluateMeasures();
+
+        project.getQualityModel().getMeasures().forEach((measureName, measure) -> {
+            project.getQualityModel().getMeasure(measureName).setValue(measure.getValue());
+        });
 
         project.getQualityModel().getProductFactors().forEach((pfName, pf) -> {
             project.getQualityModel().getProductFactor(pfName).setValue(pf.getValue());
@@ -130,9 +135,6 @@ public class SingleProjectEvaluator {
         project.getQualityModel().getQualityAspects().forEach((qaName, qa) -> {
             project.getQualityModel().getQualityAspect(qaName).setValue(qa.getValue());
         });
-
-        // Apply tool results to Project object
-        //project.updateDiagnosticsWithFindings(allDiagnostics);
 
         double tqiValue = project.evaluateTqi();
 
