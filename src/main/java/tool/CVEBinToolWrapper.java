@@ -95,7 +95,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		Map<String, Diagnostic> diagnosticsUniverseForTool = initializeDiagnostics();
-		Map<String, Diagnostic> diagnosticsFound = new HashMap<>();
+		//Map<String, Diagnostic> diagnosticsFound = new HashMap<>();
 		
 		//Adapted from: https://kalliphant.com/jackson-convert-csv-json-example/
 		File input = new File(toolResults.toString());
@@ -157,7 +157,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				finding.setValue(1.0);
 				diag.setChild(finding);
 				//diag.setValue(diag.getValue());
-				diagnosticsFound.put(diag.getName(), diag);
+				//diagnosticsFound.put(diag.getName(), diag);
 			}
 
 
@@ -165,7 +165,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			e.printStackTrace();
 		}
 
-		return diagnosticsFound;
+		return diagnosticsUniverseForTool;
 	}
 
 	public List<Object> returnCsvReadList(CsvSchema csvSchema, CsvMapper csvMapper, File input) {

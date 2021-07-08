@@ -100,22 +100,22 @@ public class BinaryBenchmarker implements IBenchmarker {
             });
 
             //No sirve
-            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
+            /*allDiagnostics.forEach((diagnosticName, diagnostic) -> {
                 System.out.println(project.getQualityModel().getDiagnostic(diagnosticName));
                 System.out.println(diagnostic.getChildren());
                 System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());
                 project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
                 project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
-                //System.out.println(project.getQualityModel().getDiagnostic(diagnosticName)); //Esta en null??
-                //System.out.println(diagnostic.getChildren());
-                //System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());
-            });
+                /*System.out.println(project.getQualityModel().getDiagnostic(diagnosticName)); //Esta en null??
+                System.out.println(diagnostic.getChildren());
+                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());
+            });*/
 
             //project.updateDiagnosticsWithFindings(allDiagnostics);
 
-            /*allDiagnostics.forEach((diagnosticName, diagnostic) -> {
+            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
                 project.addFindings(diagnostic);
-            });*/
+            });
 
             // Evaluate project up to Measure level
             project.evaluateMeasures();

@@ -1,0 +1,644 @@
+{
+  "name": "C Vendor Quality Model",
+  "additionalData": {},
+  "global_config": {
+    "benchmark_strategy": "calibration.BinaryBenchmarker",
+    "normalizer": "evaluator.NoNormalizer",
+    "weights_strategy": "calibration.BinaryCWEWeighter"
+  },
+  "factors": {
+    "tqi": {
+      "Vendor Security Quality": {
+        "description": "The total security quality value representing the entire system",
+        "children": {
+          "Confidentiality": {},
+          "Authenticity": {},
+          "Integrity": {},
+          "Cross_cutting": {},
+          "Limit_exposure": {},
+          "CWE-710 Improper_adherence_to_coding_standards": {},
+          "CWE-691 Insufficient_control_flow_management": {},
+          "CWE-398 Code_quality": {}
+        }
+      }
+    },
+    "quality_aspects": {
+      "Confidentiality": {
+        "description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "Encrypt_data": {}
+        }
+      },
+      "Authenticity": {
+        "description": "The property that data originated from its purported source.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-269 Improper_privilege_management": {},
+          "CWE-668 Exposure_of_resource_to_wrong_sphere": {},
+          "CWE-669 Incorrect_resource_transfer_between_spheres": {}
+        }
+      },
+      "Integrity": {
+        "description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "Validate_inputs": {},
+          "CWE-77 OS_command_injection": {},
+          "CWE-20 Improper_input_validation": {},
+          "CWE-190 Integer_wraparound": {},
+          "CWE-119 Improper_restriction_of_operations_in_memory": {}
+        }
+      },
+      "Cross_cutting": {
+        "description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-807 Reliance_on_untrusted_inputs": {}
+        }
+      },
+      "Limit_exposure": {
+        "description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {}
+        }
+      },
+      "CWE-710 Improper_adherence_to_coding_standards": {
+        "description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-1177 Use_of_prohibited_code": {}
+        }
+      },
+      "CWE-691 Insufficient_control_flow_management": {
+        "description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-362 race_conditions": {},
+          "CWE-670 Always_incorrect_control_flow": {}
+        }
+      },
+      "CWE-398 Code_quality": {
+        "description": "weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-398 Code_quality_weaknesses": {}
+        }
+      }
+    },
+    "product_factors": {
+      "Encrypt_data": {
+        "description": "Weaknesses in this category are related to the design and architecture of data confidentiality in a system. Frequently these deal with the use of encryption libraries.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-327": {}
+        }
+      },
+      "CWE-269 Improper_privilege_management": {
+        "description": "The software does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-250": {},
+          "CWE-250, CWE-22": {}
+        }
+      },
+      "CWE-668 Exposure_of_resource_to_wrong_sphere": {
+        "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-377": { },
+          "CWE-732": {},
+          "CWE-134": { },
+          "CWE-22": {},
+          "CWE-250, CWE-22": { }
+        }
+      },
+      "CWE-669 Incorrect_resource_transfer_between_spheres": {
+        "description": "The product does not properly transfer a resource/behavior to another spere, or improperly imports a resource/behavior from another sphere, in a manner that provides unintended control over that resource.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-829": {},
+          "CWE-829, CWE-20": {}
+        }
+      },
+      "Validate_inputs": {
+        "description": "Weaknesses in this category are related to the design and architecture of a system’s input validation components. ",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-77 OS_command_injection": {},
+          "CWE-20 Improper_input_validation": {},
+          "CWE-190 Integer_wraparound": {}
+        }
+      },
+      "CWE-807 Reliance_on_untrusted_inputs": {
+        "description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-807": {},
+          "CWE-807, CWE-20": {}
+        }
+      },
+      "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
+        "description": "The software imports, requires or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-829": {},
+          "CWE-829, CWE-20": {}
+        }
+      },
+      "CWE-1177 Use_of_prohibited_code": {
+        "description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-676": {},
+          "CWE-676, CWE-120": {},
+          "CWE-785": {},
+          "CWE-120/CWE-785!": {},
+          "CWE-477": {},
+          "CWE-758": {},
+          "CWE-562": {},
+          "CWE-571": {},
+          "CWE-587": {},
+          "CWE-570": {},
+          "CWE-628": {},
+          "CWE-686": {},
+          "CWE-687": {},
+          "CWE-688": {},
+          "CWE-685": {},
+          "CWE-475": {},
+          "CWE-561": {},
+          "CWE-563": {},
+          "CWE-683": {}
+        }
+      },
+      "CWE-77 OS_command_injection": {
+        "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-78": {}
+        }
+      },
+      "CWE-20 Improper_input_validation": {
+        "description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-119": {}
+        }
+      },
+      "CWE-190 Integer_wraparound": {
+        "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-190": {}
+        }
+      },
+      "CWE-119 Improper_restriction_of_operations_in_memory": {
+        "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-120": {},
+          "CWE-119!/CWE-120": {},
+          "CWE-120, CWE-20": {},
+          "CWE-676, CWE-120": {},
+          "CWE-125": {},
+          "CWE-788": {},
+          "CWE-785": {},
+          "CWE-120/CWE-785!": {},
+          "CWE-126": {},
+          "CWE-362, CWE-20": {},
+          "CWE-786": {},
+          "CWE-590": {},
+          "CWE-119": {}
+        }
+      },
+      "CWE-362 race_conditions": {
+        "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-362/CWE-367!": {},
+          "CWE-362, CWE-20": {},
+          "CWE-362": {}
+        }
+      },
+      "CWE-682 Incorrect_calculation": {
+        "description": "The software performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-369": {},
+          "CWE-131": {},
+          "CWE-682": {},
+          "CWE-128": {},
+          "CWE-467": {},
+          "CWE-190 Integer_wraparound": {}
+        }
+      },
+      "CWE-398 Code_quality_weaknesses": {
+        "description": "weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-398": {}
+        }
+      },
+      "CWE-664 Improper_control_of_a_resource": {
+        "description": "The software does not maintain or incorrectly maintains control over a resource throughout its lifetime of creation, use, and release.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-704": {},
+          "CWE-664": {},
+          "CWE-404": {},
+          "CWE-665": {},
+          "CWE-762": {},
+          "CWE-910": {},
+          "CWE-672": {},
+          "CWE-415": {},
+          "CWE-401": {},
+          "CWE-771": {},
+          "CWE-772": {},
+          "CWE-197": {},
+          "CWE-825": {},
+          "CWE-195": {}
+        }
+      },
+      "CWE-707 Improper_neutralization": {
+        "description": "The product does not ensure or incorrectly ensures that structured messages or data are well-formed and that certain security properties are met before being read from an upstream component or sent to a downstream component.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-170": {}
+        }
+      },
+      "CWE-703 Improper_exception_handling": {
+        "description": "The software does not properly anticipate or handle exceptional conditions that rarely occur during normal operation of the software.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-703": {},
+          "CWE-391": {},
+          "CWE-252": {}
+        }
+      },
+      "CWE-670 Always_incorrect_control_flow": {
+        "description": "The code contains a control flow path that does not reflect the algorithm that the path is intended to implement, leading to incorrect behavior any time this path is navigated.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-482": {},
+          "CWE-768": {},
+          "CWE-783": {},
+          "CWE-597": {},
+          "CWE-667": {},
+          "CWE-833": {},
+          "CWE-834": {}
+        }
+      },
+      "CWE-697 Incorrect_comparison": {
+        "description": " The software compares two entities in a security-relevant context, but the comparison is incorrect, which may lead to resultant weaknesses.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "loc": {},
+          "CWE-595": {}
+        }
+      }
+    }
+  },
+  "measures": {
+    "loc": {
+      "description": "Normalizer diagnostic lines of code",
+      "toolName": "flawfinder"
+    },
+    "CWE-327": {
+      "description": "Use of broken or risky cryptographic algorithm ",
+      "toolName": "flawfinder"
+    },
+    "CWE-250": {
+      "description": "The software performs an operation at a privilege level that is higher than the minimum level required.",
+      "toolName": "flawfinder"
+    },
+    "CWE-377": {
+      "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
+      "toolName": "flawfinder"
+    },
+    "CWE-732": {
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "toolName": "flawfinder"
+    },
+    "CWE-134": {
+      "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
+      "toolName": "flawfinder"
+    },
+    "CWE-22": {
+      "description": "The software uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside the restricted directory.",
+      "toolName": "flawfinder"
+    },
+    "CWE-807": {
+      "description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+      "toolName": "flawfinder"
+    },
+    "CWE-829": {
+      "description": "The software imports, requires or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
+      "toolName": "flawfinder"
+    },
+    "CWE-78": {
+      "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+      "toolName": "flawfinder"
+    },
+    "CWE-120": {
+      "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+      "toolName": "flawfinder"
+    },
+    "CWE-125": {
+      "description": "The software reads data past the end, or before the beginning, of the intended buffer.",
+      "toolName": "flawfinder"
+    },
+    "CWE-788": {
+      "description": "The software reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+      "toolName": "flawfinder"
+    },
+    "CWE-785": {
+      "description": "The software invokes a function for normalizing paths or file names, but it provides an output buffer that is smaller than the maximum possible size, such as PATH_MAX.",
+      "toolName": "flawfinder"
+    },
+    "CWE-126": {
+      "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+      "toolName": "flawfinder"
+    },
+    "CWE-190": {
+      "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
+      "toolName": "flawfinder"
+    },
+    "CWE-676": {
+      "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
+      "toolName": "flawfinder"
+    },
+    "CWE-362": {
+      "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+      "toolName": "flawfinder"
+    },
+    "CWE-477": {
+      "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+      "toolName": "cppcheck"
+    },
+    "CWE-786": {
+      "description": "The software reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+      "toolName": "cppcheck"
+    },
+    "CWE-369": {
+      "description": "The product divides a value by zero.",
+      "toolName": "cppcheck"
+    },
+    "CWE-398": {
+      "description": "This software includes weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
+      "toolName": "cppcheck"
+    },
+    "CWE-758": {
+      "description": "The software uses an API function, data structure, or other entity in a way that relies on properties that are not always guaranteed to hold for that entity.",
+      "toolName": "cppcheck"
+    },
+    "CWE-562": {
+      "description": "A function returns the address of a stack variable, which will cause unintended program behavior, typically in the form of a crash.",
+      "toolName": "cppcheck"
+    },
+    "CWE-590": {
+      "description": "The application calls free() on a pointer to memory that was not allocated using associated heap allocation functions such as malloc(), calloc(), or realloc().",
+      "toolName": "cppcheck"
+    },
+    "CWE-571": {
+      "description": "The software contains an expression that will always evaluate to true.",
+      "toolName": "cppcheck"
+    },
+    "CWE-587": {
+      "description": "The software sets a pointer to a specific address other than NULL or 0.\n+",
+      "toolName": "cppcheck"
+    },
+    "CWE-704": {
+      "description": "The software does not correctly convert an object, resource, or structure from one type to a different type.",
+      "toolName": "cppcheck"
+    },
+    "CWE-664": {
+      "description": "The software does not maintain or incorrectly maintains control over a resource throughout its lifetime of creation, use, and release.",
+      "toolName": "cppcheck"
+    },
+    "CWE-131": {
+      "description": "The software does not correctly calculate the size to be used when allocating a buffer, which could lead to a buffer overflow.",
+      "toolName": "cppcheck"
+    },
+    "CWE-170": {
+      "description": "The software does not terminate or incorrectly terminates a string or array with a null character or equivalent terminator.",
+      "toolName": "cppcheck"
+    },
+    "CWE-682": {
+      "description": "The software performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "toolName": "cppcheck"
+    },
+    "CWE-404": {
+      "description": "The program does not release or incorrectly releases a resource before it is made available for re-use.",
+      "toolName": "cppcheck"
+    },
+    "CWE-665": {
+      "description": "The software does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.\n+ Extended Description",
+      "toolName": "cppcheck"
+    },
+    "CWE-762": {
+      "description": "The application attempts to return a memory resource to the system, but it calls a release function that is not compatible with the function that was originally used to allocate that resource.",
+      "toolName": "cppcheck"
+    },
+    "CWE-391": {
+      "description": "Ignoring exceptions and other error conditions may allow an attacker to induce unexpected behavior unnoticed.",
+      "toolName": "cppcheck"
+    },
+    "CWE-570": {
+      "description": "The software contains an expression that will always evaluate to false.",
+      "toolName": "cppcheck"
+    },
+    "CWE-252": {
+      "description": "The software does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
+      "toolName": "cppcheck"
+    },
+    "CWE-628": {
+      "description": "The product calls a function, procedure, or routine with arguments that are not correctly specified, leading to always-incorrect behavior and resultant weaknesses.",
+      "toolName": "cppcheck"
+    },
+    "CWE-686": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies an argument that is the wrong data type, which may lead to resultant weaknesses.",
+      "toolName": "cppcheck"
+    },
+    "CWE-703": {
+      "description": "The software does not properly anticipate or handle exceptional conditions that rarely occur during normal operation of the software.",
+      "toolName": "cppcheck"
+    },
+    "CWE-687": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies an argument that contains the wrong value, which may lead to resultant weaknesses.",
+      "toolName": "cppcheck"
+    },
+    "CWE-688": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies the wrong variable or reference as one of the arguments, which may lead to undefined behavior and resultant weaknesses.",
+      "toolName": "cppcheck"
+    },
+    "CWE-685": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies too many arguments, or too few arguments, which may lead to undefined behavior and resultant weaknesses.",
+      "toolName": "cppcheck"
+    },
+    "CWE-910": {
+      "description": "The software uses or accesses a file descriptor after it has been closed.",
+      "toolName": "cppcheck"
+    },
+    "CWE-672": {
+      "description": "The software uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
+      "toolName": "cppcheck"
+    },
+    "CWE-415": {
+      "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "toolName": "cppcheck"
+    },
+    "CWE-401": {
+      "description": "The software does not sufficiently track and release allocated memory after it has been used, which slowly consumes remaining memory.",
+      "toolName": "cppcheck"
+    },
+    "CWE-771": {
+      "description": "The software does not properly maintain a reference to a resource that has been allocated, which prevents the resource from being reclaimed.",
+      "toolName": "cppcheck"
+    },
+    "CWE-772": {
+      "description": "The software does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "toolName": "cppcheck"
+    },
+    "CWE-128": {
+      "description": "Wrap around errors occur whenever a value is incremented past the maximum value for its type and therefore \"wraps around\" to a very small, negative, or undefined value.",
+      "toolName": "cppcheck"
+    },
+    "CWE-197": {
+      "description": "Truncation errors occur when a primitive is cast to a primitive of a smaller size and data is lost in the conversion.",
+      "toolName": "cppcheck"
+    },
+    "CWE-475": {
+      "description": "The behavior of this function is undefined unless its control parameter is set to a specific value.",
+      "toolName": "cppcheck"
+    },
+    "CWE-482": {
+      "description": "The code uses an operator for comparison when the intention was to perform an assignment.",
+      "toolName": "cppcheck"
+    },
+    "CWE-561": {
+      "description": "The software contains dead code, which can never be executed.",
+      "toolName": "cppcheck"
+    },
+    "CWE-563": {
+      "description": "The variable's value is assigned but never used, making it a dead store.",
+      "toolName": "cppcheck"
+    },
+    "CWE-683": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies the arguments in an incorrect order, leading to resultant weaknesses",
+      "toolName": "cppcheck"
+    },
+    "CWE-768": {
+      "description": "The software contains a conditional statement with multiple logical expressions in which one of the non-leading expressions may produce side effects. This may lead to an unexpected state in the program after the execution of the conditional, because short-circuiting logic may prevent the side effects from occurring.",
+      "toolName": "cppcheck"
+    },
+    "CWE-783": {
+      "description": "The program uses an expression in which operator precedence causes incorrect logic to be used.",
+      "toolName": "cppcheck"
+    },
+    "CWE-467": {
+      "description": "The code calls sizeof() on a malloced pointer type, which always returns the wordsize/8. This can produce an unexpected result if the programmer intended to determine how much memory has been allocated.",
+      "toolName": "cppcheck"
+    },
+    "CWE-597": {
+      "description": "The product uses the wrong operator when comparing a string, such as using \"==\" when the .equals() method should be used instead.",
+      "toolName": "cppcheck"
+    },
+    "CWE-667": {
+      "description": "The software does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+      "toolName": "cppcheck"
+    },
+    "CWE-825": {
+      "description": "The program dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+      "toolName": "cppcheck"
+    },
+    "CWE-833": {
+      "description": "The software contains multiple threads or executable segments that are waiting for each other to release a necessary lock, resulting in deadlock.",
+      "toolName": "cppcheck"
+    },
+    "CWE-834": {
+      "description": "The software performs an iteration or loop without sufficiently limiting the number of times that the loop is executed.",
+      "toolName": "cppcheck"
+    },
+    "CWE-595": {
+      "description": "The program compares object references instead of the contents of the objects themselves, preventing it from detecting equivalent objects.",
+      "toolName": "cppcheck"
+    },
+    "CWE-195": {
+      "description": "The software uses a signed primitive and performs a cast to an unsigned primitive, which can produce an unexpected value if the value of the signed primitive can not be represented using an unsigned primitive.",
+      "toolName": "cppcheck"
+    },
+    "CWE-119": {
+      "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+      "toolName": "cppcheck"
+    },
+    "CWE-119!/CWE-120": {
+      "description": "This statically-sized array can be improperly restricted, leading to potential overflows.",
+      "toolName": "flawfinder"
+    },
+    "CWE-120/CWE-785!": {
+      "description": "This function does not protect against buffer overflows, and may even overflow internally.",
+      "toolName": "flawfinder"
+    },
+    "CWE-362/CWE-367!": {
+      "description": "This programs opens a file in a way that an attacker could take advantage of the race condition.",
+      "toolName": "flawfinder"
+    },
+    "CWE-120, CWE-20": {
+      "description": "Does not limit input, may be vulnerable to buffer overflows.",
+      "toolName": "flawfinder"
+    },
+    "CWE-362, CWE-20": {
+      "description": "Accepting input for filenames leaves the code open to race conditions and buffer overflows.",
+      "toolName": "flawfinder"
+    },
+    "CWE-250, CWE-22": {
+      "description": "chroot is difficult to use correctly, make sure the program immediately chdir(\"/\"), closes file descriptors.",
+      "toolName": "flawfinder"
+    },
+    "CWE-807, CWE-20": {
+      "description": "This use of environment variables can be vulnerable, since an attacker can change them.",
+      "toolName": "flawfinder"
+    },
+    "CWE-829, CWE-20": {
+      "description": "Ensure that the full path to the library is specified, or current directory may be used",
+      "toolName": "flawfinder"
+    },
+    "CWE-676, CWE-120": {
+      "description": "This program uses a dangerous function \"getpw\" that may overflow the provided buffer.",
+      "toolName": "flawfinder"
+    },
+    "CWE-676, CWE-120, CWE-20": {
+      "description": "This program uses a function \"getpass\" that is obsolete and not portable.",
+      "toolName": "flawfinder"
+    },
+    "CVE-CWE-Unknown-Other": {
+      "description": "This flaw is not covered in the description file yet.",
+      "toolName": "flawfinder"
+    },
+    "CWE-CVE-CWE-Unknown-Other": {
+      "description": "This flaw is not covered in the description file yet.",
+      "toolName": "cppcheck"
+    }
+  },
+  "diagnostics": {
+    
+  }
+}

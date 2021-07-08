@@ -124,7 +124,7 @@ public class SingleProjectEvaluator {
         // Evaluate project up to Measure level
         //project.evaluateMeasures();
 
-        project.getQualityModel().getMeasures().forEach((measureName, measure) -> {
+gi        project.getQualityModel().getMeasures().forEach((measureName, measure) -> {
             project.getQualityModel().getMeasure(measureName).setValue(measure.getValue());
         });
 
