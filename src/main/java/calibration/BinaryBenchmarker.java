@@ -1,5 +1,5 @@
 /**
-   * MIT License
+ * MIT License
  * Copyright (c) 2019 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,6 +37,7 @@ import pique.evaluation.BenchmarkMeasureEvaluator;
 import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.Measure;
+import pique.model.ModelNode;
 import pique.model.QualityModel;
 
 public class BinaryBenchmarker implements IBenchmarker {
@@ -65,7 +66,7 @@ public class BinaryBenchmarker implements IBenchmarker {
                 projectRoots.add(file.toPath());
             }
         }
-    	ArrayList<Project> projects = new ArrayList<>();
+        ArrayList<Project> projects = new ArrayList<>();
 
         System.out.println("* Beginning repository benchmark analysis");
         System.out.println(projectRoots.size() + " projects to analyze.\n");
@@ -98,18 +99,29 @@ public class BinaryBenchmarker implements IBenchmarker {
                 allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
             });
 
-            // Would normalize here if we do so in the future
-            
-            // Apply collected diagnostics (containing findings) to the project
+            //No sirve
             allDiagnostics.forEach((diagnosticName, diagnostic) -> {
-                project.addFindings(diagnostic);
+                /*System.out.println(project.getQualityModel().getDiagnostic(diagnosticName));
+                System.out.println(diagnostic.getChildren());
+                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());*/
+                project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
+                project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
+                /*System.out.println(project.getQualityModel().getDiagnostic(diagnosticName)); //Esta en null??
+                System.out.println(diagnostic.getChildren());
+                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());*/
             });
+
+            //project.updateDiagnosticsWithFindings(allDiagnostics);
+
+            /*allDiagnostics.forEach((diagnosticName, diagnostic) -> {
+                project.addFindings(diagnostic);
+            });*/
 
             // Evaluate project up to Measure level
             project.evaluateMeasures();
 
             // Add new project (with tool findings information included) to the list
-             projects.add(project);
+            projects.add(project); //Un arrayList de proyectos
 
             // Print information
             System.out.println("\n\tFinished analyzing project " + project.getName());
@@ -127,54 +139,69 @@ public class BinaryBenchmarker implements IBenchmarker {
                         } else {
                             measureBenchmarkData.get(m.getName()).add(m.getValue());
                         }
+                        //System.out.println(m.getChildren());
                     }
             );
         });
 
-        
+        System.out.println("measureBenchmarkData: ");   //Aqui nos devuelve un arreglo, que tiene 10 arreglos
+        //y cada uno solo tiene un elemento, 0.0.
+        System.out.println(measureBenchmarkData.values());
+
+
         // Identify the 1st and 3rd quartiles of each measure value
-        Double[] percentiles = new Double[2];
-        percentiles[0]=0.25;
-        percentiles[1]=0.75;
+        //Double[] percentiles = new Double[2];
+        //percentiles[0]=0.25;
+        //percentiles[1]=0.75;
         Map<String, Double[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             measureThresholds.putIfAbsent(measureName, new Double[2]);
-            
+
+            System.out.println("mean de measure values en el benchmark: ");
+            System.out.println(mean(measureValues));
+            System.out.println("standard deviation: ");
+            System.out.println(calculateSD(measureValues));
+            System.out.println();
+
             measureThresholds.get(measureName)[0] = mean(measureValues)-calculateSD(measureValues);
             measureThresholds.get(measureName)[1] = mean(measureValues)+calculateSD(measureValues);
-            
+
             if (measureThresholds.get(measureName)[0] < 0.0) {
-            	measureThresholds.get(measureName)[0] = 0.0;
+                measureThresholds.get(measureName)[0] = 0.0;
             }
+            System.out.println(measureName + " thresholds: ");
+            System.out.println(measureThresholds.get(measureName)[0]);
+            System.out.println(measureThresholds.get(measureName)[1]);
 
         });
+        //System.out.println(measureThresholds.values());
 
         return measureThresholds;
     }
-    
+
     private static Double mean(ArrayList<Double> measureValues) {
-    	Double sum = 0.0;
+        Double sum = 0.0;
         for (int i = 0; i < measureValues.size(); i++) {
             sum += measureValues.get(i);
         }
         return sum / measureValues.size();
     }
-    
+
     private static Double[] getPercentiles(ArrayList<Double> values, Double[] percentiles) {
-    	Double[] tempVals= new Double[values.size()];
-    	tempVals = values.toArray(tempVals);
+        Double[] tempVals= new Double[values.size()];
+        tempVals = values.toArray(tempVals);
         Arrays.sort(tempVals, 0, tempVals.length);
         for (int i = 0; i < percentiles.length; i++) {
-          int index = (int) (percentiles[i] * tempVals.length);
-          percentiles[i] = tempVals[index];
+            int index = (int) (percentiles[i] * tempVals.length);
+            percentiles[i] = tempVals[index];
         }
-        
+
         return percentiles;
-      }
+    }
 
     private static Double calculateSD(ArrayList<Double> measureValues)
     {
-    	Double sum = 0.0, standardDeviation = 0.0;
+        Double sum = 0.0, standardDeviation = 0.0;
         int length = measureValues.size();
 
         for(Double num : measureValues) {
@@ -189,7 +216,7 @@ public class BinaryBenchmarker implements IBenchmarker {
 
         return Math.sqrt(standardDeviation/length);
     }
-    
+
     @Override
     public String getName() {
         return this.getClass().getCanonicalName();

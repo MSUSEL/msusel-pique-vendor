@@ -68,7 +68,7 @@ public class QualityModelDeriver {
         Path derivedModelFilePath = Paths.get(prop.getProperty("results.directory"));
 
         // Initialize objects
-        String projectRootFlag = "C:/Users/ernes/AppData/Local/Programs/Python/Python38-32/Scripts/flawfinder.exe";
+        String projectRootFlag = prop.getProperty("tool.filepath");
         Path toolLocation = Paths.get(projectRootFlag);
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
@@ -81,8 +81,8 @@ public class QualityModelDeriver {
         QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
 
         Path jsonOutput = new QualityModelExport(derivedQualityModel)
-        		.exportToJson(derivedQualityModel
-        				.getName(), derivedModelFilePath);
+                .exportToJson(derivedQualityModel
+                        .getName(), derivedModelFilePath);
 
         System.out.println("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath().toString());
     }
@@ -94,7 +94,7 @@ public class QualityModelDeriver {
         // (1) Derive thresholds
         IBenchmarker benchmarker = qmDesign.getBenchmarker();
         Map<String, Double[]> measureNameThresholdMappings = benchmarker.deriveThresholds(
-            benchmarkRepository, qmDesign, tools, projectRootFlag);
+                benchmarkRepository, qmDesign, tools, projectRootFlag);
 
         // (2) Elicitate weights
         IWeighter weighter = qmDesign.getWeighter();
@@ -103,13 +103,19 @@ public class QualityModelDeriver {
         Set<WeightResult> weights = weighter.elicitateWeights(qmDesign);
         // TODO: assert WeightResult names match expected TQI, QualityAspect, and ProductFactor names from quality model description
 
+
         // (3) Apply results to nodes in quality model by matching names
         // Thresholds (ProductFactor nodes)
         // TODO (1.0): Support now in place to apply thresholds to all nodes (if they exist), not just measures. Just
         //  need to implement.
         measureNameThresholdMappings.forEach((measureName, thresholds) -> {
-            Measure measure = (Measure) qmDesign.getMeasure(measureName);
-            measure.setThresholds(thresholds);
+            qmDesign.getMeasure(measureName).setThresholds(thresholds);
+            //System.out.println("En qmDesign:");
+            //System.out.println(qmDesign.getMeasure(measureName).getName());
+            //System.out.println(qmDesign.getMeasure(measureName).getThresholds());
+
+            //Measure measure = (Measure) qmDesign.getMeasure(measureName);
+            //measure.setThresholds(thresholds);
         });
 
         // Weights (TQI and QualityAspect nodes)

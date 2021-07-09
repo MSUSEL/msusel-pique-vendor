@@ -9,354 +9,367 @@
 	"factors": {
 		"tqi": {
 			"Vendor Security Quality": {
-				"description": "The total security quality value representing the entire system"
+				"description": "The total security quality value representing the entire system",
+				"children" : {
+					"Confidentiality" : { },
+					"Authenticity" : { },
+					"Integrity" : { },
+					"Cross_cutting" : { },
+					"Limit_exposure" : { },
+					"CWE-710 Improper_adherence_to_coding_standards" : { },
+					"CWE-691 Insufficient_control_flow_management": { }
+				}
 			}
 		},
 		"quality_aspects": {
 			"Confidentiality": {
 				"description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-327 Use of a Broken or Risky Cryptographic Algorithm" : { }
+				}
 			},
 			"Authenticity": {
 				"description": "The property that data originated from its purported source.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-269 Improper_privilege_management" : { },
+					"CWE-668 Exposure_of_resource_to_wrong_sphere" : { }
+				}
 			},
 			"Integrity": {
 				"description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-77 OS_command_injection" : { },
+					"CWE-190 Integer_wraparound" : { },
+					"CWE-119 Improper_restriction_of_operations_in_memory" : { }
+				}
 			},
 			"Cross_cutting": {
 				"description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-807 Reliance_on_untrusted_inputs" : { }
+				}
 			},
 			"Limit_exposure": {
 				"description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere" : { }
+				}
 			},
-			"CWE-710 Improper_adherance_to_coding_standars": {
+			"CWE-710 Improper_adherence_to_coding_standards": {
 				"description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
-				"eval_strategy" : "evaluator.QualityAspectEvaluator"
+				"eval_strategy" : "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-1177 Use_of_prohibited_code" : { }
+				}
+			},
+			"CWE-691 Insufficient_control_flow_management": {
+				"description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
+				"eval_strategy": "evaluator.QualityAspectEvaluator",
+				"children" : {
+					"CWE-362 race_conditions" : { }
+				}
 			}
 		},
 		"product_factors": {
-			"Encrypt_data": {
-				"description": "Weaknesses in this category are related to the design and architecture of data confidentiality in a system. Frequently these deal with the use of encryption libraries.",
+			"CWE-327 Use of a Broken or Risky Cryptographic Algorithm": {
+				"description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
 				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
 				"children" : {
-					"Encryption_smells" : { }
+					"CWE-327" : { }
 				}
 			},
 			"CWE-269 Improper_privilege_management": {
 				"description": "The software does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor.",
 				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
 				"children" : {
-					"Privilege_management_smells" : { }
+					"CWE-250" : { },
+					"CWE-250, CWE-22" : { }
 				}
 			},
 			"CWE-668 Exposure_of_resource_to_wrong_sphere": {
 				"description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
 				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
 				"children" : {
-					"Exposure_to_wrong_sphere_smells" : { }
-				}
-			},
-			"CWE-669 Incorrect_resource_transfer_between_spheres": {
-				"description": "The product does not properly transfer a resource/behavior to another spere, or improperly imports a resource/behavior from another sphere, in a manner that provides unintended control over that resource.",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"Incorrect_resource_transfer_smells" : { }
-				}
-			},
-			"Validate_inputs": {
-				"description": "Weaknesses in this category are related to the design and architecture of a system’s input validation components. ",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"CWE-77 OS_command_injection" : { },
-					"CWE-20 Improper_input_validation" : {},
-					"CWE-190 Integer_wraparound" : {}
-				}
-			},
-			"CWE-807 Reliance_on_untrusted_inputs": {
-				"description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"Cross_cutting_smells" : { }
-				}
-			},
-			"CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
-				"description": "The software imports, requires or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"Limit_exposure_smells" : { }
-				}
-			},
-			"CWE-1177 Use_of_prohibited_code": {
-				"description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"Coding_standards_smells" : { }
+					"CWE-377" : { },
+					"CWE-732" : { },
+					"CWE-134" : { }
 				}
 			},
 			"CWE-77 OS_command_injection": {
 				"description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
 				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
 				"children" : {
-					"OS_command_injection_smells" : { }
-				}
-			},
-			"CWE-20 Improper_input_validation": {
-				"description": "The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly. ",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"CWE-119 Improper_restriction_of_operations_in_memory" : { }
-				}
-			},
-			"CWE-190 Integer_wraparound": {
-				"description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
-				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
-				"children" : {
-					"Integer_overflow_smells" : { }
+					"CWE-78" : { }
 				}
 			},
 			"CWE-119 Improper_restriction_of_operations_in_memory": {
 				"description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
 				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
 				"children" : {
-					"Memory_use_smells" : { }
+					"CWE-676, CWE-120, CWE-20" : { },
+					"CWE-120, CWE-20" : { },
+					"CWE-120" : { },
+					"CWE-126" : { },
+					"CWE-119!/CWE-120" : { },
+					"CWE-120/CWE-785!" : { }
+				}
+			},
+			"CWE-190 Integer_wraparound": {
+				"description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
+				"children" : {
+					"CWE-190" : { }
+				}
+			},
+			"CWE-807 Reliance_on_untrusted_inputs": {
+				"description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
+				"children" : {
+					"CWE-807" : { },
+					"CWE-807, CWE-20" : { }
+				}
+			},
+			"CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
+				"description": "The software imports, requires, or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
+				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
+				"children" : {
+					"CWE-829, CWE-20" : { }
+				}
+			},
+			"CWE-362 race_conditions": {
+				"description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+				"eval_strategy": "evaluator.WeightedAverageEvaluator",
+				"children" : {
+					"CWE-362" : { },
+					"CWE-362/CWE-367!" : { },
+					"CWE-362, CWE-20" : { }
+				}
+			},
+			"CWE-1177 Use_of_prohibited_code": {
+				"description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
+				"eval_strategy" : "evaluator.WeightedAverageEvaluator",
+				"children" : {
+					"CWE-676" : { }
 				}
 			}
 		}
 	},
 	"measures": {
-		"Encryption_smells": {
-			"description": "Code smells related to data data encryption",
+		"CWE-327": {
+			"description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
 			"positive": false,
-			"parents": [
-				"Encrypt_data"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-327",
-					"description": "Use of broken or risky cryptographic algorithm ",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1048" : { },
+				"FF1049" : { },
+				"FF1050" : { },
+				"FF1051" : { }
+			}
 		},
-		"Privilege_management_smells": {
-			"description": "Code smells related to privilege management",
+		"CWE-250": {
+			"description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
 			"positive": false,
-			"parents": [
-				"CWE-269 Improper_privilege_management"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-250",
-					"description": "The software performs an operation at a privilege level that is higher than the minimum level required.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1056" : { }
+			}
 		},
-		"Exposure_to_wrong_sphere_smells": {
-			"description": "Code smells related to the control sphere of resources",
+		"CWE-250, CWE-22": {
+			"description": " ",
 			"positive": false,
-			"parents": [
-				"CWE-668 Exposure_of_resource_to_wrong_sphere"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-377",
-					"description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-732",
-					"description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-134",
-					"description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-22",
-					"description": "The software uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside the restricted directory.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1052" : { }
+			}
 		},
-		"Cross_cutting_smells": {
-			"description": "Code smells related to design and architecture of security tactics",
+		"CWE-377": {
+			"description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
 			"positive": false,
-			"parents": [
-				"CWE-807 Reliance_on_untrusted_inputs"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-807",
-					"description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1036" : { },
+				"FF1038" : { },
+				"FF1039" : { }
+			}
 		},
-		"Limit_exposure_smells": {
-			"description": "Code smells related to surface of attack",
+		"CWE-732": {
+			"description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
 			"positive": false,
-			"parents": [
-				"CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-829",
-					"description": "The software imports, requires or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1041" : { },
+				"FF1042" : { },
+				"FF1060" : { },
+				"FF1061" : { }
+			}
 		},
-		"Incorrect_resource_transfer_smells": {
-			"description": "Code smells related to the transfer of control of resources",
+		"CWE-134": {
+			"description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
 			"positive": false,
-			"parents": [
-				"CWE-669 Incorrect_resource_transfer_between_spheres"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-829",
-					"description": "The software imports, requires or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1016" : { },
+				"FF1017" : { },
+				"FF1018" : { },
+				"FF1019" : { }
+			}
 		},
-		"OS_command_injection_smells": {
-			"description": "Code smells related to OS command injection",
+		"CWE-78": {
+			"description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
 			"positive": false,
-			"parents": [
-				"CWE-77 OS_command_injection"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-78",
-					"description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1043" : { },
+				"FF1044" : { },
+				"FF1045" : { },
+				"FF1046" : { }
+			}
 		},
-		"Memory_use_smells": {
-			"description": "Code smells related to the use of memory",
+		"CWE-676, CWE-120, CWE-20": {
+			"description": " ",
 			"positive": false,
-			"parents": [
-				"CWE-119 Improper_restriction_of_operations_in_memory"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-120",
-					"description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-125",
-					"description": "The software reads data past the end, or before the beginning, of the intended buffer.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-788",
-					"description": "The software reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-785",
-					"description": "The software invokes a function for normalizing paths or file names, but it provides an output buffer that is smaller than the maximum possible size, such as PATH_MAX.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-126",
-					"description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1065" : { }
+			}
 		},
-		"Integer_overflow_smells": {
-			"description": "Code smells related to data data encryption",
+		"CWE-120, CWE-20": {
+			"description": " ",
 			"positive": false,
-			"parents": [
-				"CWE-190 Integer_wraparound"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-190",
-					"description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1014" : { },
+				"FF1020" : { },
+				"FF1021" : { },
+				"FF1027" : { },
+				"FF1028" : { },
+				"FF1029" : { }
+			}
 		},
-		"Coding_standards_smells": {
-			"description": "Code smells related to adherence to coding rules",
+		"CWE-120": {
+			"description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
 			"positive": false,
-			"parents": [
-				"CWE-1177 Use_of_prohibited_code"
-			],
-			"diagnostics": [{
-				"name": "loc",
-				"description": "Normalizer diagnostic lines of code",
-				"eval_strategy": "pique.evaluation.LOCDiagnosticEvaluator",
-				"toolName": "flawfinder"
-			},
-				{
-					"name": "CWE-676",
-					"description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
-					"toolName": "flawfinder"
-				},
-				{
-					"name": "CWE-785",
-					"description": "The software invokes a function for normalizing paths or file names, but it provides an output buffer that is smaller than the maximum possible size, such as PATH_MAX.",
-					"toolName": "flawfinder"
-				}
-			]
+			"children" : {
+				"loc" : { },
+				"FF1001" : { },
+				"FF1002" : { },
+				"FF1003" : { },
+				"FF1004" : { },
+				"FF1005" : { },
+				"FF1006" : { },
+				"FF1007" : { },
+				"FF1008" : { },
+				"FF1009" : { },
+				"FF1010" : { },
+				"FF1011" : { },
+				"FF1012" : { },
+				"FF1023" : { },
+				"FF1024" : { },
+				"FF1025" : { },
+				"FF1064" : { }
+			}
+		},
+		"CWE-126": {
+			"description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1022" : { },
+				"FF1071" : { }
+			}
+		},
+		"CWE-119!/CWE-120": {
+			"description": " ",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1013" : { }
+			}
+		},
+		"CWE-120/CWE-785!": {
+			"description": " ",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1026" : { }
+			}
+		},
+		"CWE-190": {
+			"description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1047" : { }
+			}
+		},
+		"CWE-807": {
+			"description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1062" : { }
+			}
+		},
+		"CWE-807, CWE-20": {
+			"description": " ",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1053" : { },
+				"FF1054" : { },
+				"FF1055" : { }
+			}
+		},
+		"CWE-829, CWE-20": {
+			"description": " ",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1058" : { },
+				"FF1059" : { }
+			}
+		},
+		"CWE-362": {
+			"description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1031" : { },
+				"FF1032" : { },
+				"FF1033" : { },
+				"FF1034" : { },
+				"FF1040" : { }
+			}
+		},
+		"CWE-362/CWE-367!": {
+			"description": " ",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1030" : { }
+			}
+		},
+		"CWE-362, CWE-20": {
+			"description": " ",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1035" : { }
+			}
+		},
+		"CWE-676": {
+			"description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
+			"positive": false,
+			"children" : {
+				"loc" : { },
+				"FF1066" : { },
+				"FF1069" : { }
+			}
 		}
 	},
 	"diagnostics": {
@@ -364,68 +377,261 @@
 			"description": "Normalizer diagnostic lines of code",
 			"toolName": "flawfinder"
 		},
-		"CWE-327": {
-			"description": "Use of broken or risky cryptographic algorithm ",
+		"FF1048": {
+			"description": "This function is not sufficiently random for security-related functions such as key and nonce creation",
 			"toolName": "flawfinder"
 		},
-		"CWE-250": {
-			"description": "The software performs an operation at a privilege level that is higher than the minimum level required.",
+		"FF1049": {
+			"description": "The crypt functions use a poor one-way hashing algorithm; since they only accept passwords of 8 characters or fewer and only a two-byte salt, they are excessively vulnerable to dictionary attacks given today's faster computing equipment",
 			"toolName": "flawfinder"
 		},
-		"CWE-377": {
-			"description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
+		"FF1050": {
+			"description": "DES only supports a 56-bit keysize, which is too small given today's computers",
 			"toolName": "flawfinder"
 		},
-		"CWE-732": {
-			"description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+		"FF1051": {
+			"description": "These keysizes are too small given today's computers",
 			"toolName": "flawfinder"
 		},
-		"CWE-134": {
-			"description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
+		"FF1056": {
+			"description": "If this call fails, the program could fail to drop heightened privileges",
 			"toolName": "flawfinder"
 		},
-		"CWE-22": {
-			"description": "The software uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside the restricted directory.",
+		"FF1052": {
+			"description": "chroot can be very helpful, but is hard to use correctly",
 			"toolName": "flawfinder"
 		},
-		"CWE-807": {
-			"description": "The application uses a security mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+		"FF1036": {
+			"description": "Function tmpfile() has a security flaw on some systems (e.g., older System V systems)",
 			"toolName": "flawfinder"
 		},
-		"CWE-829": {
-			"description": "The software imports, requires or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
+		"FF1038": {
+			"description": "Temporary file race condition",
 			"toolName": "flawfinder"
 		},
-		"CWE-78": {
-			"description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+		"FF1039": {
+			"description": "Potential for temporary file vulnerability in some circumstances.  Some older Unix-like systems create temp files with permission to write by all by default, so be sure to set the umask to override this. Also, some older Unix systems might fail to use O_EXCL when opening the file, so make sure that O_EXCL is used by the library",
 			"toolName": "flawfinder"
 		},
-		"CWE-120": {
-			"description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+		"FF1041": {
+			"description": "Ensure that umask is given most restrictive possible setting (e.g., 066 or 077)",
 			"toolName": "flawfinder"
 		},
-		"CWE-125": {
-			"description": "The software reads data past the end, or before the beginning, of the intended buffer.",
+		"FF1042": {
+			"description": "Temporary file race condition in certain cases (e.g., if run as SYSTEM in many versions of Windows)",
 			"toolName": "flawfinder"
 		},
-		"CWE-788": {
-			"description": "The software reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+		"FF1060": {
+			"description": "Never create NULL ACLs; an attacker can set it to Everyone (Deny All Access), which would even forbid administrator access",
 			"toolName": "flawfinder"
 		},
-		"CWE-785": {
-			"description": "The software invokes a function for normalizing paths or file names, but it provides an output buffer that is smaller than the maximum possible size, such as PATH_MAX.",
+		"FF1061": {
+			"description": "This doesn't set the inheritance bits in the access control entry (ACE) header",
 			"toolName": "flawfinder"
 		},
-		"CWE-126": {
-			"description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+		"FF1016": {
+			"description": "If format strings can be influenced by an attacker, they can be exploited",
 			"toolName": "flawfinder"
 		},
-		"CWE-190": {
-			"description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value.",
+		"FF1017": {
+			"description": "If format strings can be influenced by an attacker, they can be exploited",
 			"toolName": "flawfinder"
 		},
-		"CWE-676": {
-			"description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
+		"FF1018": {
+			"description": "If syslog's format strings can be influenced by an attacker, they can be exploited",
+			"toolName": "flawfinder"
+		},
+		"FF1019": {
+			"description": "If format strings can be influenced by an attacker, they can be exploited, and note that sprintf variations do not always 0-terminate",
+			"toolName": "flawfinder"
+		},
+
+		"FF1043": {
+			"description": "This causes a new program to execute and is difficult to use safely",
+			"toolName": "flawfinder"
+		},
+		"FF1044": {
+			"description": "This causes a new program to execute and is difficult to use safely",
+			"toolName": "flawfinder"
+		},
+		"FF1045": {
+			"description": "This causes a new process to execute and is difficult to use safely",
+			"toolName": "flawfinder"
+		},
+		"FF1046": {
+			"description": "This causes a new process to execute and is difficult to use safely",
+			"toolName": "flawfinder"
+		},
+		"FF1065": {
+			"description": "This function is obsolete and not portable. It was in SUSv2 but removed by POSIX.2.  What it does exactly varies considerably between systems, particularly in where its prompt is displayed and where it gets its data (e.g., /dev/tty, stdin, stderr, etc.). In addition, some implementations overflow buffers.",
+			"toolName": "flawfinder"
+		},
+		"FF1014": {
+			"description": "Does not check for buffer overflows",
+			"toolName": "flawfinder"
+		},
+		"FF1020": {
+			"description": "The scanf() family's %s operation, without a limit specification, permits buffer overflows",
+			"toolName": "flawfinder"
+		},
+		"FF1021": {
+			"description": "The scanf() family's %s operation, without a limit specification, permits buffer overflows",
+			"toolName": "flawfinder"
+		},
+		"FF1027": {
+			"description": "Some older implementations do not protect against internal buffer overflows",
+			"toolName": "flawfinder"
+		},
+		"FF1028": {
+			"description": "This does not protect against buffer overflows by itself, so use with caution",
+			"toolName": "flawfinder"
+		},
+		"FF1029": {
+			"description": "Check buffer boundaries if used in a loop including recursive loops",
+			"toolName": "flawfinder"
+		},
+		"FF1001": {
+			"description": "Does not check for buffer overflows when copying to destination [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1002": {
+			"description": "Does not check for buffer overflows when copying to destination [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1003": {
+			"description": "Does not check for buffer overflows when copying to destination [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1004": {
+			"description": "Does not check for buffer overflows when copying to destination",
+			"toolName": "flawfinder"
+		},
+		"FF1005": {
+			"description": "Does not check for buffer overflows when concatenating to destination [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1006": {
+			"description": "Does not check for buffer overflows when concatenating to destination [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1007": {
+			"description": "Does not check for buffer overflows when concatenating to destination [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1008": {
+			"description": "Easily used incorrectly; doesn't always \\\\0-terminate or check for invalid pointers [MS-banned] ",
+			"toolName": "flawfinder"
+		},
+		"FF1009": {
+			"description": "Easily used incorrectly; doesn't always \\\\0-terminate or check for invalid pointers [MS-banned] ",
+			"toolName": "flawfinder"
+		},
+		"FF1010": {
+			"description": "Easily used incorrectly (e.g., incorrectly computing the correct maximum size to add) [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1011": {
+			"description": "Easily used incorrectly (e.g., incorrectly computing the correct maximum size to add) [MS-banned]",
+			"toolName": "flawfinder"
+		},
+		"FF1012": {
+			"description": "Subject to buffer overflow if buffer is not as big as claimed",
+			"toolName": "flawfinder"
+		},
+		"FF1023": {
+			"description": "Requires maximum length in CHARACTERS, not bytes",
+			"toolName": "flawfinder"
+		},
+		"FF1024": {
+			"description": "This function does not protect against buffer overflows",
+			"toolName": "flawfinder"
+		},
+		"FF1025": {
+			"description": "This function does not protect against buffer overflows",
+			"toolName": "flawfinder"
+		},
+		"FF1064": {
+			"description": "This function is dangerous; it may overflow the provided buffer. It extracts data from a 'protected' area, but most systems have many commands to let users modify the protected area, and it's not always clear what their limits are.  Best to avoid using this function altogether",
+			"toolName": "flawfinder"
+		},
+		"FF1022": {
+			"description": "Does not handle strings that are not \\\\0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected)",
+			"toolName": "flawfinder"
+		},
+		"FF1071": {
+			"description": "Function does not check the second iterator for over-read conditions",
+			"toolName": "flawfinder"
+		},
+		"FF1013": {
+			"description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
+			"toolName": "flawfinder"
+		},
+		"FF1026": {
+			"description": "This function does not protect against buffer overflows, and some implementations can overflow internally",
+			"toolName": "flawfinder"
+		},
+		"FF1047": {
+			"description": "Unless checked, the resulting number can exceed the expected range",
+			"toolName": "flawfinder"
+		},
+		"FF1062": {
+			"description": "It's often easy to fool getlogin.  Sometimes it does not work at all, because some program messed up the utmp file.  Often, it gives only the first 8 characters of the login name. The user currently logged in on the controlling tty of our program need not be the user who started it.  Avoid getlogin() for security-related purposes",
+			"toolName": "flawfinder"
+		},
+		"FF1053": {
+			"description": "Environment variables are untrustable input if they can be set by an attacker.  They can have any content and length, and the same variable can be set more than once",
+			"toolName": "flawfinder"
+		},
+		"FF1054": {
+			"description": "This function is synonymous with 'getenv(\\\"HOME\\\")';it returns untrustable input if the environment can be set by an attacker.  It can have any content and length, and the same variable can be set more than once",
+			"toolName": "flawfinder"
+		},
+		"FF1055": {
+			"description": "This function is synonymous with 'getenv(\\\"TMP\\\")';it returns untrustable input if the environment can be set by an attacker. It can have any content and length, and the same variable can be set more than once",
+			"toolName": "flawfinder"
+		},
+		"FF1058": {
+			"description": "Ensure that the full path to the library is specified, or current directory may be used",
+			"toolName": "flawfinder"
+		},
+		"FF1059": {
+			"description": "Ensure that the full path to the library is specified, or current directory may be used",
+			"toolName": "flawfinder"
+		},
+		"FF1031": {
+			"description": "This accepts filename arguments; if an attacker can move those files, a race condition results.",
+			"toolName": "flawfinder"
+		},
+		"FF1032": {
+			"description": "This accepts filename arguments; if an attacker can move those files, a race condition results.",
+			"toolName": "flawfinder"
+		},
+		"FF1033": {
+			"description": "This accepts filename arguments; if an attacker can move those files, a race condition results.",
+			"toolName": "flawfinder"
+		},
+		"FF1034": {
+			"description": "On some old systems, vfork() permits race conditions, and it's very difficult to use correctly",
+			"toolName": "flawfinder"
+		},
+		"FF1040": {
+			"description": "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents?",
+			"toolName": "flawfinder"
+		},
+		"FF1030": {
+			"description": "This usually indicates a security flaw.  If an attacker can change anything along the path between the call to access() and the file's actual use (e.g., by moving files), the attacker can exploit the race condition",
+			"toolName": "flawfinder"
+		},
+		"FF1035": {
+			"description": "This accepts filename arguments; if an attacker can move those files or change the link content, a race condition results. Also, it does not terminate with ASCII NUL.",
+			"toolName": "flawfinder"
+		},
+		"FF1066": {
+			"description": "These functions are considered obsolete on most systems, and very non-portable (Linux-based systems handle them radically different, basically if gsignal/ssignal were the same as raise/signal respectively, while System V considers them a separate set and obsolete)",
+			"toolName": "flawfinder"
+		},
+		"FF1069": {
+			"description": "This C routine is considered obsolete (as opposed to the shell command by the same name).   The interaction of this function with SIGALRM and other timer functions such as sleep(), alarm(), setitimer(), and nanosleep() is unspecified",
 			"toolName": "flawfinder"
 		}
 	}

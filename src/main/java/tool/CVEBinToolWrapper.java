@@ -32,6 +32,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.List;
+import java.lang.Integer;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,181 +58,174 @@ import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
 public class CVEBinToolWrapper extends Tool implements ITool  {
-	
-			
+
+
 	public CVEBinToolWrapper(Path toolRoot) {
 		super("cve-bin-tool", toolRoot);
-		
+
 	}
 
 	// Methods
-		/**
-		 * @param path The path to a binary file for the desired solution of project to
-		 *             analyze
-		 * @return The path to the analysis results file
-		 */
-		@Override
-		public Path analyze(Path projectLocation) {
-			File tempResults = new File(System.getProperty("user.dir") + "/out/cve-bin-tool.json");
-			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
-			tempResults.getParentFile().mkdirs();
+	/**
+	 * @param path The path to a binary file for the desired solution of project to
+	 *             analyze
+	 * @return The path to the analysis results file
+	 */
+	@Override
+	public Path analyze(Path projectLocation) {
+		File tempResults = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.csv");
+		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
+		tempResults.getParentFile().mkdirs();
 
-			String cmd = String.format("cmd /c python -m cve_bin_tool.cli -f json %s -o %s",
-					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
-			
-			try {
-				System.out.println(helperFunctions.getOutputFromProgram(cmd));
+		String cmd = String.format("cmd /c flawfinder.exe --csv %s -> %s",
+				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 
-			} catch (IOException  e) {
-				e.printStackTrace();
-			}
+		try {
+			System.out.println(helperFunctions.getOutputFromProgram(cmd));
 
-			return tempResults.toPath();
+		} catch (IOException  e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-			Map<String, Diagnostic> diagnostics = initializeDiagnostics();
+		return tempResults.toPath();
+	}
 
-			String results = "";
 
-			try {
-				results = helperFunctions.readFileContent(toolResults);
 
-			} catch (IOException e) {
-				System.err.println("No results to read.");
-				return diagnostics;
-			}
-			
-			ArrayList<String> cveList = new ArrayList<String>();
-			ArrayList<Integer> severityList = new ArrayList<Integer>();
-			
-			try {
-				JSONArray jsonResults = new JSONArray(results);
-				
-				for (int i = 0; i < jsonResults.length(); i++) {
-					JSONObject jsonFinding = (JSONObject) jsonResults.get(i); 
-					//Need to change this for this tool.
-					String findingName = jsonFinding.get("cve_number").toString();
-					String findingSeverity = jsonFinding.get("severity").toString();
-					severityList.add(this.severityToInt(findingSeverity));
-					cveList.add(findingName);
-				}
-				
-				//make a string of all the CWE names to pass to getCWE function
-				String findingsString = "";
-				for (String x : cveList) {
-					findingsString = findingsString +" " + x;
-				}
-				//get CWE names
-				String[] findingNames = helperFunctions.getCWE(findingsString);
-				
-				for (int i = 0; i < findingNames.length; i++) {
-					
-					
-					Diagnostic diag = diagnostics.get(("CVE-" +findingNames[i]));
-					if (diag == null) { 
-						//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
-						//We may want to treat this in another way.
-						diag = diagnostics.get("CVE-CWE-Unknown-Other");
-					}
-					Finding finding = new Finding("",0,0,severityList.get(i));
-					finding.setName(cveList.get(i));
-					diag.setChild(finding);
-				}
-				
+	@Override
+	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
+		Map<String, Diagnostic> diagnosticsUniverseForTool = initializeDiagnostics();
+		Map<String, Diagnostic> diagnosticsFound = new HashMap<>();
 
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-			
-			return diagnostics;
+		//Adapted from: https://kalliphant.com/jackson-convert-csv-json-example/
+		File input = new File(toolResults.toString());
+		File output = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.json");
+		CsvSchema csvSchema = CsvSchema.builder().setUseHeader(true).build();
+		CsvMapper csvMapper = new CsvMapper();
+		List <Object> readAll = returnCsvReadList(csvSchema, csvMapper, input);
+		ObjectMapper mapper = new ObjectMapper();
+		returnJSONFile(mapper, output, readAll);
+
+		String results = "";
+		Path pathToResults = Paths.get(System.getProperty("user.dir") + "/out/flawfinderOutput.json");
+
+		try {
+			results = helperFunctions.readFileContent(pathToResults);
+
+		} catch (IOException e) {
+			System.err.println("No results to read.");
+			return diagnosticsUniverseForTool;
 		}
 
-		@Override
-		public Path initialize(Path toolRoot) {
-			//NOTE: the version of cve-bin-tool that is installed at the time of writing this will error when downloading CVEs
-			//However, this will be the command that should be run in the future. If this is failing, get the working
-			//version and make this cmd something unimportant. 
-			/*final String cmd = "flawfinder --csv flawFinderFile.c > flawResults.csv";
-			
-			Process p;
-			try {
-				p = Runtime.getRuntime().exec(cmd);
-	            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-				String line;
-				
-				while ((line = stdInput.readLine()) != null) {
-					System.out.println("cve-bin-tool install: " + line);
-				}
-				stdInput.close();
-				p.waitFor();
-			} catch (IOException | InterruptedException e) {
-				e.printStackTrace();
+		ArrayList<String> cveList = new ArrayList<String>();
+		ArrayList<Integer> severityList = new ArrayList<Integer>();
+		//ArrayList<Double> severityList = new ArrayList<Double>();
+
+		try {
+			JSONArray jsonResults = new JSONArray(results);
+
+			for (int k = 1; k < jsonResults.length(); k += 2) {
+				JSONObject jsonFinding = (JSONObject) jsonResults.get(k);
+				//Need to change this for this tool.
+				String findingName = jsonFinding.get("RuleId").toString();
+				String findingSeverity = jsonFinding.get("DefaultLevel").toString();
+				//Integer temp = this.severityToInt(findingSeverity);
+				//severityList.add(temp.doubleValue()/5.0);
+				severityList.add(this.severityToInt(findingSeverity));
+				cveList.add(findingName);
+			}
+
+			/*for(int j = 0; j < cveList.size(); j++){
+				System.out.println(cveList.get(j));
+			}
+			for(int j = 0; j < severityList.size(); j++){
+				System.out.println(severityList.get(j));
 			}*/
 
-			return toolRoot;
-		}
+			for (int i = 0; i < cveList.size(); i++) {
 
-		// Creates and returns a set of CWE diagnostics without findings
-		private Map<String, Diagnostic> initializeDiagnostics() {
-			// load the qm structure
-			Properties prop = PiqueProperties.getProperties();
-			Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
-			QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
-	        QualityModel qmDescription = qmImport.importQualityModel();
 
-	        Map<String, Diagnostic> diagnostics = new HashMap<>();
-	        
-	        // for each diagnostic in the model, if it is associated with this tool, 
-	        // add it to the list of diagnostics
-	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
-	        	Diagnostic diag = (Diagnostic) x;
-	        	if (diag.getToolName().equals("cve-bin-tool")) {
-	        		diagnostics.put(diag.getName(),diag);
-	        	}
-	        }
-	       
-			
-
-			//for (String cwe : cweList) { // TODO: add descriptions for CWEs
-			//	String description = "CVE findings of " + cwe;
-			//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
-			//	diagnostics.put(cwe, diag);
-			//}
-
-			return diagnostics;
-		}	
-		
-		//private ArrayList<String> identifyCWEs() {
-			// identify all relevant diagnostics from the model structure
-		//	ArrayList<String> cweList = new ArrayList<String>();	
-		//}
-		
-		//maps low-critical to numeric values based on the highest value for each range.
-		private Integer severityToInt(String severity) {
-			Integer severityInt = 1;
-			switch(severity.toLowerCase()) {
-				case "low": {
-					severityInt = 4;
-					break;
+				Diagnostic diag = diagnosticsUniverseForTool.get((cveList.get(i)));
+				if (diag == null) {
+					//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
+					//We may want to treat this in another way.
+					diag = diagnosticsUniverseForTool.get("CVE-CWE-Unknown-Other");
 				}
-				case "medium": {
-					severityInt = 7;
-					break;
-				}
-				case "high": {
-					severityInt = 9;
-					break;
-				}
-				case "critical": {
-					severityInt = 10;
-					break;
-				}
+				//Integer severityOfFinfing = severityList.get(i).intValue();
+				Finding finding = new Finding("",0,0, severityList.get(i));
+				finding.setName(cveList.get(i));
+				finding.setValue(1.0);
+				diag.setChild(finding);
+				diag.getValue();
+				diagnosticsFound.put(diag.getName(), diag);
 			}
-			
-			return severityInt;
+
+
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
-		
-		 
+
+		return diagnosticsFound;
+	}
+
+	public List<Object> returnCsvReadList(CsvSchema csvSchema, CsvMapper csvMapper, File input) {
+		List<Object> readAll = null;
+		try {
+			readAll = csvMapper.readerFor(Map.class).with(csvSchema).readValues(input).readAll();
+			return readAll;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return readAll;
+	}
+
+	public void returnJSONFile(ObjectMapper mapper, File output, List<Object> readAll) {
+		try {
+			mapper.writerWithDefaultPrettyPrinter().writeValue(output, readAll);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Path initialize(Path toolRoot) {
+		return toolRoot;
+	}
+
+	// Creates and returns a set of CWE diagnostics without findings
+	private Map<String, Diagnostic> initializeDiagnostics() {
+		// load the qm structure
+		Properties prop = PiqueProperties.getProperties();
+		Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
+		QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
+		QualityModel qmDescription = qmImport.importQualityModel();
+
+		Map<String, Diagnostic> diagnostics = new HashMap<>();
+
+		// for each diagnostic in the model, if it is associated with this tool,
+		// add it to the list of diagnostics
+		for (ModelNode x : qmDescription.getDiagnostics().values()) {
+			Diagnostic diag = (Diagnostic) x;
+			if (diag.getToolName().equals("flawfinder")) {
+				diagnostics.put(diag.getName(),diag);
+			}
+		}
+
+
+
+		//for (String cwe : cweList) { // TODO: add descriptions for CWEs
+		//	String description = "CVE findings of " + cwe;
+		//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
+		//	diagnostics.put(cwe, diag);
+		//}
+
+		return diagnostics;
+	}
+
+	private Integer severityToInt(String severity) {
+		Integer severityInt = 0;
+		return severityInt.parseInt(severity);
+	}
+
+
 }
