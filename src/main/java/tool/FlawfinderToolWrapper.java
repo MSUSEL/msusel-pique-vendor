@@ -57,10 +57,10 @@ import pique.model.QualityModelImport;
 import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
-public class CVEBinToolWrapper extends Tool implements ITool  {
+public class FlawfinderToolWrapper extends Tool implements ITool  {
 
 
-	public CVEBinToolWrapper(Path toolRoot) {
+	public FlawfinderToolWrapper(Path toolRoot) {
 		super("cve-bin-tool", toolRoot);
 
 	}
@@ -117,7 +117,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			return diagnosticsUniverseForTool;
 		}
 
-		ArrayList<String> cveList = new ArrayList<String>();
+		ArrayList<String> ruleIDList = new ArrayList<String>();
 		ArrayList<Integer> severityList = new ArrayList<Integer>();
 		//ArrayList<Double> severityList = new ArrayList<Double>();
 
@@ -126,34 +126,23 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 			for (int k = 1; k < jsonResults.length(); k += 2) {
 				JSONObject jsonFinding = (JSONObject) jsonResults.get(k);
-				//Need to change this for this tool.
 				String findingName = jsonFinding.get("RuleId").toString();
 				String findingSeverity = jsonFinding.get("DefaultLevel").toString();
-				//Integer temp = this.severityToInt(findingSeverity);
-				//severityList.add(temp.doubleValue()/5.0);
 				severityList.add(this.severityToInt(findingSeverity));
-				cveList.add(findingName);
+				ruleIDList.add(findingName);
 			}
 
-			/*for(int j = 0; j < cveList.size(); j++){
-				System.out.println(cveList.get(j));
-			}
-			for(int j = 0; j < severityList.size(); j++){
-				System.out.println(severityList.get(j));
-			}*/
-
-			for (int i = 0; i < cveList.size(); i++) {
+			for (int i = 0; i < ruleIDList.size(); i++) {
 
 
-				Diagnostic diag = diagnosticsUniverseForTool.get((cveList.get(i)));
+				Diagnostic diag = diagnosticsUniverseForTool.get((ruleIDList.get(i)));
 				if (diag == null) {
 					//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
 					//We may want to treat this in another way.
 					diag = diagnosticsUniverseForTool.get("CVE-CWE-Unknown-Other");
 				}
-				//Integer severityOfFinfing = severityList.get(i).intValue();
 				Finding finding = new Finding("",0,0, severityList.get(i));
-				finding.setName(cveList.get(i));
+				finding.setName(ruleIDList.get(i));
 				finding.setValue(1.0);
 				diag.setChild(finding);
 				diag.getValue();
@@ -210,14 +199,6 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				diagnostics.put(diag.getName(),diag);
 			}
 		}
-
-
-
-		//for (String cwe : cweList) { // TODO: add descriptions for CWEs
-		//	String description = "CVE findings of " + cwe;
-		//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
-		//	diagnostics.put(cwe, diag);
-		//}
 
 		return diagnostics;
 	}

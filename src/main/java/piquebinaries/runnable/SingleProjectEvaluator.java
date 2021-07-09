@@ -38,7 +38,7 @@ import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
-import tool.CVEBinToolWrapper;
+import tool.FlawfinderToolWrapper;
 import utilities.PiqueProperties;
 
 /**
@@ -70,7 +70,7 @@ public class SingleProjectEvaluator {
 
         Path qmLocation = Paths.get("out/CVendorQualityModel.json");
 
-        ITool cveBinTool = new CVEBinToolWrapper(toolLocation);
+        ITool cveBinTool = new FlawfinderToolWrapper(toolLocation);
         Set<ITool> tools = Stream.of(cveBinTool).collect(Collectors.toSet());
         Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
         System.out.println("output: " + outputPath.getFileName());

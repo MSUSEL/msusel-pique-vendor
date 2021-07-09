@@ -34,12 +34,11 @@ import pique.analysis.ITool;
 import pique.calibration.IBenchmarker;
 import pique.calibration.IWeighter;
 import pique.calibration.WeightResult;
-import pique.model.Measure;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelExport;
 import pique.model.QualityModelImport;
-import tool.CVEBinToolWrapper;
+import tool.FlawfinderToolWrapper;
 import utilities.PiqueProperties;
 
 /**
@@ -72,8 +71,8 @@ public class QualityModelDeriver {
         Path toolLocation = Paths.get(projectRootFlag);
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
-        ITool cvebinToolWrapper = new CVEBinToolWrapper(toolLocation);
-        Set<ITool> tools = Stream.of(cvebinToolWrapper).collect(Collectors.toSet());
+        ITool flawfinderToolWrapper = new FlawfinderToolWrapper(toolLocation);
+        Set<ITool> tools = Stream.of(flawfinderToolWrapper).collect(Collectors.toSet());
 
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();

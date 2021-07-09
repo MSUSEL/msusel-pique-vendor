@@ -99,23 +99,10 @@ public class BinaryBenchmarker implements IBenchmarker {
                 allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
             });
 
-            //No sirve
             allDiagnostics.forEach((diagnosticName, diagnostic) -> {
-                /*System.out.println(project.getQualityModel().getDiagnostic(diagnosticName));
-                System.out.println(diagnostic.getChildren());
-                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());*/
                 project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
                 project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
-                /*System.out.println(project.getQualityModel().getDiagnostic(diagnosticName)); //Esta en null??
-                System.out.println(diagnostic.getChildren());
-                System.out.println(project.getQualityModel().getDiagnostic(diagnosticName).getNumChildren());*/
             });
-
-            //project.updateDiagnosticsWithFindings(allDiagnostics);
-
-            /*allDiagnostics.forEach((diagnosticName, diagnostic) -> {
-                project.addFindings(diagnostic);
-            });*/
 
             // Evaluate project up to Measure level
             project.evaluateMeasures();
@@ -139,20 +126,10 @@ public class BinaryBenchmarker implements IBenchmarker {
                         } else {
                             measureBenchmarkData.get(m.getName()).add(m.getValue());
                         }
-                        //System.out.println(m.getChildren());
                     }
             );
         });
 
-        System.out.println("measureBenchmarkData: ");   //Aqui nos devuelve un arreglo, que tiene 10 arreglos
-        //y cada uno solo tiene un elemento, 0.0.
-        System.out.println(measureBenchmarkData.values());
-
-
-        // Identify the 1st and 3rd quartiles of each measure value
-        //Double[] percentiles = new Double[2];
-        //percentiles[0]=0.25;
-        //percentiles[1]=0.75;
         Map<String, Double[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             measureThresholds.putIfAbsent(measureName, new Double[2]);
@@ -174,7 +151,6 @@ public class BinaryBenchmarker implements IBenchmarker {
             System.out.println(measureThresholds.get(measureName)[1]);
 
         });
-        //System.out.println(measureThresholds.values());
 
         return measureThresholds;
     }
