@@ -113,16 +113,12 @@ public class SingleProjectEvaluator {
         Map<String, Diagnostic> allDiagnostics = new HashMap<>();
         tools.forEach(tool -> {
             allDiagnostics.putAll(runTool(projectDir, tool));
-            System.out.println(allDiagnostics.keySet());
         });
 
         allDiagnostics.forEach((diagnosticName, diagnostic) -> {
             project.getQualityModel().getDiagnostic(diagnosticName).setChildren(diagnostic.getChildren());
             project.getQualityModel().getDiagnostic(diagnosticName).setValue(diagnostic.getValue());
         });
-
-        // Evaluate project up to Measure level
-        //project.evaluateMeasures();
 
         project.getQualityModel().getMeasures().forEach((measureName, measure) -> {
             project.getQualityModel().getMeasure(measureName).setValue(measure.getValue());

@@ -134,11 +134,10 @@ public class BinaryBenchmarker implements IBenchmarker {
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             measureThresholds.putIfAbsent(measureName, new Double[2]);
 
-            System.out.println("mean de measure values en el benchmark: ");
+            System.out.println("mean: ");
             System.out.println(mean(measureValues));
             System.out.println("standard deviation: ");
             System.out.println(calculateSD(measureValues));
-            System.out.println();
 
             measureThresholds.get(measureName)[0] = mean(measureValues)-calculateSD(measureValues);
             measureThresholds.get(measureName)[1] = mean(measureValues)+calculateSD(measureValues);
@@ -149,6 +148,7 @@ public class BinaryBenchmarker implements IBenchmarker {
             System.out.println(measureName + " thresholds: ");
             System.out.println(measureThresholds.get(measureName)[0]);
             System.out.println(measureThresholds.get(measureName)[1]);
+            System.out.println();
 
         });
 
