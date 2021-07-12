@@ -1,6 +1,8 @@
 {
   "name": "C Vendor Quality Model",
-  "additionalData": {},
+  "additionalData": {
+    "projectName": "dlprocinfo"
+  },
   "global_config": {
     "benchmark_strategy": "calibration.BinaryBenchmarker",
     "weights_strategy": "calibration.BinaryCWEWeighter"
@@ -9,13 +11,13 @@
     "product_factors": {
       "CWE-327 Use of a Broken or Risky Cryptographic Algorithm": {
         "name": "CWE-327 Use of a Broken or Risky Cryptographic Algorithm",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
         "children": {
           "CWE-327": {
             "positive": false,
             "name": "CWE-327",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
             "children": {
               "FF1049": {
@@ -87,13 +89,13 @@
       },
       "CWE-362 race_conditions": {
         "name": "CWE-362 race_conditions",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
         "children": {
           "CWE-362/CWE-367!": {
             "positive": false,
             "name": "CWE-362/CWE-367!",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1030": {
@@ -122,7 +124,7 @@
           "CWE-362": {
             "positive": false,
             "name": "CWE-362",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
             "children": {
               "FF1034": {
@@ -199,7 +201,7 @@
           "CWE-362, CWE-20": {
             "positive": false,
             "name": "CWE-362, CWE-20",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1035": {
@@ -237,13 +239,13 @@
       },
       "CWE-269 Improper_privilege_management": {
         "name": "CWE-269 Improper_privilege_management",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The software does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor.",
         "children": {
           "CWE-250, CWE-22": {
             "positive": false,
             "name": "CWE-250, CWE-22",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1052": {
@@ -272,7 +274,7 @@
           "CWE-250": {
             "positive": false,
             "name": "CWE-250",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
             "children": {
               "FF1056": {
@@ -309,13 +311,13 @@
       },
       "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
         "name": "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The software imports, requires, or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
         "children": {
           "CWE-829, CWE-20": {
             "positive": false,
             "name": "CWE-829, CWE-20",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1058": {
@@ -363,13 +365,13 @@
       },
       "CWE-190 Integer_wraparound": {
         "name": "CWE-190 Integer_wraparound",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
         "children": {
           "CWE-190": {
             "positive": false,
             "name": "CWE-190",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
             "children": {
               "FF1047": {
@@ -405,13 +407,13 @@
       },
       "CWE-77 OS_command_injection": {
         "name": "CWE-77 OS_command_injection",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
         "children": {
           "CWE-78": {
             "positive": false,
             "name": "CWE-78",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
             "children": {
               "FF1045": {
@@ -483,13 +485,13 @@
       },
       "CWE-1177 Use_of_prohibited_code": {
         "name": "CWE-1177 Use_of_prohibited_code",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
         "children": {
           "CWE-676": {
             "positive": false,
             "name": "CWE-676",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
             "children": {
               "FF1069": {
@@ -537,13 +539,13 @@
       },
       "CWE-807 Reliance_on_untrusted_inputs": {
         "name": "CWE-807 Reliance_on_untrusted_inputs",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
         "children": {
           "CWE-807, CWE-20": {
             "positive": false,
             "name": "CWE-807, CWE-20",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1053": {
@@ -596,7 +598,7 @@
           "CWE-807": {
             "positive": false,
             "name": "CWE-807",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
             "children": {
               "FF1062": {
@@ -633,13 +635,13 @@
       },
       "CWE-119 Improper_restriction_of_operations_in_memory": {
         "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-        "value": 0.0,
+        "value": 0.8333333333333333,
         "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
         "children": {
           "CWE-126": {
             "positive": false,
             "name": "CWE-126",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
             "children": {
               "FF1022": {
@@ -680,7 +682,7 @@
           "CWE-676, CWE-120, CWE-20": {
             "positive": false,
             "name": "CWE-676, CWE-120, CWE-20",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1065": {
@@ -709,7 +711,7 @@
           "CWE-120, CWE-20": {
             "positive": false,
             "name": "CWE-120, CWE-20",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1027": {
@@ -804,9 +806,20 @@
               "FF1013": {
                 "toolName": "flawfinder",
                 "name": "FF1013",
-                "value": 0.0,
+                "value": 2.0,
                 "description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
-                "children": {},
+                "children": {
+                  "FF1013": {
+                    "name": "FF1013",
+                    "value": 2.0,
+                    "description": "",
+                    "children": {},
+                    "weights": {},
+                    "eval_strategy": "pique.evaluation.DefaultFindingEvaluator",
+                    "normalizer": "pique.evaluation.DefaultNormalizer",
+                    "utility_function": "pique.evaluation.DefaultUtility"
+                  }
+                },
                 "weights": {},
                 "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
                 "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -827,7 +840,7 @@
           "CWE-120": {
             "positive": false,
             "name": "CWE-120",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
             "children": {
               "FF1005": {
@@ -1036,7 +1049,7 @@
           "CWE-120/CWE-785!": {
             "positive": false,
             "name": "CWE-120/CWE-785!",
-            "value": 0.0,
+            "value": 1.0,
             "description": " ",
             "children": {
               "FF1026": {
@@ -1077,13 +1090,13 @@
       },
       "CWE-668 Exposure_of_resource_to_wrong_sphere": {
         "name": "CWE-668 Exposure_of_resource_to_wrong_sphere",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
         "children": {
           "CWE-732": {
             "positive": false,
             "name": "CWE-732",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
             "children": {
               "FF1041": {
@@ -1148,7 +1161,7 @@
           "CWE-134": {
             "positive": false,
             "name": "CWE-134",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
             "children": {
               "FF1016": {
@@ -1213,7 +1226,7 @@
           "CWE-377": {
             "positive": false,
             "name": "CWE-377",
-            "value": 0.0,
+            "value": 1.0,
             "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
             "children": {
               "FF1038": {
@@ -1277,18 +1290,18 @@
     "quality_aspects": {
       "Authenticity": {
         "name": "Authenticity",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The property that data originated from its purported source.",
         "children": {
           "CWE-269 Improper_privilege_management": {
             "name": "CWE-269 Improper_privilege_management",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor.",
             "children": {
               "CWE-250, CWE-22": {
                 "positive": false,
                 "name": "CWE-250, CWE-22",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1052": {
@@ -1317,7 +1330,7 @@
               "CWE-250": {
                 "positive": false,
                 "name": "CWE-250",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
                 "children": {
                   "FF1056": {
@@ -1354,13 +1367,13 @@
           },
           "CWE-668 Exposure_of_resource_to_wrong_sphere": {
             "name": "CWE-668 Exposure_of_resource_to_wrong_sphere",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
             "children": {
               "CWE-732": {
                 "positive": false,
                 "name": "CWE-732",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
                 "children": {
                   "FF1041": {
@@ -1425,7 +1438,7 @@
               "CWE-134": {
                 "positive": false,
                 "name": "CWE-134",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
                 "children": {
                   "FF1016": {
@@ -1490,7 +1503,7 @@
               "CWE-377": {
                 "positive": false,
                 "name": "CWE-377",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
                 "children": {
                   "FF1038": {
@@ -1561,18 +1574,18 @@
       },
       "CWE-710 Improper_adherence_to_coding_standards": {
         "name": "CWE-710 Improper_adherence_to_coding_standards",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
         "children": {
           "CWE-1177 Use_of_prohibited_code": {
             "name": "CWE-1177 Use_of_prohibited_code",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
             "children": {
               "CWE-676": {
                 "positive": false,
                 "name": "CWE-676",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
                 "children": {
                   "FF1069": {
@@ -1628,18 +1641,18 @@
       },
       "CWE-691 Insufficient_control_flow_management": {
         "name": "CWE-691 Insufficient_control_flow_management",
-        "value": 0.0,
+        "value": 1.0,
         "description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
         "children": {
           "CWE-362 race_conditions": {
             "name": "CWE-362 race_conditions",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
             "children": {
               "CWE-362/CWE-367!": {
                 "positive": false,
                 "name": "CWE-362/CWE-367!",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1030": {
@@ -1668,7 +1681,7 @@
               "CWE-362": {
                 "positive": false,
                 "name": "CWE-362",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
                 "children": {
                   "FF1034": {
@@ -1745,7 +1758,7 @@
               "CWE-362, CWE-20": {
                 "positive": false,
                 "name": "CWE-362, CWE-20",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1035": {
@@ -1791,18 +1804,18 @@
       },
       "Confidentiality": {
         "name": "Confidentiality",
-        "value": 0.0,
+        "value": 1.0,
         "description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
         "children": {
           "CWE-327 Use of a Broken or Risky Cryptographic Algorithm": {
             "name": "CWE-327 Use of a Broken or Risky Cryptographic Algorithm",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
             "children": {
               "CWE-327": {
                 "positive": false,
                 "name": "CWE-327",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
                 "children": {
                   "FF1049": {
@@ -1882,18 +1895,18 @@
       },
       "Cross_cutting": {
         "name": "Cross_cutting",
-        "value": 0.0,
+        "value": 1.0,
         "description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
         "children": {
           "CWE-807 Reliance_on_untrusted_inputs": {
             "name": "CWE-807 Reliance_on_untrusted_inputs",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
             "children": {
               "CWE-807, CWE-20": {
                 "positive": false,
                 "name": "CWE-807, CWE-20",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1053": {
@@ -1946,7 +1959,7 @@
               "CWE-807": {
                 "positive": false,
                 "name": "CWE-807",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
                 "children": {
                   "FF1062": {
@@ -1991,18 +2004,18 @@
       },
       "Limit_exposure": {
         "name": "Limit_exposure",
-        "value": 0.0,
+        "value": 1.0,
         "description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
         "children": {
           "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
             "name": "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software imports, requires, or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
             "children": {
               "CWE-829, CWE-20": {
                 "positive": false,
                 "name": "CWE-829, CWE-20",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1058": {
@@ -2058,18 +2071,18 @@
       },
       "Integrity": {
         "name": "Integrity",
-        "value": 0.0,
+        "value": 0.9444444444444444,
         "description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
         "children": {
           "CWE-190 Integer_wraparound": {
             "name": "CWE-190 Integer_wraparound",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
             "children": {
               "CWE-190": {
                 "positive": false,
                 "name": "CWE-190",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
                 "children": {
                   "FF1047": {
@@ -2105,13 +2118,13 @@
           },
           "CWE-77 OS_command_injection": {
             "name": "CWE-77 OS_command_injection",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
             "children": {
               "CWE-78": {
                 "positive": false,
                 "name": "CWE-78",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
                 "children": {
                   "FF1045": {
@@ -2183,13 +2196,13 @@
           },
           "CWE-119 Improper_restriction_of_operations_in_memory": {
             "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-            "value": 0.0,
+            "value": 0.8333333333333333,
             "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
             "children": {
               "CWE-126": {
                 "positive": false,
                 "name": "CWE-126",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
                 "children": {
                   "FF1022": {
@@ -2230,7 +2243,7 @@
               "CWE-676, CWE-120, CWE-20": {
                 "positive": false,
                 "name": "CWE-676, CWE-120, CWE-20",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1065": {
@@ -2259,7 +2272,7 @@
               "CWE-120, CWE-20": {
                 "positive": false,
                 "name": "CWE-120, CWE-20",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1027": {
@@ -2354,9 +2367,20 @@
                   "FF1013": {
                     "toolName": "flawfinder",
                     "name": "FF1013",
-                    "value": 0.0,
+                    "value": 2.0,
                     "description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
-                    "children": {},
+                    "children": {
+                      "FF1013": {
+                        "name": "FF1013",
+                        "value": 2.0,
+                        "description": "",
+                        "children": {},
+                        "weights": {},
+                        "eval_strategy": "pique.evaluation.DefaultFindingEvaluator",
+                        "normalizer": "pique.evaluation.DefaultNormalizer",
+                        "utility_function": "pique.evaluation.DefaultUtility"
+                      }
+                    },
                     "weights": {},
                     "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
                     "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -2377,7 +2401,7 @@
               "CWE-120": {
                 "positive": false,
                 "name": "CWE-120",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
                 "children": {
                   "FF1005": {
@@ -2586,7 +2610,7 @@
               "CWE-120/CWE-785!": {
                 "positive": false,
                 "name": "CWE-120/CWE-785!",
-                "value": 0.0,
+                "value": 1.0,
                 "description": " ",
                 "children": {
                   "FF1026": {
@@ -2639,23 +2663,23 @@
     "tqi": {
       "Vendor Security Quality": {
         "name": "Vendor Security Quality",
-        "value": 0.0,
+        "value": 0.9929184901148023,
         "description": "The total security quality value representing the entire system",
         "children": {
           "Authenticity": {
             "name": "Authenticity",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The property that data originated from its purported source.",
             "children": {
               "CWE-269 Improper_privilege_management": {
                 "name": "CWE-269 Improper_privilege_management",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor.",
                 "children": {
                   "CWE-250, CWE-22": {
                     "positive": false,
                     "name": "CWE-250, CWE-22",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1052": {
@@ -2684,7 +2708,7 @@
                   "CWE-250": {
                     "positive": false,
                     "name": "CWE-250",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
                     "children": {
                       "FF1056": {
@@ -2721,13 +2745,13 @@
               },
               "CWE-668 Exposure_of_resource_to_wrong_sphere": {
                 "name": "CWE-668 Exposure_of_resource_to_wrong_sphere",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
                 "children": {
                   "CWE-732": {
                     "positive": false,
                     "name": "CWE-732",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
                     "children": {
                       "FF1041": {
@@ -2792,7 +2816,7 @@
                   "CWE-134": {
                     "positive": false,
                     "name": "CWE-134",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
                     "children": {
                       "FF1016": {
@@ -2857,7 +2881,7 @@
                   "CWE-377": {
                     "positive": false,
                     "name": "CWE-377",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
                     "children": {
                       "FF1038": {
@@ -2928,18 +2952,18 @@
           },
           "CWE-710 Improper_adherence_to_coding_standards": {
             "name": "CWE-710 Improper_adherence_to_coding_standards",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
             "children": {
               "CWE-1177 Use_of_prohibited_code": {
                 "name": "CWE-1177 Use_of_prohibited_code",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
                 "children": {
                   "CWE-676": {
                     "positive": false,
                     "name": "CWE-676",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
                     "children": {
                       "FF1069": {
@@ -2995,18 +3019,18 @@
           },
           "CWE-691 Insufficient_control_flow_management": {
             "name": "CWE-691 Insufficient_control_flow_management",
-            "value": 0.0,
+            "value": 1.0,
             "description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
             "children": {
               "CWE-362 race_conditions": {
                 "name": "CWE-362 race_conditions",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
                 "children": {
                   "CWE-362/CWE-367!": {
                     "positive": false,
                     "name": "CWE-362/CWE-367!",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1030": {
@@ -3035,7 +3059,7 @@
                   "CWE-362": {
                     "positive": false,
                     "name": "CWE-362",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
                     "children": {
                       "FF1034": {
@@ -3112,7 +3136,7 @@
                   "CWE-362, CWE-20": {
                     "positive": false,
                     "name": "CWE-362, CWE-20",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1035": {
@@ -3158,18 +3182,18 @@
           },
           "Confidentiality": {
             "name": "Confidentiality",
-            "value": 0.0,
+            "value": 1.0,
             "description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
             "children": {
               "CWE-327 Use of a Broken or Risky Cryptographic Algorithm": {
                 "name": "CWE-327 Use of a Broken or Risky Cryptographic Algorithm",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
                 "children": {
                   "CWE-327": {
                     "positive": false,
                     "name": "CWE-327",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
                     "children": {
                       "FF1049": {
@@ -3249,18 +3273,18 @@
           },
           "Cross_cutting": {
             "name": "Cross_cutting",
-            "value": 0.0,
+            "value": 1.0,
             "description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
             "children": {
               "CWE-807 Reliance_on_untrusted_inputs": {
                 "name": "CWE-807 Reliance_on_untrusted_inputs",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
                 "children": {
                   "CWE-807, CWE-20": {
                     "positive": false,
                     "name": "CWE-807, CWE-20",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1053": {
@@ -3313,7 +3337,7 @@
                   "CWE-807": {
                     "positive": false,
                     "name": "CWE-807",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
                     "children": {
                       "FF1062": {
@@ -3358,18 +3382,18 @@
           },
           "Limit_exposure": {
             "name": "Limit_exposure",
-            "value": 0.0,
+            "value": 1.0,
             "description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
             "children": {
               "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
                 "name": "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software imports, requires, or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
                 "children": {
                   "CWE-829, CWE-20": {
                     "positive": false,
                     "name": "CWE-829, CWE-20",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1058": {
@@ -3425,18 +3449,18 @@
           },
           "Integrity": {
             "name": "Integrity",
-            "value": 0.0,
+            "value": 0.9444444444444444,
             "description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
             "children": {
               "CWE-190 Integer_wraparound": {
                 "name": "CWE-190 Integer_wraparound",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
                 "children": {
                   "CWE-190": {
                     "positive": false,
                     "name": "CWE-190",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
                     "children": {
                       "FF1047": {
@@ -3472,13 +3496,13 @@
               },
               "CWE-77 OS_command_injection": {
                 "name": "CWE-77 OS_command_injection",
-                "value": 0.0,
+                "value": 1.0,
                 "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
                 "children": {
                   "CWE-78": {
                     "positive": false,
                     "name": "CWE-78",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
                     "children": {
                       "FF1045": {
@@ -3550,13 +3574,13 @@
               },
               "CWE-119 Improper_restriction_of_operations_in_memory": {
                 "name": "CWE-119 Improper_restriction_of_operations_in_memory",
-                "value": 0.0,
+                "value": 0.8333333333333333,
                 "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
                 "children": {
                   "CWE-126": {
                     "positive": false,
                     "name": "CWE-126",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
                     "children": {
                       "FF1022": {
@@ -3597,7 +3621,7 @@
                   "CWE-676, CWE-120, CWE-20": {
                     "positive": false,
                     "name": "CWE-676, CWE-120, CWE-20",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1065": {
@@ -3626,7 +3650,7 @@
                   "CWE-120, CWE-20": {
                     "positive": false,
                     "name": "CWE-120, CWE-20",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1027": {
@@ -3721,9 +3745,20 @@
                       "FF1013": {
                         "toolName": "flawfinder",
                         "name": "FF1013",
-                        "value": 0.0,
+                        "value": 2.0,
                         "description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
-                        "children": {},
+                        "children": {
+                          "FF1013": {
+                            "name": "FF1013",
+                            "value": 2.0,
+                            "description": "",
+                            "children": {},
+                            "weights": {},
+                            "eval_strategy": "pique.evaluation.DefaultFindingEvaluator",
+                            "normalizer": "pique.evaluation.DefaultNormalizer",
+                            "utility_function": "pique.evaluation.DefaultUtility"
+                          }
+                        },
                         "weights": {},
                         "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
                         "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -3744,7 +3779,7 @@
                   "CWE-120": {
                     "positive": false,
                     "name": "CWE-120",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
                     "children": {
                       "FF1005": {
@@ -3953,7 +3988,7 @@
                   "CWE-120/CWE-785!": {
                     "positive": false,
                     "name": "CWE-120/CWE-785!",
-                    "value": 0.0,
+                    "value": 1.0,
                     "description": " ",
                     "children": {
                       "FF1026": {
@@ -4022,7 +4057,7 @@
     "CWE-807, CWE-20": {
       "positive": false,
       "name": "CWE-807, CWE-20",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1053": {
@@ -4075,7 +4110,7 @@
     "CWE-676": {
       "positive": false,
       "name": "CWE-676",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
       "children": {
         "FF1069": {
@@ -4116,7 +4151,7 @@
     "CWE-126": {
       "positive": false,
       "name": "CWE-126",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
       "children": {
         "FF1022": {
@@ -4157,7 +4192,7 @@
     "CWE-732": {
       "positive": false,
       "name": "CWE-732",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
       "children": {
         "FF1041": {
@@ -4222,7 +4257,7 @@
     "CWE-78": {
       "positive": false,
       "name": "CWE-78",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
       "children": {
         "FF1045": {
@@ -4287,7 +4322,7 @@
     "CWE-250, CWE-22": {
       "positive": false,
       "name": "CWE-250, CWE-22",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1052": {
@@ -4316,7 +4351,7 @@
     "CWE-327": {
       "positive": false,
       "name": "CWE-327",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
       "children": {
         "FF1049": {
@@ -4381,7 +4416,7 @@
     "CWE-120, CWE-20": {
       "positive": false,
       "name": "CWE-120, CWE-20",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1027": {
@@ -4470,7 +4505,7 @@
     "CWE-250": {
       "positive": false,
       "name": "CWE-250",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
       "children": {
         "FF1056": {
@@ -4499,7 +4534,7 @@
     "CWE-362": {
       "positive": false,
       "name": "CWE-362",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
       "children": {
         "FF1034": {
@@ -4576,7 +4611,7 @@
     "CWE-120": {
       "positive": false,
       "name": "CWE-120",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
       "children": {
         "FF1005": {
@@ -4785,7 +4820,7 @@
     "CWE-120/CWE-785!": {
       "positive": false,
       "name": "CWE-120/CWE-785!",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1026": {
@@ -4814,7 +4849,7 @@
     "CWE-134": {
       "positive": false,
       "name": "CWE-134",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
       "children": {
         "FF1016": {
@@ -4879,7 +4914,7 @@
     "CWE-377": {
       "positive": false,
       "name": "CWE-377",
-      "value": 0.0,
+      "value": 1.0,
       "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
       "children": {
         "FF1038": {
@@ -4932,7 +4967,7 @@
     "CWE-362/CWE-367!": {
       "positive": false,
       "name": "CWE-362/CWE-367!",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1030": {
@@ -4961,7 +4996,7 @@
     "CWE-676, CWE-120, CWE-20": {
       "positive": false,
       "name": "CWE-676, CWE-120, CWE-20",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1065": {
@@ -4990,7 +5025,7 @@
     "CWE-190": {
       "positive": false,
       "name": "CWE-190",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
       "children": {
         "FF1047": {
@@ -5025,9 +5060,20 @@
         "FF1013": {
           "toolName": "flawfinder",
           "name": "FF1013",
-          "value": 0.0,
+          "value": 2.0,
           "description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
-          "children": {},
+          "children": {
+            "FF1013": {
+              "name": "FF1013",
+              "value": 2.0,
+              "description": "",
+              "children": {},
+              "weights": {},
+              "eval_strategy": "pique.evaluation.DefaultFindingEvaluator",
+              "normalizer": "pique.evaluation.DefaultNormalizer",
+              "utility_function": "pique.evaluation.DefaultUtility"
+            }
+          },
           "weights": {},
           "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
           "normalizer": "pique.evaluation.DefaultNormalizer",
@@ -5048,7 +5094,7 @@
     "CWE-807": {
       "positive": false,
       "name": "CWE-807",
-      "value": 0.0,
+      "value": 1.0,
       "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
       "children": {
         "FF1062": {
@@ -5077,7 +5123,7 @@
     "CWE-362, CWE-20": {
       "positive": false,
       "name": "CWE-362, CWE-20",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1035": {
@@ -5106,7 +5152,7 @@
     "CWE-829, CWE-20": {
       "positive": false,
       "name": "CWE-829, CWE-20",
-      "value": 0.0,
+      "value": 1.0,
       "description": " ",
       "children": {
         "FF1058": {
@@ -5349,17 +5395,6 @@
       "name": "FF1012",
       "value": 0.0,
       "description": "Subject to buffer overflow if buffer is not as big as claimed",
-      "children": {},
-      "weights": {},
-      "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",
-      "normalizer": "pique.evaluation.DefaultNormalizer",
-      "utility_function": "pique.evaluation.DefaultUtility"
-    },
-    "FF1013": {
-      "toolName": "flawfinder",
-      "name": "FF1013",
-      "value": 0.0,
-      "description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
       "children": {},
       "weights": {},
       "eval_strategy": "pique.evaluation.DefaultDiagnosticEvaluator",

@@ -163,8 +163,9 @@
 		"CWE-327": {
 			"description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1048" : { },
 				"FF1049" : { },
 				"FF1050" : { },
@@ -174,24 +175,27 @@
 		"CWE-250": {
 			"description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1056" : { }
 			}
 		},
 		"CWE-250, CWE-22": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1052" : { }
 			}
 		},
 		"CWE-377": {
 			"description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1036" : { },
 				"FF1038" : { },
 				"FF1039" : { }
@@ -200,8 +204,9 @@
 		"CWE-732": {
 			"description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1041" : { },
 				"FF1042" : { },
 				"FF1060" : { },
@@ -211,8 +216,9 @@
 		"CWE-134": {
 			"description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1016" : { },
 				"FF1017" : { },
 				"FF1018" : { },
@@ -222,8 +228,9 @@
 		"CWE-78": {
 			"description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1043" : { },
 				"FF1044" : { },
 				"FF1045" : { },
@@ -233,16 +240,18 @@
 		"CWE-676, CWE-120, CWE-20": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1065" : { }
 			}
 		},
 		"CWE-120, CWE-20": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1014" : { },
 				"FF1020" : { },
 				"FF1021" : { },
@@ -254,8 +263,9 @@
 		"CWE-120": {
 			"description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1001" : { },
 				"FF1002" : { },
 				"FF1003" : { },
@@ -277,8 +287,9 @@
 		"CWE-126": {
 			"description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1022" : { },
 				"FF1071" : { }
 			}
@@ -286,40 +297,45 @@
 		"CWE-119!/CWE-120": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1013" : { }
 			}
 		},
 		"CWE-120/CWE-785!": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1026" : { }
 			}
 		},
 		"CWE-190": {
 			"description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1047" : { }
 			}
 		},
 		"CWE-807": {
 			"description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1062" : { }
 			}
 		},
 		"CWE-807, CWE-20": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1053" : { },
 				"FF1054" : { },
 				"FF1055" : { }
@@ -328,8 +344,9 @@
 		"CWE-829, CWE-20": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1058" : { },
 				"FF1059" : { }
 			}
@@ -337,8 +354,9 @@
 		"CWE-362": {
 			"description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1031" : { },
 				"FF1032" : { },
 				"FF1033" : { },
@@ -348,35 +366,34 @@
 		},
 		"CWE-362/CWE-367!": {
 			"description": " ",
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"positive": false,
 			"children" : {
-				"loc" : { },
 				"FF1030" : { }
 			}
 		},
 		"CWE-362, CWE-20": {
 			"description": " ",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1035" : { }
 			}
 		},
 		"CWE-676": {
 			"description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
 			"positive": false,
+			"eval_strategy" : "evaluator.MeasureEvaluator",
+			"utility_function" : "evaluator.UtilityFunction",
 			"children" : {
-				"loc" : { },
 				"FF1066" : { },
 				"FF1069" : { }
 			}
 		}
 	},
 	"diagnostics": {
-		"loc": {
-			"description": "Normalizer diagnostic lines of code",
-			"toolName": "flawfinder"
-		},
 		"FF1048": {
 			"description": "This function is not sufficiently random for security-related functions such as key and nonce creation",
 			"toolName": "flawfinder"
