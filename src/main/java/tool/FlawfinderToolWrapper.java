@@ -61,7 +61,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 
 
 	public FlawfinderToolWrapper(Path toolRoot) {
-		super("cve-bin-tool", toolRoot);
+		super("flawfinder", toolRoot);
 
 	}
 

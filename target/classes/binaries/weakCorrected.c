@@ -21,7 +21,7 @@
     printf("input: ");
 
     //CWE-120 buffer overflow: doesn't check if input overflows buffer
-    gets(buffer);
+    fgets(buffer);
 
     //CWE-134: improper input validation: input "%p" prints numbers straight off stack
     printf(buffer);
@@ -33,7 +33,7 @@
     scanf(string);
 
     //CWE-78: does not attempt to neutralize system call
-    int a = system(string);
+    int a = 5;
 
     FILE *pointer;
     char *password = "password123";
@@ -63,10 +63,10 @@
 
     useconds_t seconds;
     //CWE-676: use of obsolete/potentially-dangerous function
-    usleep(seconds);
+    nanosleep(2);
 
     //CWE-327: this prng is not random enough to be secure
-    srand(1);
+    srand(327);
 
     //CWE-120/785!: buffer overflow that can overflow filename internally
     char *cwd = getcwd (NULL, 0);
