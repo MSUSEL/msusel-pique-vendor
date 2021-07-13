@@ -119,7 +119,6 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 
 		ArrayList<String> ruleIDList = new ArrayList<String>();
 		ArrayList<Integer> severityList = new ArrayList<Integer>();
-		//ArrayList<Double> severityList = new ArrayList<Double>();
 
 		try {
 			JSONArray jsonResults = new JSONArray(results);
