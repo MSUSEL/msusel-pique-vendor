@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package piquebinaries.runnable;
+package piqueVendor.runnable;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
