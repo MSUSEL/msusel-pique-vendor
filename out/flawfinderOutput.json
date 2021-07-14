@@ -1,9 +1,142 @@
 [ {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "39",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "148",
+  "Column" : "9",
+  "DefaultLevel" : "4",
+  "Level" : "4",
+  "Category" : "buffer",
+  "Name" : "strcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination [MS-banned] (CWE-120).",
+  "Suggestion" : "Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "        strcpy(safeFilename, filename);",
+  "Fingerprint" : "be14d62a6f1cbf519edf9c2d0cd91d2089f993cb15a485a5ab91f76ab30cfa01",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1001",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "8",
   "Column" : "21",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "void encryptDecrypt(char inpString[100]) {",
+  "Fingerprint" : "7262f9531dc71296abe6ac88d415125321da07d3baea3911e374ec72257ce067",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "24",
+  "Column" : "19",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int validateInput(char filename[100]) {",
+  "Fingerprint" : "94b1672d16aa3cb3b6f2e7cc033d235218e0efb084c119719d33191537c31353",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "26",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char safeFilename[len + 4];",
+  "Fingerprint" : "c7e1b250bc217a952ed9d5d71f900342762ec0aa2f6e11e8073e20aeb84420f4",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "53",
+  "Column" : "25",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int CreateSaferPassword(char filename[100], char password[100]) { //buffer much larger than we need",
+  "Fingerprint" : "1a0cbe846a64c7fb3435a250cdf6d1f7c1f56c2913f444b501f071f4b2324923",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "53",
+  "Column" : "45",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int CreateSaferPassword(char filename[100], char password[100]) { //buffer much larger than we need",
+  "Fingerprint" : "1a0cbe846a64c7fb3435a250cdf6d1f7c1f56c2913f444b501f071f4b2324923",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "60",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char safeFilename[100];",
+  "Fingerprint" : "da450a5140fac979132984ec96290aec9891f9dc777938160b2178c460dd8030",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "66",
+  "Column" : "16",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "misc",
@@ -12,169 +145,359 @@
   "Suggestion" : "",
   "Note" : "",
   "CWEs" : "CWE-362",
-  "Context" : "    FILE *pointer = fopen(\"password.txt\", \"wb+\");",
-  "Fingerprint" : "327db09c545fdaa67e5dc94edaf00df69fee90733917bc17d8ad4c77fe8aecc0",
+  "Context" : "    passFile = fopen(safeFilename, \"wb+\");",
+  "Fingerprint" : "3d9db43cdcdb7dfe2ba371275b4065c58d4b4c8d5c2ae4ed8e9d8cbd8f8cc0a6",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1040",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/362.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "413",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "680",
-  "Column" : "6",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "706",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar types_buf[BPF_REG_SIZE + 1];",
-  "Fingerprint" : "a2e78453a03384bcb8189d024da16f6249e00496a7ebc6366fe9a941ed9d5517",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "753",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(dst->FIELD, src->FIELD,\t\t\t\t\t\\",
-  "Fingerprint" : "87c7dbcbae93c13f88f60d5401dc204050662cbebdefb35c65622e3be5f9a8c2",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "787",
-  "Column" : "4",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\t\tmemcpy(new_##FIELD, state->FIELD,\t\t\\",
-  "Fingerprint" : "a24f317fcf9a7f36e815fb7af5ba44841df241ca285c606cbce40f8850d3461e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "849",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "70",
   "Column" : "5",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\t\t\tmemcpy(&state->refs[i], &state->refs[last_idx],",
-  "Fingerprint" : "5948dcd3bbc02f00223286bfb2ca0e2e0f2038174426c07ae1722f9415d8e965",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char encryptedPassword[100];",
+  "Fingerprint" : "ba6f0d7c515e445c67e5b465277ef5d1d851b8db8b96f669978e06c2254b1086",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "83",
+  "Column" : "24",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int GuessSaferPassword(char filename[100], char userInput[100]) {",
+  "Fingerprint" : "d2cfec39fab07c6d1e8917938bd4c8ce2776e4b8ab50ceb919b1b973f563ef9f",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "83",
+  "Column" : "44",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int GuessSaferPassword(char filename[100], char userInput[100]) {",
+  "Fingerprint" : "d2cfec39fab07c6d1e8917938bd4c8ce2776e4b8ab50ceb919b1b973f563ef9f",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "87",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char safeFilename[100];",
+  "Fingerprint" : "da450a5140fac979132984ec96290aec9891f9dc777938160b2178c460dd8030",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "90",
+  "Column" : "16",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "misc",
+  "Name" : "fopen",
+  "Warning" : "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (CWE-362).",
+  "Suggestion" : "",
+  "Note" : "",
+  "CWEs" : "CWE-362",
+  "Context" : "    passFile = fopen(safeFilename, \"r\");",
+  "Fingerprint" : "b475a0a28225710847cb4b8871b6316fc919f01a219ead22c79073f702a93965",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1040",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/362.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "92",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char realPassword[100];",
+  "Fingerprint" : "6fd496731b551274b4be2b6e6189ea5bc98d450345e4058b2f70d634498fec06",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "111",
+  "Column" : "22",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int GetSaferPassword(char filename[100], char pass[100]) {",
+  "Fingerprint" : "cd52759251513e0579afd7ebb99bc0f6d2aa1c2067bf53f83f632f2be5d8f017",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "111",
+  "Column" : "42",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "int GetSaferPassword(char filename[100], char pass[100]) {",
+  "Fingerprint" : "cd52759251513e0579afd7ebb99bc0f6d2aa1c2067bf53f83f632f2be5d8f017",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "114",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char safeFilename[100];",
+  "Fingerprint" : "da450a5140fac979132984ec96290aec9891f9dc777938160b2178c460dd8030",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "118",
+  "Column" : "16",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "misc",
+  "Name" : "fopen",
+  "Warning" : "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (CWE-362).",
+  "Suggestion" : "",
+  "Note" : "",
+  "CWEs" : "CWE-362",
+  "Context" : "    passFile = fopen(safeFilename, \"r\");",
+  "Fingerprint" : "b475a0a28225710847cb4b8871b6316fc919f01a219ead22c79073f702a93965",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1040",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/362.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "128",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char filename[20] = \"normalfile.txt\"; //argv[0];",
+  "Fingerprint" : "2b92b09ddd991035a717a91baf77a5dc97c8a5f236168fb9800e33656f62159e",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "129",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char evilfilename[20] = \"../evilfile.txt\";",
+  "Fingerprint" : "48d096ea27d8d0b4f1329f344e5894cec775c8b94ff470349193bb850c89106a",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "130",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char password0[20] = \"%p.%p.%p\";",
+  "Fingerprint" : "c41a720fbd383ced1c3a77da0032ffef4a4007a6b4c4c5ec779b6e1720eb476c",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "131",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char password1[20] = \"password1\"; //argv[1];",
+  "Fingerprint" : "6bb3caada1c95df3e4464af1d007f1c188e3c0f5492a29d177edc65b92b8c167",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "132",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char password2[20] = \"password2\"; //argv[2];",
+  "Fingerprint" : "c4ef299376ace1db8445030fe1e42360b88a46192488a78aa977d0d19d39dd83",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "133",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char password3[100] = \"password3isMuchTooLongForTheVulnerableFunctionButNotTheSafeOne\"; //argv[3];",
+  "Fingerprint" : "f495b92573fcc47a572dc78e6a5f9c3194499c77b112578a56478c205fb42c3e",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "134",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "    char password4[20];",
+  "Fingerprint" : "87295edbdfe6bc2ce8a27817ec592e80f31519020622f7abaaf5f6ebdaeefbd5",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "136",
+  "Column" : "5",
+  "DefaultLevel" : "4",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "strcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination [MS-banned] (CWE-120).",
+  "Suggestion" : "Consider using snprintf, strcpy_s, or strlcpy (warning: strncpy easily misused).",
+  "Note" : "Risk is low because the source is a constant string.",
+  "CWEs" : "CWE-120",
+  "Context" : "    strcpy(filename, \"safefile\");",
+  "Fingerprint" : "2c648aa1e83af78143e3b408b67396f2f9ca60889b8939fc4318907e55b2da5e",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1001",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "913",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(dst, src, offsetof(struct bpf_func_state, acquired_refs));",
-  "Fingerprint" : "3c3fafc3b8c32d3a541a0f8433cd4b28abbe0e819704ceabe43c9f57751beae0",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "933",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(dst_state->jmp_history, src->jmp_history, jmp_sz);",
-  "Fingerprint" : "6c279235b8cc3f393a416955b25b478ddda34ba34c3f72382d146e25b7a7f56e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3029",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "147",
+  "Column" : "9",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -183,390 +506,67 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "        char safeFilename[100];",
+  "Fingerprint" : "da450a5140fac979132984ec96290aec9891f9dc777938160b2178c460dd8030",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3041",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "151",
+  "Column" : "26",
   "DefaultLevel" : "2",
   "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Category" : "misc",
+  "Name" : "fopen",
+  "Warning" : "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (CWE-362).",
+  "Suggestion" : "",
   "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "CWEs" : "CWE-362",
+  "Context" : "        FILE *passFile = fopen(safeFilename, \"wb+\");",
+  "Fingerprint" : "9f1e98aa10ca5a57bf9bfca4f51484069668f29889823a8a444d6ee2aa10913c",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+  "RuleId" : "FF1040",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/362.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3489",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3514",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3723",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3745",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3884",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "4046",
-  "Column" : "4",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "4418",
-  "Column" : "4",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "4482",
-  "Column" : "4",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "6668",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11437",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(new_data, old_data, sizeof(struct bpf_insn_aux_data) * off);",
-  "Fingerprint" : "f02e80b7b1ebd3a2a001bfe137ed595d013b593a7beee94aa0bca5b5f6de5a51",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11438",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(new_data + off + cnt - 1, old_data + off,",
-  "Fingerprint" : "f0b0259382c4cb52a7dddc03e5485cf3e797544b2683a830b639f53a527aff2a",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11665",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(insn + i, &trap, sizeof(trap));",
-  "Fingerprint" : "f65e0afa859430d42b95c6367d8a9a2b52bf0dd3c73aaae2302949dd87167177",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11705",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(insn, &ja, sizeof(ja));",
-  "Fingerprint" : "84bc17f60d832a7b33f0b664969e92960438fa4e54fb2a3bb38530895dd0a4c9",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "12101",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(func[i]->insnsi, &prog->insnsi[subprog_start],",
-  "Fingerprint" : "1fe926c5d1ec72fe2510b279b13b8ed90c8b3282e342326d7f34363e2464b32e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "13542",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(env->prog->aux->used_maps, env->used_maps,",
-  "Fingerprint" : "df12b226d4addcf0df07b626ceba80920ce635acd1f3394e911f2d8ed593c818",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "13556",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(env->prog->aux->used_btfs, env->used_btfs,",
-  "Fingerprint" : "98506979d501cd5b81fca7bcfecdc011ed7421f2b915576c4f65c9e33bf9181a",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "9942",
-  "Column" : "7",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "14",
+  "Column" : "15",
   "DefaultLevel" : "1",
   "Level" : "1",
   "Category" : "buffer",
-  "Name" : "equal",
-  "Warning" : "Function does not check the second iterator for over-read conditions (CWE-126).",
-  "Suggestion" : "This function is often discouraged by most C++ coding standards in favor of its safer alternatives provided since C++14. Consider using a form of this function that checks the second iterator before potentially overflowing it.",
+  "Name" : "strlen",
+  "Warning" : "Does not handle strings that are not \\0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (CWE-126).",
+  "Suggestion" : "",
   "Note" : "",
   "CWEs" : "CWE-126",
-  "Context" : "\tbool equal;",
-  "Fingerprint" : "77272f25e10d3c8663094f47fe1ebb7baafea07cdf365d5a17c26ef6c519f485",
+  "Context" : "    int len = strlen(inpString);",
+  "Fingerprint" : "932a1a0df6d1ee6608b6159be9f23ade9422c94987a4565a0bea3dc4f7136896",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1071",
+  "RuleId" : "FF1022",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "9954",
-  "Column" : "10",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\projectToAssess\\lessHackable.c",
+  "Line" : "25",
+  "Column" : "15",
   "DefaultLevel" : "1",
   "Level" : "1",
   "Category" : "buffer",
-  "Name" : "equal",
-  "Warning" : "Function does not check the second iterator for over-read conditions (CWE-126).",
-  "Suggestion" : "This function is often discouraged by most C++ coding standards in favor of its safer alternatives provided since C++14. Consider using a form of this function that checks the second iterator before potentially overflowing it.",
+  "Name" : "strlen",
+  "Warning" : "Does not handle strings that are not \\0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected) (CWE-126).",
+  "Suggestion" : "",
   "Note" : "",
   "CWEs" : "CWE-126",
-  "Context" : "\t\treturn equal && rold->frameno == rcur->frameno;",
-  "Fingerprint" : "50f9ce2f9d58847f24dea01a83436f5634c079bc93ebdb34183f0071f2d6fad4",
+  "Context" : "    int len = strlen(filename);",
+  "Fingerprint" : "94df8718ef4320d4a8a8a52c26ad85efbc48994f36841fdfd675815a3d8daee1",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1071",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "9956",
-  "Column" : "6",
-  "DefaultLevel" : "1",
-  "Level" : "1",
-  "Category" : "buffer",
-  "Name" : "equal",
-  "Warning" : "Function does not check the second iterator for over-read conditions (CWE-126).",
-  "Suggestion" : "This function is often discouraged by most C++ coding standards in favor of its safer alternatives provided since C++14. Consider using a form of this function that checks the second iterator before potentially overflowing it.",
-  "Note" : "",
-  "CWEs" : "CWE-126",
-  "Context" : "\tif (equal)",
-  "Fingerprint" : "70cd019f5ba38988fe874d148f379cc75a42356bb8f3164da08a231179f72151",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1071",
+  "RuleId" : "FF1022",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
 }, {
   "File" : ""
