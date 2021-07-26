@@ -70,6 +70,7 @@ public class QualityModelDeriver {
         String projectRootFlag = prop.getProperty("tool.filepath");
         Path toolLocation = Paths.get(projectRootFlag);
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
+        Path comparisonMatrices = Paths.get(prop.getProperty("comparisons.directory"));
 
         ITool flawfinderToolWrapper = new FlawfinderToolWrapper(toolLocation);
         Set<ITool> tools = Stream.of(flawfinderToolWrapper).collect(Collectors.toSet());
@@ -77,7 +78,7 @@ public class QualityModelDeriver {
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 
-        QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
+        QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag, comparisonMatrices);
 
         Path jsonOutput = new QualityModelExport(derivedQualityModel)
                 .exportToJson(derivedQualityModel
@@ -88,7 +89,7 @@ public class QualityModelDeriver {
 
 
     public static QualityModel deriveModel(QualityModel qmDesign, Set<ITool> tools,
-                                           Path benchmarkRepository, String projectRootFlag) {
+                                           Path benchmarkRepository, String projectRootFlag, Path comparisonMatrices) {
 
         // (1) Derive thresholds
         IBenchmarker benchmarker = qmDesign.getBenchmarker();
@@ -99,7 +100,7 @@ public class QualityModelDeriver {
         IWeighter weighter = qmDesign.getWeighter();
         // TODO (1.0): Consider, instead of weighting all nodes in one sweep here, dynamically assigning IWeighter
         //  ojbects to each node to have them weight using JIT evaluation functions.
-        Set<WeightResult> weights = weighter.elicitateWeights(qmDesign);
+        Set<WeightResult> weights = weighter.elicitateWeights(qmDesign, comparisonMatrices);
         // TODO: assert WeightResult names match expected TQI, QualityAspect, and ProductFactor names from quality model description
 
 

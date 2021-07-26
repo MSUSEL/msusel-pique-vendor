@@ -22,12 +22,10 @@
  */
 package piqueVendor.runnable;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -70,10 +68,22 @@ public class SingleProjectEvaluator {
 
         Path qmLocation = Paths.get("out/CVendorQualityModel.json");
 
-        ITool cveBinTool = new FlawfinderToolWrapper(toolLocation);
-        Set<ITool> tools = Stream.of(cveBinTool).collect(Collectors.toSet());
-        Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
-        System.out.println("output: " + outputPath.getFileName());
+        ITool flawfinderToolWrapper = new FlawfinderToolWrapper(toolLocation);
+        Set<ITool> tools = Stream.of(flawfinderToolWrapper).collect(Collectors.toSet());
+        //Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
+        //System.out.println("output: " + outputPath.getFileName());
+        Set<Path> projectRoots = new HashSet<>();
+        File[] filesToAssess = projectRoot.toFile().listFiles();
+        for (File file : filesToAssess) {
+            if (file.isFile()) {
+                projectRoots.add(file.toPath());
+            }
+        }
+        for (Path projectPath : projectRoots) {
+            Path outputPath = runEvaluator(projectPath, resultsDir, qmLocation, tools);
+            System.out.println("output: " + outputPath.getFileName());
+            System.out.println();
+        }
 
     }
     //region Get / Set
