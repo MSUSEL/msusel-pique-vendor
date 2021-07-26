@@ -1,6 +1,7 @@
 package calibration;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -8,7 +9,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.commons.lang3.ArrayUtils;
 
 import pique.calibration.IWeighter;
@@ -17,63 +17,26 @@ import pique.model.ModelNode;
 import pique.model.QualityModel;
 
 /**
- * @author Andrew Johnson
+ * @author Andrew Johnson, modified by Ernesto Ortiz.
  *
  * This class should weight based off of pairwise comparisons for the quality aspect level but utilize manual weights for
  * product factors to the quality aspect level. This allows stakeholder
  * interest to be represented but reduces the extreme amount of comparisons.
  */
 public class BinaryCWEWeighter implements IWeighter{
-	private String[] qaNames;
-	private String[] pfNames;
-	private double[][] manWeights;
+	private String[] childrenNames;
 	private double[][] comparisonMat;
-	private int numQA;
-	private int numPF;
+	private int numChildren;
 
 
 	@Override
 	public Set<WeightResult> elicitateWeights(QualityModel qualityModel, Path... externalInput) { //Java varargs
-		numQA = qualityModel.getQualityAspects().size();
-		numPF = qualityModel.getProductFactors().size();
-		qaNames = new String[numQA];
-		pfNames = new String[numPF];
-		manWeights = new double[numPF][numQA];
-		comparisonMat = new double[numQA][numQA];
-
-		String pathToCsv = "src/main/resources/comparisons.csv";
-		BufferedReader csvReader;
-		int lineCount = 0;
-		int pfNamesIndex = 0;
-		try {
-			csvReader = new BufferedReader(new FileReader(pathToCsv));
-
-			String row;
-			while (( row = csvReader.readLine()) != null) {
-				String[] data = row.split(",");
-				if (lineCount == 0) {
-					for (int i = 1; i < data.length; i++) {
-						qaNames[i-1] = data[i];
-					}
-				}
-				else if (lineCount < numQA+1) { //tqi weights, fill values for ahpMat
-					for (int i = 1; i < data.length; i++) {
-						comparisonMat[lineCount-1][i-1] = Double.parseDouble(data[i].trim());
-					}
-				}
-				else { //QA weights, fill values for manWeights
-					pfNames[pfNamesIndex] = data[0];
-					pfNamesIndex++;
-					for (int i = 1; i < data.length; i++) {
-						manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
-					}
-				}
-				lineCount++;
+		Set<Path> comparisonMatrices = new HashSet<>();
+		File[] csvFiles = externalInput[0].toFile().listFiles();
+		for (File file : csvFiles) {
+			if (file.isFile()) {
+				comparisonMatrices.add(file.toPath());
 			}
-			csvReader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 		Set<WeightResult> weights = new HashSet<>();
@@ -83,10 +46,53 @@ public class BinaryCWEWeighter implements IWeighter{
 		averageWeights(qualityModel.getDiagnostics().values(),weights);
 		averageWeights(qualityModel.getProductFactors().values(),weights);
 
-		manualWeights(qualityModel.getQualityAspects().values(),weights);
 
-		//set the weights for edges going into tqi based on ahp
-		ahpWeights(qualityModel.getTqi(), weights);
+		BufferedReader csvReader;
+		int lineCount = 0;
+		for (Path matrix : comparisonMatrices) {
+			String pathToCsv = matrix.toString();
+			try {
+				csvReader = new BufferedReader(new FileReader(pathToCsv));
+
+				String row;
+				while ((row = csvReader.readLine()) != null) {
+					String[] data = row.split(",");
+					if (lineCount == 0) {
+						numChildren = data.length - 1;
+						comparisonMat = new double[numChildren][numChildren];
+						childrenNames = new String[data.length];
+						char [] temp = new char[data[0].length()];
+						for (int k = 1; k < data[0].length(); k++){
+							temp[k - 1] = data[0].charAt(k);
+						}
+						StringBuilder sb = new StringBuilder();
+						for (int i = 0; i < temp.length - 1; i++) {
+							sb.append(temp[i]);
+						}
+						String tempString = sb.toString();
+						childrenNames[0] = tempString;
+						for (int i = 1; i < data.length; i++) {
+							childrenNames[i] = data[i];
+						}
+					} else if (lineCount < numChildren + 1) {
+						for (int i = 1; i < data.length; i++) {
+							comparisonMat[lineCount - 1][i - 1] = Double.parseDouble(data[i].trim());
+						}
+					}
+					lineCount++;
+				}
+				csvReader.close();
+				lineCount = 0;
+
+				if (qualityModel.getTqi().getName() == childrenNames[0]) {
+					ahpWeights(qualityModel.getTqi(), weights);
+				} else {
+					ahpWeights(qualityModel.getAllQualityModelNodes().get(childrenNames[0]), weights);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 		return weights;
 	}
@@ -110,17 +116,17 @@ public class BinaryCWEWeighter implements IWeighter{
 	}
 
 	//weight based on AHP
-	private void ahpWeights(ModelNode tqi, Set<WeightResult> weights) {
-		double[] ahpVec = new double[numQA];
+	private void ahpWeights(ModelNode node, Set<WeightResult> weights) {
+		double[] ahpVec = new double[numChildren];
 		//normalize by column sums
 		double[][] norm = normalizeByColSum(comparisonMat);
 		//get the row means
-		for (int i= 0; i < numQA; i++) {
+		for (int i = 0; i < numChildren; i++) {
 			ahpVec[i] = rowMean(norm,i);
 		}
-		WeightResult weightResult = new WeightResult(tqi.getName());
-		tqi.getChildren().values().forEach(child ->
-				weightResult.setWeight(child.getName(), ahpVec[ArrayUtils.indexOf(qaNames, child.getName())]));
+		WeightResult weightResult = new WeightResult(node.getName());
+		node.getChildren().values().forEach(child ->
+				weightResult.setWeight(child.getName(), ahpVec[(ArrayUtils.indexOf(childrenNames, child.getName())) - 1]));
 		weights.add(weightResult);
 	}
 
@@ -165,18 +171,6 @@ public class BinaryCWEWeighter implements IWeighter{
 			sumCol = sumCol + mat[j][col];
 		}
 		return (sumCol);
-	}
-
-	//weights based on manual entry
-	private void manualWeights(Collection<ModelNode> nodes, Set<WeightResult> weights) {
-		double[][] normMat = normalizeByColSum(manWeights);
-		for (ModelNode node : nodes) {
-			WeightResult weightResult = new WeightResult(node.getName());
-			for (ModelNode child : node.getChildren().values()) {
-				weightResult.setWeight(child.getName(), normMat[ArrayUtils.indexOf(pfNames, child.getName())][ArrayUtils.indexOf(qaNames, node.getName())]);
-			}
-			weights.add(weightResult);
-		}
 	}
 
 }

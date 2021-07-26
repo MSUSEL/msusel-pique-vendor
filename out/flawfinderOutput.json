@@ -1,27 +1,46 @@
 [ {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "39",
-  "Column" : "21",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "129",
+  "Column" : "30",
   "DefaultLevel" : "2",
   "Level" : "2",
-  "Category" : "misc",
-  "Name" : "fopen",
-  "Warning" : "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents? (CWE-362).",
-  "Suggestion" : "",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
-  "CWEs" : "CWE-362",
-  "Context" : "    FILE *pointer = fopen(\"password.txt\", \"wb+\");",
-  "Fingerprint" : "327db09c545fdaa67e5dc94edaf00df69fee90733917bc17d8ad4c77fe8aecc0",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "static int testmgr_alloc_buf(char *buf[XBUFSIZE])",
+  "Fingerprint" : "c4de2fcdeb862334bfa1999e68edbadd36a7cadde0c4003655c1eb571066e1de",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1040",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/362.html"
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "413",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "148",
+  "Column" : "30",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "static void testmgr_free_buf(char *buf[XBUFSIZE])",
+  "Fingerprint" : "b668a3d6d7409b60385d6f5847483ee105c9f2c5b14dd529abc04720fd7b1c45",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "162",
   "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
@@ -31,17 +50,17 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar result[64];",
+  "Fingerprint" : "85c07088fd45b655d12dd655f25d35bc7cce8be8a4631fb09263c18fdcc960ef",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "680",
-  "Column" : "6",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "166",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -50,36 +69,17 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar *xbuf[XBUFSIZE];",
+  "Fingerprint" : "550d4c8997269ac19c9e3aede45a86d36fbf6c3fde3a3ccb41c68aa2dde13bc8",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "706",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "193",
   "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar types_buf[BPF_REG_SIZE + 1];",
-  "Fingerprint" : "a2e78453a03384bcb8189d024da16f6249e00496a7ebc6366fe9a941ed9d5517",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "753",
-  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -88,16 +88,92 @@
   "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
   "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(dst->FIELD, src->FIELD,\t\t\t\t\t\\",
-  "Fingerprint" : "87c7dbcbae93c13f88f60d5401dc204050662cbebdefb35c65622e3be5f9a8c2",
+  "Context" : "\t\tmemcpy(hash_buff, template[i].plaintext, template[i].psize);",
+  "Fingerprint" : "43fefc9c4e263391137241a7b3f60a71d1b13fc36e23d1b1fc00d974231a8ebf",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1004",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "787",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "252",
+  "Column" : "9",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\t\t\t   memcpy(xbuf[IDX[k] >> PAGE_SHIFT] +",
+  "Fingerprint" : "d76fc5ae1d5779fbd89dd71b0a05449f94061ad3eac042a3c689af8749a0c0f5",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "333",
+  "Column" : "2",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tchar iv[MAX_IVLEN];",
+  "Fingerprint" : "cd43820f30d6b66bc2a0bebf25a77080a17007fbe706145efb2e05b53b55dbdc",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "334",
+  "Column" : "2",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tchar *xbuf[XBUFSIZE];",
+  "Fingerprint" : "550d4c8997269ac19c9e3aede45a86d36fbf6c3fde3a3ccb41c68aa2dde13bc8",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "335",
+  "Column" : "2",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "char",
+  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
+  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Note" : "",
+  "CWEs" : "CWE-119!/CWE-120",
+  "Context" : "\tchar *axbuf[XBUFSIZE];",
+  "Fingerprint" : "6bcf47116b3b8cf4a3e6ac80089b8828c65c35ca62d67ad169db4ba5e3137000",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1013",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "374",
   "Column" : "4",
   "DefaultLevel" : "2",
   "Level" : "2",
@@ -107,16 +183,35 @@
   "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
   "CWEs" : "CWE-120",
-  "Context" : "\t\t\tmemcpy(new_##FIELD, state->FIELD,\t\t\\",
-  "Fingerprint" : "a24f317fcf9a7f36e815fb7af5ba44841df241ca285c606cbce40f8850d3461e",
+  "Context" : "\t\t\tmemcpy(input, template[i].input, template[i].ilen);",
+  "Fingerprint" : "5ac2e6f221762caee076a6ec51b1640ebeee6e5c704f7429b3a99a119e13dc01",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1004",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "849",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "375",
+  "Column" : "4",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\tmemcpy(assoc, template[i].assoc, template[i].alen);",
+  "Fingerprint" : "80546a7f0e253022ccae16cd7f4d60d2205dab269d3d5461318620490925acc6",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "377",
   "Column" : "5",
   "DefaultLevel" : "2",
   "Level" : "2",
@@ -126,17 +221,17 @@
   "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
   "CWEs" : "CWE-120",
-  "Context" : "\t\t\t\tmemcpy(&state->refs[i], &state->refs[last_idx],",
-  "Fingerprint" : "5948dcd3bbc02f00223286bfb2ca0e2e0f2038174426c07ae1722f9415d8e965",
+  "Context" : "\t\t\t\tmemcpy(iv, template[i].iv, MAX_IVLEN);",
+  "Fingerprint" : "335076e564e2e5abcba8b91ec3ddf2eba0a3fb86abe804295fb7c5fddf30f606",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1004",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "913",
-  "Column" : "2",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "469",
+  "Column" : "5",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -145,17 +240,17 @@
   "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
   "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(dst, src, offsetof(struct bpf_func_state, acquired_refs));",
-  "Fingerprint" : "3c3fafc3b8c32d3a541a0f8433cd4b28abbe0e819704ceabe43c9f57751beae0",
+  "Context" : "\t\t\t\tmemcpy(iv, template[i].iv, MAX_IVLEN);",
+  "Fingerprint" : "335076e564e2e5abcba8b91ec3ddf2eba0a3fb86abe804295fb7c5fddf30f606",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1004",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "933",
-  "Column" : "2",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "500",
+  "Column" : "5",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -164,17 +259,36 @@
   "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
   "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(dst_state->jmp_history, src->jmp_history, jmp_sz);",
-  "Fingerprint" : "6c279235b8cc3f393a416955b25b478ddda34ba34c3f72382d146e25b7a7f56e",
+  "Context" : "\t\t\t\tmemcpy(q, template[i].input + temp,",
+  "Fingerprint" : "83c81f4fb2f5347d5c5417bb2fc34fa373dd46217147f5a43a4fc6796501e9f4",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1004",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3029",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "539",
+  "Column" : "9",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\t\t\t   memcpy(axbuf[IDX[k] >> PAGE_SHIFT] +",
+  "Fingerprint" : "db9273d9161e42b474b811744ef8bf1a4e22d69268f710623ea7ffba78ea6940",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "653",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -183,17 +297,36 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar *xbuf[XBUFSIZE];",
+  "Fingerprint" : "550d4c8997269ac19c9e3aede45a86d36fbf6c3fde3a3ccb41c68aa2dde13bc8",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3041",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "676",
   "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(data, template[i].input, template[i].ilen);",
+  "Fingerprint" : "96e5bbffa46134ae08d0786b6eea9a7ac106411aad39a33a3ac84f36615497eb",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "732",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -202,17 +335,17 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar iv[MAX_IVLEN];",
+  "Fingerprint" : "cd43820f30d6b66bc2a0bebf25a77080a17007fbe706145efb2e05b53b55dbdc",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3489",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "733",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -221,17 +354,93 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar *xbuf[XBUFSIZE];",
+  "Fingerprint" : "550d4c8997269ac19c9e3aede45a86d36fbf6c3fde3a3ccb41c68aa2dde13bc8",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3514",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "759",
+  "Column" : "4",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\tmemcpy(iv, template[i].iv, MAX_IVLEN);",
+  "Fingerprint" : "335076e564e2e5abcba8b91ec3ddf2eba0a3fb86abe804295fb7c5fddf30f606",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "771",
+  "Column" : "4",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\tmemcpy(data, template[i].input, template[i].ilen);",
+  "Fingerprint" : "96e5bbffa46134ae08d0786b6eea9a7ac106411aad39a33a3ac84f36615497eb",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "830",
+  "Column" : "4",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\tmemcpy(iv, template[i].iv, MAX_IVLEN);",
+  "Fingerprint" : "335076e564e2e5abcba8b91ec3ddf2eba0a3fb86abe804295fb7c5fddf30f606",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "864",
+  "Column" : "5",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\t\t\tmemcpy(q, template[i].input + temp,",
+  "Fingerprint" : "83c81f4fb2f5347d5c5417bb2fc34fa373dd46217147f5a43a4fc6796501e9f4",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "948",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -240,17 +449,17 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar result[COMP_BUF_SIZE];",
+  "Fingerprint" : "f0d354c244e46e24866fbbee2b8fa88a017536ee5269c2ff9f72536416497e18",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3723",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "1030",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -259,17 +468,17 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar result[COMP_BUF_SIZE];",
+  "Fingerprint" : "f0d354c244e46e24866fbbee2b8fa88a017536ee5269c2ff9f72536416497e18",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3745",
-  "Column" : "3",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "1206",
+  "Column" : "2",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
@@ -278,35 +487,73 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\tchar result[32];",
+  "Fingerprint" : "aa22688c7c6ca4f1ff7e847d1455b9e6de356a97bded4540f5f894c51b4a9cc7",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "3884",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "1220",
   "Column" : "3",
   "DefaultLevel" : "2",
   "Level" : "2",
   "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
   "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(seed, template[i].v, template[i].vlen);",
+  "Fingerprint" : "7ff6efec991a951cda1b5cf927eb9cbfa34c8d1966b3132713b058c642af9e84",
   "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "4046",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "1221",
+  "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(seed + template[i].vlen, template[i].key,",
+  "Fingerprint" : "edc9c4c6b8d1a5377cf2010e931689610eb7584893101459c7034834a36c1f74",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "1223",
+  "Column" : "3",
+  "DefaultLevel" : "2",
+  "Level" : "2",
+  "Category" : "buffer",
+  "Name" : "memcpy",
+  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
+  "Suggestion" : "Make sure destination can always hold the source data.",
+  "Note" : "",
+  "CWEs" : "CWE-120",
+  "Context" : "\t\tmemcpy(seed + template[i].vlen + template[i].klen,",
+  "Fingerprint" : "ea015eef2160f97492fac70802c32732094a0f5caeed91a54423b9931552254f",
+  "ToolVersion" : "2.0.17",
+  "RuleId" : "FF1004",
+  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
+}, {
+  "File" : ""
+}, {
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "1433",
   "Column" : "4",
   "DefaultLevel" : "2",
   "Level" : "2",
@@ -316,54 +563,16 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\t\t\tchar ctx[crypto_shash_descsize(tfm)];",
+  "Fingerprint" : "00c237a68b5c01ffd6dfa193dcf2677de727cdd9bdeff44247c5d445c8ea7d6c",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
 }, {
   "File" : ""
 }, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "4418",
-  "Column" : "4",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "4482",
-  "Column" : "4",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "char",
-  "Warning" : "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues (CWE-119!/CWE-120).",
-  "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
-  "Note" : "",
-  "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1013",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "6668",
+  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor8\\src\\main\\resources\\projectToAssess\\testmgr.c",
+  "Line" : "2360",
   "Column" : "3",
   "DefaultLevel" : "2",
   "Level" : "2",
@@ -373,201 +582,11 @@
   "Suggestion" : "Perform bounds checking, use functions that limit length, or ensure that the size is larger than the maximum possible length.",
   "Note" : "",
   "CWEs" : "CWE-119!/CWE-120",
-  "Context" : "\t\tchar tn_buf[48];",
-  "Fingerprint" : "98925ae23cebbc676182148a8b2a9715b5e54ecc071219db96b2650ad8924f1e",
+  "Context" : "\t\tchar nalg[CRYPTO_MAX_ALG_NAME];",
+  "Fingerprint" : "18813e45c4eb918967d039389047cf8f03c507a4ee15a98d9aa0385c04c65f2e",
   "ToolVersion" : "2.0.17",
   "RuleId" : "FF1013",
   "HelpUri" : "https://cwe.mitre.org/data/definitions/119.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11437",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(new_data, old_data, sizeof(struct bpf_insn_aux_data) * off);",
-  "Fingerprint" : "f02e80b7b1ebd3a2a001bfe137ed595d013b593a7beee94aa0bca5b5f6de5a51",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11438",
-  "Column" : "2",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\tmemcpy(new_data + off + cnt - 1, old_data + off,",
-  "Fingerprint" : "f0b0259382c4cb52a7dddc03e5485cf3e797544b2683a830b639f53a527aff2a",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11665",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(insn + i, &trap, sizeof(trap));",
-  "Fingerprint" : "f65e0afa859430d42b95c6367d8a9a2b52bf0dd3c73aaae2302949dd87167177",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "11705",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(insn, &ja, sizeof(ja));",
-  "Fingerprint" : "84bc17f60d832a7b33f0b664969e92960438fa4e54fb2a3bb38530895dd0a4c9",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "12101",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(func[i]->insnsi, &prog->insnsi[subprog_start],",
-  "Fingerprint" : "1fe926c5d1ec72fe2510b279b13b8ed90c8b3282e342326d7f34363e2464b32e",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "13542",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(env->prog->aux->used_maps, env->used_maps,",
-  "Fingerprint" : "df12b226d4addcf0df07b626ceba80920ce635acd1f3394e911f2d8ed593c818",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "13556",
-  "Column" : "3",
-  "DefaultLevel" : "2",
-  "Level" : "2",
-  "Category" : "buffer",
-  "Name" : "memcpy",
-  "Warning" : "Does not check for buffer overflows when copying to destination (CWE-120).",
-  "Suggestion" : "Make sure destination can always hold the source data.",
-  "Note" : "",
-  "CWEs" : "CWE-120",
-  "Context" : "\t\tmemcpy(env->prog->aux->used_btfs, env->used_btfs,",
-  "Fingerprint" : "98506979d501cd5b81fca7bcfecdc011ed7421f2b915576c4f65c9e33bf9181a",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1004",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/120.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "9942",
-  "Column" : "7",
-  "DefaultLevel" : "1",
-  "Level" : "1",
-  "Category" : "buffer",
-  "Name" : "equal",
-  "Warning" : "Function does not check the second iterator for over-read conditions (CWE-126).",
-  "Suggestion" : "This function is often discouraged by most C++ coding standards in favor of its safer alternatives provided since C++14. Consider using a form of this function that checks the second iterator before potentially overflowing it.",
-  "Note" : "",
-  "CWEs" : "CWE-126",
-  "Context" : "\tbool equal;",
-  "Fingerprint" : "77272f25e10d3c8663094f47fe1ebb7baafea07cdf365d5a17c26ef6c519f485",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1071",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "9954",
-  "Column" : "10",
-  "DefaultLevel" : "1",
-  "Level" : "1",
-  "Category" : "buffer",
-  "Name" : "equal",
-  "Warning" : "Function does not check the second iterator for over-read conditions (CWE-126).",
-  "Suggestion" : "This function is often discouraged by most C++ coding standards in favor of its safer alternatives provided since C++14. Consider using a form of this function that checks the second iterator before potentially overflowing it.",
-  "Note" : "",
-  "CWEs" : "CWE-126",
-  "Context" : "\t\treturn equal && rold->frameno == rcur->frameno;",
-  "Fingerprint" : "50f9ce2f9d58847f24dea01a83436f5634c079bc93ebdb34183f0071f2d6fad4",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1071",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
-}, {
-  "File" : ""
-}, {
-  "File" : "C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\benchmark\\verifier362.c",
-  "Line" : "9956",
-  "Column" : "6",
-  "DefaultLevel" : "1",
-  "Level" : "1",
-  "Category" : "buffer",
-  "Name" : "equal",
-  "Warning" : "Function does not check the second iterator for over-read conditions (CWE-126).",
-  "Suggestion" : "This function is often discouraged by most C++ coding standards in favor of its safer alternatives provided since C++14. Consider using a form of this function that checks the second iterator before potentially overflowing it.",
-  "Note" : "",
-  "CWEs" : "CWE-126",
-  "Context" : "\tif (equal)",
-  "Fingerprint" : "70cd019f5ba38988fe874d148f379cc75a42356bb8f3164da08a231179f72151",
-  "ToolVersion" : "2.0.17",
-  "RuleId" : "FF1071",
-  "HelpUri" : "https://cwe.mitre.org/data/definitions/126.html"
 }, {
   "File" : ""
 } ]

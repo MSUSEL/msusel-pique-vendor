@@ -22,6 +22,7 @@
  */
 package utilities;
 
+import java.io.File;
 import java.io.FileReader;
 import java.util.Properties;
 
@@ -31,7 +32,8 @@ public class PiqueProperties {
 
         Properties prop = new Properties();
         try {
-            prop.load(new FileReader("C:\\Users\\ernes\\IdeaProjects\\myVendor2\\src\\main\\resources\\piqueVendor.properties"));
+            File propertiesFile = new File(System.getProperty("user.dir") + "/src/main/resources/piqueVendor.properties");
+            prop.load(new FileReader(propertiesFile));
 
         }catch(Exception e){
             e.printStackTrace();

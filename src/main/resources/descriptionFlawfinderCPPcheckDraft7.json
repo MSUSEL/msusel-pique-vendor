@@ -1,0 +1,2723 @@
+{
+  "name": "C Vendor Quality Model",
+  "additionalData": {},
+  "global_config": {
+    "benchmark_strategy": "calibration.BinaryBenchmarker",
+    "normalizer": "evaluator.NoNormalizer",
+    "weights_strategy": "calibration.BinaryCWEWeighter"
+  },
+  "factors": {
+    "tqi": {
+      "Vendor Security Quality": {
+        "description": "The total security quality value representing the entire system",
+        "children": {
+          "Confidentiality": {},
+          "Authenticity": {},
+          "Integrity": {},
+          "Cross_cutting": {},
+          "Limit_exposure": {},
+          "CWE-710 Improper_adherence_to_coding_standards": {},
+          "CWE-691 Insufficient_control_flow_management": {},
+          "CWE-398 Code_quality": {},
+          "Misc_quality_aspect": {}
+        }
+      }
+    },
+    "quality_aspects": {
+      "Confidentiality": {
+        "description": "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-327 Use of a Broken or Risky Cryptographic Algorithm": {},
+          "CWE-703 Improper_exception_handling": {}
+        }
+      },
+      "Authenticity": {
+        "description": "The property that data originated from its purported source.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-269 Improper_privilege_management": {},
+          "CWE-668 Exposure_of_resource_to_wrong_sphere": {}
+        }
+      },
+      "Integrity": {
+        "description": "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-77 OS_command_injection": {},
+          "CWE-190 Integer_wraparound": {},
+          "CWE-119 Improper_restriction_of_operations_in_memory": {},
+          "CWE-682 Incorrect_calculation": {}
+        }
+      },
+      "Cross_cutting": {
+        "description": "Weaknesses in this category are related to the design and architecture of multiple security tactics and how they affect a system. A weakness in this category could lead to a degradation in the quality of many capabilities.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-807 Reliance_on_untrusted_inputs": {}
+        }
+      },
+      "Limit_exposure": {
+        "description": "Weaknesses in this category are related to the design and architecture of the entry points to a system. Frequently these deal with minimizing the attack surface through designing the system with the least needed amount of entry points.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {}
+        }
+      },
+      "CWE-710 Improper_adherence_to_coding_standards": {
+        "description": "The software does not follow certain coding rules for development, which can lead to weaknesses.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-1177 Use_of_prohibited_code": {}
+        }
+      },
+      "CWE-691 Insufficient_control_flow_management": {
+        "description": "The code does not sufficiently manage its control flow during execution, creating conditions in which the control flow can be modified in unexpected ways.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-362 race_conditions": {},
+          "CWE-670 Always_incorrect_control_flow": {},
+          "CWE-664 Improper_control_of_a_resource": {}
+        }
+      },
+      "CWE-398 Code_quality": {
+        "description": "Weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-398 Code_quality_weaknesses": {},
+          "CWE-697 Incorrect_comparison": {}
+        }
+      },
+      "Misc_quality_aspect": {
+        "description": "Findings without CWEs attached",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "Misc_product_factor": {}
+        }
+      }
+    },
+    "product_factors": {
+      "CWE-327 Use of a Broken or Risky Cryptographic Algorithm": {
+        "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-327": {}
+        }
+      },
+      "CWE-269 Improper_privilege_management": {
+        "description": "The software does not properly assign, modify, track, or check privileges for an actor, creating an unintended sphere of control for that actor.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-250": {},
+          "CWE-250, CWE-22": {}
+        }
+      },
+      "CWE-668 Exposure_of_resource_to_wrong_sphere": {
+        "description": "The product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-377": {},
+          "CWE-732": {},
+          "CWE-134": {},
+          "CWE-250, CWE-22": {}
+        }
+      },
+      "CWE-77 OS_command_injection": {
+        "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-78": {}
+        }
+      },
+      "CWE-119 Improper_restriction_of_operations_in_memory": {
+        "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-676, CWE-120, CWE-20": {},
+          "CWE-120, CWE-20": {},
+          "CWE-120": {},
+          "CWE-126": {},
+          "CWE-119!/CWE-120": {},
+          "CWE-120/CWE-785!": {},
+          "CWE-788": {},
+          "CWE-416": {},
+          "CWE-362, CWE-20": {},
+          "CWE-786": {},
+          "CWE-590": {},
+          "CWE-119": {}
+        }
+      },
+      "CWE-190 Integer_wraparound": {
+        "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-190": {}
+        }
+      },
+      "CWE-807 Reliance_on_untrusted_inputs": {
+        "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-807": {},
+          "CWE-807, CWE-20": {}
+        }
+      },
+      "CWE-829 Inclusion_of_functionality_from_untrusted_control_sphere": {
+        "description": "The software imports, requires, or includes executable functionality (such as a library) from a source that is outside of the intended control sphere.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-829, CWE-20": {}
+        }
+      },
+      "CWE-362 race_conditions": {
+        "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-362": {},
+          "CWE-362/CWE-367!": {},
+          "CWE-362, CWE-20": {}
+        }
+      },
+      "CWE-1177 Use_of_prohibited_code": {
+        "description": "The software uses a function, library, or third party component that has been explicitly prohibited, whether by the developer or the customer.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-676": {},
+          "CWE-120/CWE-785!": {},
+          "CWE-758": {},
+          "CWE-562": {},
+          "CWE-571": {},
+          "CWE-587": {},
+          "CWE-570": {},
+          "CWE-628": {},
+          "CWE-686": {},
+          "CWE-687": {},
+          "CWE-688": {},
+          "CWE-685": {},
+          "CWE-475": {},
+          "CWE-561": {},
+          "CWE-563": {},
+          "CWE-683": {},
+          "CWE-477": {}
+        }
+      },
+      "CWE-682 Incorrect_calculation": {
+        "description": "The software performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+        "eval_strategy": "evaluator.WeightedAverageEvaluator",
+        "children": {
+          "CWE-369": {},
+          "CWE-131": {},
+          "CWE-682": {},
+          "CWE-128": {},
+          "CWE-467": {}
+        }
+      },
+      "CWE-398 Code_quality_weaknesses": {
+        "description": "weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-398": {}
+        }
+      },
+      "CWE-664 Improper_control_of_a_resource": {
+        "description": "The software does not maintain or incorrectly maintains control over a resource throughout its lifetime of creation, use, and release.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-704": {},
+          "CWE-664": {},
+          "CWE-404": {},
+          "CWE-665": {},
+          "CWE-762": {},
+          "CWE-910": {},
+          "CWE-672": {},
+          "CWE-415": {},
+          "CWE-401": {},
+          "CWE-771": {},
+          "CWE-772": {},
+          "CWE-197": {},
+          "CWE-825": {},
+          "CWE-195": {},
+          "CWE-775": {},
+          "CWE-416": {},
+          "CWE-457": {}
+        }
+      },
+      "CWE-703 Improper_exception_handling": {
+        "description": "The software does not properly anticipate or handle exceptional conditions that rarely occur during normal operation of the software.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-703": {},
+          "CWE-391": {},
+          "CWE-252": {},
+          "CWE-476": {}
+        }
+      },
+      "CWE-670 Always_incorrect_control_flow": {
+        "description": "The code contains a control flow path that does not reflect the algorithm that the path is intended to implement, leading to incorrect behavior any time this path is navigated.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-768": {},
+          "CWE-783": {},
+          "CWE-597": {},
+          "CWE-667": {},
+          "CWE-833": {},
+          "CWE-834": {}
+        }
+      },
+      "CWE-697 Incorrect_comparison": {
+        "description": " The software compares two entities in a security-relevant context, but the comparison is incorrect, which may lead to resultant weaknesses.",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "CWE-595": {}
+        }
+      },
+      "Misc_product_factor": {
+        "description": "Findings without CWEs attached",
+        "eval_strategy": "evaluator.QualityAspectEvaluator",
+        "children": {
+          "No_CWE_Attached": {}
+        }
+      }
+    }
+  },
+  "measures": {
+    "CWE-327": {
+      "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1048": {},
+        "FF1049": {},
+        "FF1050": {},
+        "FF1051": {}
+      }
+    },
+    "CWE-250": {
+      "description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1056": {}
+      }
+    },
+    "CWE-250, CWE-22": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1052": {}
+      }
+    },
+    "CWE-377": {
+      "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1036": {},
+        "FF1038": {},
+        "FF1039": {}
+      }
+    },
+    "CWE-732": {
+      "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1041": {},
+        "FF1042": {},
+        "FF1060": {},
+        "FF1061": {}
+      }
+    },
+    "CWE-134": {
+      "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1016": {},
+        "FF1017": {},
+        "FF1018": {},
+        "FF1019": {}
+      }
+    },
+    "CWE-78": {
+      "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1043": {},
+        "FF1044": {},
+        "FF1045": {},
+        "FF1046": {}
+      }
+    },
+    "CWE-676, CWE-120, CWE-20": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1065": {}
+      }
+    },
+    "CWE-120, CWE-20": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1014": {},
+        "FF1020": {},
+        "FF1021": {},
+        "FF1027": {},
+        "FF1028": {},
+        "FF1029": {}
+      }
+    },
+    "CWE-120": {
+      "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1001": {},
+        "FF1002": {},
+        "FF1003": {},
+        "FF1004": {},
+        "FF1005": {},
+        "FF1006": {},
+        "FF1007": {},
+        "FF1008": {},
+        "FF1009": {},
+        "FF1010": {},
+        "FF1011": {},
+        "FF1012": {},
+        "FF1023": {},
+        "FF1024": {},
+        "FF1025": {},
+        "FF1064": {}
+      }
+    },
+    "CWE-126": {
+      "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1022": {},
+        "FF1071": {}
+      }
+    },
+    "CWE-119!/CWE-120": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1013": {}
+      }
+    },
+    "CWE-120/CWE-785!": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1026": {}
+      }
+    },
+    "CWE-190": {
+      "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1047": {},
+        "integerOverflow": {},
+        "floatConversionOverflow": {}
+      }
+    },
+    "CWE-807": {
+      "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1062": {}
+      }
+    },
+    "CWE-807, CWE-20": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1053": {},
+        "FF1054": {},
+        "FF1055": {}
+      }
+    },
+    "CWE-829, CWE-20": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1058": {},
+        "FF1059": {}
+      }
+    },
+    "CWE-362": {
+      "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1031": {},
+        "FF1032": {},
+        "FF1033": {},
+        "FF1034": {},
+        "FF1040": {},
+        "raceAfterInterlockedDecrement": {}
+      }
+    },
+    "CWE-362/CWE-367!": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1030": {}
+      }
+    },
+    "CWE-362, CWE-20": {
+      "description": " ",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1035": {}
+      }
+    },
+    "CWE-676": {
+      "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "FF1066": {},
+        "FF1069": {},
+        "uninitstring": {}
+      }
+    },
+    "CWE-786": {
+      "description": "The software reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "positive": false,
+      "children": {
+        "negativeIndex": {},
+        "negativeContainerIndex": {}
+      }
+    },
+    "CWE-369": {
+      "description": "The product divides a value by zero.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "zerodiv": {},
+        "zerodivcond": {},
+        "nanInArithmeticExpression": {}
+      }
+    },
+    "CWE-398": {
+      "description": "This software includes weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "toomanyconfigs": {},
+        "assertWithSideEffect": {},
+        "assignmentInAssert": {},
+        "uselessAssignmentArg": {},
+        "uselessAssignmentPtrArg": {},
+        "comparisonOfFuncReturningBoolError": {},
+        "comparisonOfTwoFuncsReturningBoolError": {},
+        "comparisonOfBoolWithBoolError": {},
+        "incrementboolean": {},
+        "bitwiseOnBoolean": {},
+        "compareBoolExpressionWithInt": {},
+        "arrayIndexThenCheck": {},
+        "noConstructor": {},
+        "noExplicitConstructor": {},
+        "copyCtorPointerCopying": {},
+        "noCopyConstructor": {},
+        "noOperatorEq": {},
+        "noDestructor": {},
+        "uninitMemberVar": {},
+        "uninitMemberVarPrivate": {},
+        "uninitDerivedMemberVar": {},
+        "uninitDerivedMemberVarPrivate": {},
+        "operatorEqVarError": {},
+        "unusedPrivateFunction": {},
+        "thisSubtraction": {},
+        "operatorEqRetRefThis": {},
+        "operatorEqMissingReturnStatement": {},
+        "operatorEqShouldBeLeftUnimplemented": {},
+        "operatorEqToSelf": {},
+        "functionConst": {},
+        "functionStatic": {},
+        "initializerList": {},
+        "useInitializationList": {},
+        "duplInheritedMember": {},
+        "assignIfError": {},
+        "comparisonError": {},
+        "duplicateCondition": {},
+        "multiCondition": {},
+        "mismatchingBitAnd": {},
+        "oppositeInnerCondition": {},
+        "identicalInnerCondition": {},
+        "identicalConditionAfterEarlyExit": {},
+        "redundantCondition": {},
+        "moduloAlwaysTrueFalse": {},
+        "clarifyCondition": {},
+        "duplicateConditionalAssign": {},
+        "exceptThrowInDestructor": {},
+        "exceptDeallocThrow": {},
+        "exceptRethrowCopy": {},
+        "catchExceptionByValue": {},
+        "throwInNoexceptFunction": {},
+        "coutCerrMisusage": {},
+        "fflushOnInputStream": {},
+        "seekOnAppendedFile": {},
+        "publicAllocationError": {},
+        "unsafeClassCanLeak": {},
+        "redundantCopyLocalConst": {},
+        "cstyleCast": {},
+        "passedByValue": {},
+        "constVariable": {},
+        "constStatement": {},
+        "charBitOp": {},
+        "variableScope": {},
+        "suspiciousCase": {},
+        "selfAssignment": {},
+        "duplicateBranch": {},
+        "duplicateAssignExpression": {},
+        "oppositeExpression": {},
+        "duplicateExpression": {},
+        "duplicateValueTernary": {},
+        "duplicateExpressionTernary": {},
+        "suspiciousSemicolon": {},
+        "commaSeparatedReturn": {},
+        "redundantPointerOp": {},
+        "unusedLabel": {},
+        "unusedLabelConfiguration": {},
+        "unusedLabelSwitch": {},
+        "unusedLabelSwitchConfiguration": {},
+        "shadowVariable": {},
+        "shadowFunction": {},
+        "shadowArgument": {},
+        "containerOutOfBounds": {},
+        "stlIfFind": {},
+        "stlFindInsert": {},
+        "stlSize": {},
+        "redundantIfRemove": {},
+        "uselessCallsSubstr": {},
+        "uselessCallsEmpty": {},
+        "reademptycontainer": {},
+        "useStlAlgorithm": {},
+        "knownEmptyContainer": {},
+        "postfixOperator": {}
+      }
+    },
+    "CWE-758": {
+      "description": "The software uses an API function, data structure, or other entity in a way that relies on properties that are not always guaranteed to hold for that entity.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "AssignmentAddressToInteger": {},
+        "AssignmentIntegerToAddress": {},
+        "CastIntegerToAddressAtReturn": {},
+        "CastAddressToIntegerAtReturn": {},
+        "pointerOutOfBounds": {},
+        "objectIndex": {},
+        "wrongmathcall": {},
+        "unpreciseMathCall": {},
+        "memsetClassFloat": {},
+        "shiftNegativeLHS": {},
+        "shiftNegative": {},
+        "unknownSignCharArrayIndex": {},
+        "stringLiteralWrite": {},
+        "shiftTooManyBits": {},
+        "shiftTooManyBitsSigned": {},
+        "va_start_referencePassed": {}
+      }
+    },
+    "CWE-562": {
+      "description": "A function returns the address of a stack variable, which will cause unintended program behavior, typically in the form of a crash.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "autoVariables": {},
+        "returnAddressOfAutoVariable": {},
+        "returnLocalVariable": {},
+        "returnReference": {},
+        "danglingReference": {},
+        "returnTempReference": {},
+        "danglingTempReference": {},
+        "returnAddressOfFunctionParameter": {},
+        "returnDanglingLifetime": {},
+        "invalidLifetime": {},
+        "danglingLifetime": {},
+        "danglingTemporaryLifetime": {}
+      }
+    },
+    "CWE-590": {
+      "description": "The application calls free() on a pointer to memory that was not allocated using associated heap allocation functions such as malloc(), calloc(), or realloc().",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "autovarInvalidDeallocation": {}
+      }
+    },
+    "CWE-571": {
+      "description": "The software contains an expression that will always evaluate to true.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "pointerArithBool": {},
+        "badBitmaskCheck": {},
+        "incorrectLogicOperator": {},
+        "incorrectStringBooleanError": {},
+        "incorrectCharBooleanError": {},
+        "stringCompare": {}
+      }
+    },
+    "CWE-587": {
+      "description": "The software sets a pointer to a specific address other than NULL or 0.\n+",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "assignBoolToPointer": {}
+      }
+    },
+    "CWE-704": {
+      "description": "The software does not correctly convert an object, resource, or structure from one type to a different type.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "assignBoolToFloat": {},
+        "invalidLengthModifierError": {},
+        "invalidPointerCast": {},
+        "stlcstrReturn": {},
+        "stlcstrParam": {}
+      }
+    },
+    "CWE-664": {
+      "description": "The software does not maintain or incorrectly maintains control over a resource throughout its lifetime of creation, use, and release.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "boostForeachError": {},
+        "IOWithoutPositioning": {},
+        "readWriteOnlyFile": {},
+        "writeReadOnlyFile": {},
+        "invalidIterator1": {},
+        "iterators1": {},
+        "iterators2": {},
+        "iterators3": {},
+        "invalidContainerLoop": {},
+        "invalidContainer": {},
+        "mismatchingContainerIterator": {},
+        "mismatchingContainers": {},
+        "mismatchingContainerExpression": {},
+        "sameIteratorExpression": {},
+        "eraseDereference": {},
+        "stlBoundaries": {},
+        "stlcstr": {},
+        "va_end_missing": {},
+        "va_list_usedBeforeStarted": {},
+        "va_start_subsequentCalls": {}
+      }
+    },
+    "CWE-131": {
+      "description": "The software does not correctly calculate the size to be used when allocating a buffer, which could lead to a buffer overflow.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "mismatchSize": {},
+        "incompleteArrayFill": {}
+      }
+    },
+    "CWE-682": {
+      "description": "The software performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "nullPointerArithmetic": {},
+        "nullPointerArithmeticRedundantCheck": {},
+        "sizeofDivisionMemfunc": {},
+        "sizeofwithnumericparameter": {},
+        "sizeofsizeof": {},
+        "sizeofCalculation": {},
+        "sizeofFunctionCall": {},
+        "multiplySizeof": {},
+        "divideSizeof": {},
+        "sizeofVoid": {},
+        "sizeofDereferencedVoidPointer": {}
+      }
+    },
+    "CWE-404": {
+      "description": "The program does not release or incorrectly releases a resource before it is made available for re-use.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "virtualDestructor": {}
+      }
+    },
+    "CWE-665": {
+      "description": "The software does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.\n+ Extended Description",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "memsetClassReference": {},
+        "mallocOnClassError": {},
+        "selfInitialization": {},
+        "strPlusChar": {},
+        "unassignedVariable": {}
+      }
+    },
+    "CWE-762": {
+      "description": "The application attempts to return a memory resource to the system, but it calls a release function that is not compatible with the function that was originally used to allocate that resource.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "memsetClass": {},
+        "mallocOnClassWarning": {},
+        "mismatchAllocDealloc": {},
+        "uselessCallsRemove": {}
+      }
+    },
+    "CWE-391": {
+      "description": "Ignoring exceptions and other error conditions may allow an attacker to induce unexpected behavior unnoticed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "invalidTestForOverflow": {}
+      }
+    },
+    "CWE-570": {
+      "description": "The software contains an expression that will always evaluate to false.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "knownConditionTrueFalse": {},
+        "comparisonFunctionIsAlwaysTrueOrFalse": {},
+        "unsignedLessThanZero": {},
+        "unsignedPositive": {},
+        "pointerLessThanZero": {},
+        "pointerPositive": {},
+        "comparePointers": {},
+        "incorrectStringCompare": {},
+        "staticStringCompare": {}
+      }
+    },
+    "CWE-252": {
+      "description": "The software does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "ignoredReturnValue": {}
+      }
+    },
+    "CWE-628": {
+      "description": "The product calls a function, procedure, or routine with arguments that are not correctly specified, leading to always-incorrect behavior and resultant weaknesses.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "invalidFunctionArg": {},
+        "invalidFunctionArgBool": {},
+        "invalidFunctionArgStr": {},
+        "funcArgNamesDifferent": {},
+        "uselessCallsCompare": {},
+        "uselessCallsSwap": {},
+        "sprintfOverlappingData": {}
+      }
+    },
+    "CWE-686": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies an argument that is the wrong data type, which may lead to resultant weaknesses.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "memsetValueOutOfRange": {},
+        "invalidScanfArgType_s": {},
+        "invalidScanfArgType_int": {},
+        "invalidScanfArgType_float": {},
+        "invalidPrintfArgType_s": {},
+        "invalidPrintfArgType_n": {},
+        "invalidPrintfArgType_p": {},
+        "invalidPrintfArgType_uint": {},
+        "invalidPrintfArgType_sint": {},
+        "invalidPrintfArgType_float": {},
+        "wrongPipeParameterSize": {}
+      }
+    },
+    "CWE-703": {
+      "description": "The software does not properly anticipate or handle exceptional conditions that rarely occur during normal operation of the software.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "unhandledExceptionSpecification": {}
+      }
+    },
+    "CWE-687": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies an argument that contains the wrong value, which may lead to resultant weaknesses.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "memsetZeroBytes": {},
+        "invalidScanfFormatWidth": {}
+      }
+    },
+    "CWE-688": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies the wrong variable or reference as one of the arguments, which may lead to undefined behavior and resultant weaknesses.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "memsetFloat": {},
+        "va_start_wrongParameter": {}
+      }
+    },
+    "CWE-685": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies too many arguments, or too few arguments, which may lead to undefined behavior and resultant weaknesses.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "wrongPrintfScanfArgNum": {},
+        "wrongPrintfScanfParameterPositionError": {}
+      }
+    },
+    "CWE-910": {
+      "description": "The software uses or accesses a file descriptor after it has been closed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "useClosedFile": {}
+      }
+    },
+    "CWE-672": {
+      "description": "The software uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "deallocret": {},
+        "accessMoved": {},
+        "accessForwarded": {}
+      }
+    },
+    "CWE-415": {
+      "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "doubleFree": {},
+        "deallocDealloc": {}
+      }
+    },
+    "CWE-401": {
+      "description": "The software does not sufficiently track and release allocated memory after it has been used, which slowly consumes remaining memory.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "leakUnsafeArgAlloc": {},
+        "memleak": {},
+        "memleakOnRealloc": {}
+      }
+    },
+    "CWE-771": {
+      "description": "The software does not properly maintain a reference to a resource that has been allocated, which prevents the resource from being reclaimed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "leakReturnValNotUsed": {}
+      }
+    },
+    "CWE-772": {
+      "description": "The software does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "leakNoVarFunctionCall": {}
+      }
+    },
+    "CWE-128": {
+      "description": "Wrap around errors occur whenever a value is incremented past the maximum value for its type and therefore \"wraps around\" to a very small, negative, or undefined value.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "signedCharArrayIndex": {}
+      }
+    },
+    "CWE-197": {
+      "description": "Truncation errors occur when a primitive is cast to a primitive of a smaller size and data is lost in the conversion.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "checkCastIntToCharAndBack": {},
+        "truncLongCastAssignment": {},
+        "truncLongCastReturn": {}
+      }
+    },
+    "CWE-475": {
+      "description": "The behavior of this function is undefined unless its control parameter is set to a specific value.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "varFuncNullUB": {}
+      }
+    },
+    "CWE-561": {
+      "description": "The software contains dead code, which can never be executed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "duplicateBreak": {},
+        "unreachableCode": {},
+        "unusedFunction": {}
+      }
+    },
+    "CWE-563": {
+      "description": "The variable's value is assigned but never used, making it a dead store.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "unusedScopedObject": {},
+        "redundantCopy": {},
+        "redundantAssignInSwitch": {},
+        "redundantCopyInSwitch": {},
+        "redundantAssignment": {},
+        "redundantInitialization": {},
+        "unusedVariable": {},
+        "unusedAllocatedMemory": {},
+        "unreadVariable": {},
+        "unusedStructMember": {}
+      }
+    },
+    "CWE-683": {
+      "description": "The software calls a function, procedure, or routine, but the caller specifies the arguments in an incorrect order, leading to resultant weaknesses",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "funcArgOrderDifferent": {}
+      }
+    },
+    "CWE-768": {
+      "description": "The software contains a conditional statement with multiple logical expressions in which one of the non-leading expressions may produce side effects. This may lead to an unexpected state in the program after the execution of the conditional, because short-circuiting logic may prevent the side effects from occurring.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "unknownEvaluationOrder": {}
+      }
+    },
+    "CWE-783": {
+      "description": "The program uses an expression in which operator precedence causes incorrect logic to be used.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "clarifyCalculation": {},
+        "clarifyStatement": {}
+      }
+    },
+    "CWE-467": {
+      "description": "The code calls sizeof() on a malloced pointer type, which always returns the wordsize/8. This can produce an unexpected result if the programmer intended to determine how much memory has been allocated.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "sizeofwithsilentarraypointer": {},
+        "pointerSize": {},
+        "arithOperationsOnVoidPointer": {}
+      }
+    },
+    "CWE-597": {
+      "description": "The product uses the wrong operator when comparing a string, such as using \"==\" when the .equals() method should be used instead.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "stlIfStrFind": {}
+      }
+    },
+    "CWE-667": {
+      "description": "The software does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "localMutex": {}
+      }
+    },
+    "CWE-825": {
+      "description": "The program dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "derefInvalidIterator": {}
+      }
+    },
+    "CWE-833": {
+      "description": "The software contains multiple threads or executable segments that are waiting for each other to release a necessary lock, resulting in deadlock.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "globalLockGuard": {}
+      }
+    },
+    "CWE-834": {
+      "description": "The software performs an iteration or loop without sufficiently limiting the number of times that the loop is executed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "StlMissingComparison": {}
+      }
+    },
+    "CWE-595": {
+      "description": "The program compares object references instead of the contents of the objects themselves, preventing it from detecting equivalent objects.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "literalWithCharPtrCompare": {},
+        "charLiteralWithCharPtrCompare": {}
+      }
+    },
+    "CWE-195": {
+      "description": "The software uses a signed primitive and performs a cast to an unsigned primitive, which can produce an unexpected value if the value of the signed primitive can not be represented using an unsigned primitive.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "signConversion": {}
+      }
+    },
+    "CWE-119": {
+      "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "invalidscanf": {}
+      }
+    },
+    "CWE-788": {
+      "description": "The software reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "arrayIndexOutOfBounds": {},
+        "arrayIndexOutOfBoundsCond": {},
+        "bufferAccessOutOfBounds": {},
+        "stlOutOfBounds": {}
+      }
+    },
+    "CWE-775": {
+      "description": "The software does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "resourceLeak": {}
+      }
+    },
+    "CWE-416": {
+      "description": "Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "deallocuse": {}
+      }
+    },
+    "CWE-457": {
+      "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "uninitdata": {},
+        "uninitvar": {},
+        "uninitStructMember": {}
+      }
+    },
+    "CWE-477": {
+      "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "getsCalled": {}
+      }
+    },
+    "CWE-476": {
+      "description": "A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "nullPointer": {},
+        "nullPointerDefaultArg": {},
+        "nullPointerRedundantCheck": {},
+        "unknown": {}
+      }
+    },
+    "No_CWE_Attached": {
+      "description": "This error is from something other than a CWE.",
+      "positive": false,
+      "utility_function": "evaluator.UtilityFunction",
+      "eval_strategy": "evaluator.MeasureEvaluator",
+      "children": {
+        "purgedConfiguration": {},
+        "comparisonOfBoolWithInvalidComparator": {},
+        "returnNonBoolInBooleanFunction": {},
+        "copyCtorAndEqOperator": {},
+        "pureVirtualCall": {},
+        "virtualCallInConstructor": {},
+        "missingOverride": {},
+        "thisUseAfterFree": {},
+        "unsafeClassRefMember": {},
+        "pointerAdditionResultNotNull": {},
+        "invalidScanfFormatWidth_smaller": {},
+        "invalidFree": {},
+        "redundantBitwiseOperationInSwitch": {},
+        "knownArgument": {},
+        "knownArgumentHiddenVariableExpression": {},
+        "moduloofone": {},
+        "stlcstrthrow": {},
+        "overlappingStrcmp": {},
+        "missingInclude": {},
+        "missingIncludeSystem": {},
+        "ConfigurationNotChecked": {},
+        "preprocessorErrorDirective": {},
+        "unknown": {},
+        "unknownMacro": {}
+      }
+    }
+  },
+  "diagnostics": {
+    "unknown": {
+      "description": "this finding is not covered by the description file",
+      "toolName": "cppcheck"
+    },
+    "FF1048": {
+      "description": "This function is not sufficiently random for security-related functions such as key and nonce creation",
+      "toolName": "flawfinder"
+    },
+    "FF1049": {
+      "description": "The crypt functions use a poor one-way hashing algorithm; since they only accept passwords of 8 characters or fewer and only a two-byte salt, they are excessively vulnerable to dictionary attacks given today's faster computing equipment",
+      "toolName": "flawfinder"
+    },
+    "FF1050": {
+      "description": "DES only supports a 56-bit keysize, which is too small given today's computers",
+      "toolName": "flawfinder"
+    },
+    "FF1051": {
+      "description": "These keysizes are too small given today's computers",
+      "toolName": "flawfinder"
+    },
+    "FF1056": {
+      "description": "If this call fails, the program could fail to drop heightened privileges",
+      "toolName": "flawfinder"
+    },
+    "FF1052": {
+      "description": "chroot can be very helpful, but is hard to use correctly",
+      "toolName": "flawfinder"
+    },
+    "FF1036": {
+      "description": "Function tmpfile() has a security flaw on some systems (e.g., older System V systems)",
+      "toolName": "flawfinder"
+    },
+    "FF1038": {
+      "description": "Temporary file race condition",
+      "toolName": "flawfinder"
+    },
+    "FF1039": {
+      "description": "Potential for temporary file vulnerability in some circumstances.  Some older Unix-like systems create temp files with permission to write by all by default, so be sure to set the umask to override this. Also, some older Unix systems might fail to use O_EXCL when opening the file, so make sure that O_EXCL is used by the library",
+      "toolName": "flawfinder"
+    },
+    "FF1041": {
+      "description": "Ensure that umask is given most restrictive possible setting (e.g., 066 or 077)",
+      "toolName": "flawfinder"
+    },
+    "FF1042": {
+      "description": "Temporary file race condition in certain cases (e.g., if run as SYSTEM in many versions of Windows)",
+      "toolName": "flawfinder"
+    },
+    "FF1060": {
+      "description": "Never create NULL ACLs; an attacker can set it to Everyone (Deny All Access), which would even forbid administrator access",
+      "toolName": "flawfinder"
+    },
+    "FF1061": {
+      "description": "This doesn't set the inheritance bits in the access control entry (ACE) header",
+      "toolName": "flawfinder"
+    },
+    "FF1016": {
+      "description": "If format strings can be influenced by an attacker, they can be exploited",
+      "toolName": "flawfinder"
+    },
+    "FF1017": {
+      "description": "If format strings can be influenced by an attacker, they can be exploited",
+      "toolName": "flawfinder"
+    },
+    "FF1018": {
+      "description": "If syslog's format strings can be influenced by an attacker, they can be exploited",
+      "toolName": "flawfinder"
+    },
+    "FF1019": {
+      "description": "If format strings can be influenced by an attacker, they can be exploited, and note that sprintf variations do not always 0-terminate",
+      "toolName": "flawfinder"
+    },
+    "FF1043": {
+      "description": "This causes a new program to execute and is difficult to use safely",
+      "toolName": "flawfinder"
+    },
+    "FF1044": {
+      "description": "This causes a new program to execute and is difficult to use safely",
+      "toolName": "flawfinder"
+    },
+    "FF1045": {
+      "description": "This causes a new process to execute and is difficult to use safely",
+      "toolName": "flawfinder"
+    },
+    "FF1046": {
+      "description": "This causes a new process to execute and is difficult to use safely",
+      "toolName": "flawfinder"
+    },
+    "FF1065": {
+      "description": "This function is obsolete and not portable. It was in SUSv2 but removed by POSIX.2.  What it does exactly varies considerably between systems, particularly in where its prompt is displayed and where it gets its data (e.g., /dev/tty, stdin, stderr, etc.). In addition, some implementations overflow buffers.",
+      "toolName": "flawfinder"
+    },
+    "FF1014": {
+      "description": "Does not check for buffer overflows",
+      "toolName": "flawfinder"
+    },
+    "FF1020": {
+      "description": "The scanf() family's %s operation, without a limit specification, permits buffer overflows",
+      "toolName": "flawfinder"
+    },
+    "FF1021": {
+      "description": "The scanf() family's %s operation, without a limit specification, permits buffer overflows",
+      "toolName": "flawfinder"
+    },
+    "FF1027": {
+      "description": "Some older implementations do not protect against internal buffer overflows",
+      "toolName": "flawfinder"
+    },
+    "FF1028": {
+      "description": "This does not protect against buffer overflows by itself, so use with caution",
+      "toolName": "flawfinder"
+    },
+    "FF1029": {
+      "description": "Check buffer boundaries if used in a loop including recursive loops",
+      "toolName": "flawfinder"
+    },
+    "FF1001": {
+      "description": "Does not check for buffer overflows when copying to destination [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1002": {
+      "description": "Does not check for buffer overflows when copying to destination [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1003": {
+      "description": "Does not check for buffer overflows when copying to destination [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1004": {
+      "description": "Does not check for buffer overflows when copying to destination",
+      "toolName": "flawfinder"
+    },
+    "FF1005": {
+      "description": "Does not check for buffer overflows when concatenating to destination [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1006": {
+      "description": "Does not check for buffer overflows when concatenating to destination [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1007": {
+      "description": "Does not check for buffer overflows when concatenating to destination [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1008": {
+      "description": "Easily used incorrectly; doesn't always \\\\0-terminate or check for invalid pointers [MS-banned] ",
+      "toolName": "flawfinder"
+    },
+    "FF1009": {
+      "description": "Easily used incorrectly; doesn't always \\\\0-terminate or check for invalid pointers [MS-banned] ",
+      "toolName": "flawfinder"
+    },
+    "FF1010": {
+      "description": "Easily used incorrectly (e.g., incorrectly computing the correct maximum size to add) [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1011": {
+      "description": "Easily used incorrectly (e.g., incorrectly computing the correct maximum size to add) [MS-banned]",
+      "toolName": "flawfinder"
+    },
+    "FF1012": {
+      "description": "Subject to buffer overflow if buffer is not as big as claimed",
+      "toolName": "flawfinder"
+    },
+    "FF1023": {
+      "description": "Requires maximum length in CHARACTERS, not bytes",
+      "toolName": "flawfinder"
+    },
+    "FF1024": {
+      "description": "This function does not protect against buffer overflows",
+      "toolName": "flawfinder"
+    },
+    "FF1025": {
+      "description": "This function does not protect against buffer overflows",
+      "toolName": "flawfinder"
+    },
+    "FF1064": {
+      "description": "This function is dangerous; it may overflow the provided buffer. It extracts data from a 'protected' area, but most systems have many commands to let users modify the protected area, and it's not always clear what their limits are.  Best to avoid using this function altogether",
+      "toolName": "flawfinder"
+    },
+    "FF1022": {
+      "description": "Does not handle strings that are not \\\\0-terminated; if given one it may perform an over-read (it could cause a crash if unprotected)",
+      "toolName": "flawfinder"
+    },
+    "FF1071": {
+      "description": "Function does not check the second iterator for over-read conditions",
+      "toolName": "flawfinder"
+    },
+    "FF1013": {
+      "description": "Statically-sized arrays can be improperly restricted, leading to potential overflows or other issues",
+      "toolName": "flawfinder"
+    },
+    "FF1026": {
+      "description": "This function does not protect against buffer overflows, and some implementations can overflow internally",
+      "toolName": "flawfinder"
+    },
+    "FF1047": {
+      "description": "Unless checked, the resulting number can exceed the expected range",
+      "toolName": "flawfinder"
+    },
+    "FF1062": {
+      "description": "It's often easy to fool getlogin.  Sometimes it does not work at all, because some program messed up the utmp file.  Often, it gives only the first 8 characters of the login name. The user currently logged in on the controlling tty of our program need not be the user who started it.  Avoid getlogin() for security-related purposes",
+      "toolName": "flawfinder"
+    },
+    "FF1053": {
+      "description": "Environment variables are untrustable input if they can be set by an attacker.  They can have any content and length, and the same variable can be set more than once",
+      "toolName": "flawfinder"
+    },
+    "FF1054": {
+      "description": "This function is synonymous with 'getenv(\\\"HOME\\\")';it returns untrustable input if the environment can be set by an attacker.  It can have any content and length, and the same variable can be set more than once",
+      "toolName": "flawfinder"
+    },
+    "FF1055": {
+      "description": "This function is synonymous with 'getenv(\\\"TMP\\\")';it returns untrustable input if the environment can be set by an attacker. It can have any content and length, and the same variable can be set more than once",
+      "toolName": "flawfinder"
+    },
+    "FF1058": {
+      "description": "Ensure that the full path to the library is specified, or current directory may be used",
+      "toolName": "flawfinder"
+    },
+    "FF1059": {
+      "description": "Ensure that the full path to the library is specified, or current directory may be used",
+      "toolName": "flawfinder"
+    },
+    "FF1031": {
+      "description": "This accepts filename arguments; if an attacker can move those files, a race condition results.",
+      "toolName": "flawfinder"
+    },
+    "FF1032": {
+      "description": "This accepts filename arguments; if an attacker can move those files, a race condition results.",
+      "toolName": "flawfinder"
+    },
+    "FF1033": {
+      "description": "This accepts filename arguments; if an attacker can move those files, a race condition results.",
+      "toolName": "flawfinder"
+    },
+    "FF1034": {
+      "description": "On some old systems, vfork() permits race conditions, and it's very difficult to use correctly",
+      "toolName": "flawfinder"
+    },
+    "FF1040": {
+      "description": "Check when opening files - can an attacker redirect it (via symlinks), force the opening of special file type (e.g., device files), move things around to create a race condition, control its ancestors, or change its contents?",
+      "toolName": "flawfinder"
+    },
+    "FF1030": {
+      "description": "This usually indicates a security flaw.  If an attacker can change anything along the path between the call to access() and the file's actual use (e.g., by moving files), the attacker can exploit the race condition",
+      "toolName": "flawfinder"
+    },
+    "FF1035": {
+      "description": "This accepts filename arguments; if an attacker can move those files or change the link content, a race condition results. Also, it does not terminate with ASCII NUL.",
+      "toolName": "flawfinder"
+    },
+    "FF1066": {
+      "description": "These functions are considered obsolete on most systems, and very non-portable (Linux-based systems handle them radically different, basically if gsignal/ssignal were the same as raise/signal respectively, while System V considers them a separate set and obsolete)",
+      "toolName": "flawfinder"
+    },
+    "FF1069": {
+      "description": "This C routine is considered obsolete (as opposed to the shell command by the same name).   The interaction of this function with SIGALRM and other timer functions such as sleep(), alarm(), setitimer(), and nanosleep() is unspecified",
+      "toolName": "flawfinder"
+    },
+    "preprocessorErrorDirective": {
+      "description": "#error message",
+      "toolName": "cppcheck"
+    },
+    "ConfigurationNotChecked": {
+      "description": "Skipping configuration &apos;X&apos; since the value of &apos;X&apos; is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.",
+      "toolName": "cppcheck"
+    },
+    "missingIncludeSystem": {
+      "description": "Include file: &lt;&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.",
+      "toolName": "cppcheck"
+    },
+    "missingInclude": {
+      "description": "Include file: &quot;&quot; not found.",
+      "toolName": "cppcheck"
+    },
+    "va_start_subsequentCalls": {
+      "description": "va_start() or va_copy() called subsequently on &apos;vl&apos; without va_end() in between.",
+      "toolName": "cppcheck"
+    },
+    "va_list_usedBeforeStarted": {
+      "description": "va_list &apos;vl&apos; used before va_start() was called.",
+      "toolName": "cppcheck"
+    },
+    "va_end_missing": {
+      "description": "va_list &apos;vl&apos; was opened but not closed by va_end().",
+      "toolName": "cppcheck"
+    },
+    "va_start_referencePassed": {
+      "description": "Using reference &apos;arg1&apos; as parameter for va_start() results in undefined behaviour.\"",
+      "toolName": "cppcheck"
+    },
+    "va_start_wrongParameter": {
+      "description": "apos;arg1&apos; given to va_start() is not last named argument of the function. Did you intend to pass &apos;arg2&apos;?",
+      "toolName": "cppcheck"
+    },
+    "postfixOperator": {
+      "description": "Prefer prefix ++/-- operators for non-primitive types.",
+      "toolName": "cppcheck"
+    },
+    "unusedStructMember": {
+      "description": "struct member &apos;structname::variable&apos; is never used.",
+      "toolName": "cppcheck"
+    },
+    "unassignedVariable": {
+      "description": "Variable &apos;varname&apos; is not assigned a value.",
+      "toolName": "cppcheck"
+    },
+    "unreadVariable": {
+      "description": "Variable &apos;varname&apos; is assigned a value that is never used.",
+      "toolName": "cppcheck"
+    },
+    "unusedAllocatedMemory": {
+      "description": "Variable &apos;varname&apos; is allocated memory that is never used.",
+      "toolName": "cppcheck"
+    },
+    "unusedVariable": {
+      "description": "Unused variable: varname",
+      "toolName": "cppcheck"
+    },
+    "unusedFunction": {
+      "description": "The function &apos;funcName&apos; is never used.",
+      "toolName": "cppcheck"
+    },
+    "uninitStructMember": {
+      "description": "Uninitialized struct member: a.b",
+      "toolName": "cppcheck"
+    },
+    "uninitvar": {
+      "description": "Uninitialized variable: varname",
+      "toolName": "cppcheck"
+    },
+    "uninitdata": {
+      "description": "Memory is allocated but not initialized: varname",
+      "toolName": "cppcheck"
+    },
+    "uninitstring": {
+      "description": "Dangerous usage of &apos;varname&apos; (strncpy doesn&apos;t always null-terminate it).",
+      "toolName": "cppcheck"
+    },
+    "floatConversionOverflow": {
+      "description": "Undefined behaviour: float (1e+100) to integer conversion overflow.",
+      "toolName": "cppcheck"
+    },
+    "truncLongCastReturn": {
+      "description": "int result is returned as long value. If the return value is long to avoid loss of information, then you have loss of information.",
+      "toolName": "cppcheck"
+    },
+    "truncLongCastAssignment": {
+      "description": "int result is assigned to long variable. If the variable is long to avoid loss of information, then you have loss of information.",
+      "toolName": "cppcheck"
+    },
+    "signConversion": {
+      "description": "Expression &apos;var&apos; can have a negative value. That is converted to an unsigned value and used in an unsigned calculation.",
+      "toolName": "cppcheck"
+    },
+    "integerOverflow": {
+      "description": "Signed integer overflow for expression &apos;&apos;.",
+      "toolName": "cppcheck"
+    },
+    "shiftTooManyBitsSigned": {
+      "description": "Shifting signed 32-bit value by 31 bits is implementation-defined behaviour",
+      "toolName": "cppcheck"
+    },
+    "shiftTooManyBits": {
+      "description": "Shifting 32-bit value by 40 bits is undefined behaviour",
+      "toolName": "cppcheck"
+    },
+    "overlappingStrcmp": {
+      "description": "The expression &apos;strcmp(x,&quot;def&quot;) != 0&apos; is suspicious. It overlaps &apos;strcmp(x,&quot;abc&quot;) == 0&apos;.",
+      "toolName": "cppcheck"
+    },
+    "stringCompare": {
+      "description": "Comparison of identical string variables.",
+      "toolName": "cppcheck"
+    },
+    "staticStringCompare": {
+      "description": "Unnecessary comparison of static strings.",
+      "toolName": "cppcheck"
+    },
+    "incorrectCharBooleanError": {
+      "description": "Conversion of char literal &apos;x&apos; to bool always evaluates to true.",
+      "toolName": "cppcheck"
+    },
+    "incorrectStringBooleanError": {
+      "description": "Conversion of string literal &quot;Hello World&quot; to bool always evaluates to true.",
+      "toolName": "cppcheck"
+    },
+    "charLiteralWithCharPtrCompare": {
+      "description": "Char literal compared with pointer &apos;foo&apos;. Did you intend to dereference it?",
+      "toolName": "cppcheck"
+    },
+    "literalWithCharPtrCompare": {
+      "description": "String literal compared with variable &apos;foo&apos;. Did you intend to use strcmp() instead?",
+      "toolName": "cppcheck"
+    },
+    "incorrectStringCompare": {
+      "description": "String literal &quot;Hello World&quot; doesn&apos;t match length argument for substr().",
+      "toolName": "cppcheck"
+    },
+    "strPlusChar": {
+      "description": "Unusual pointer arithmetic. A value of type &apos;char&apos; is added to a string literal.",
+      "toolName": "cppcheck"
+    },
+    "sprintfOverlappingData": {
+      "description": "Undefined behavior: Variable &apos;varname&apos; is used as parameter and destination in s[n]printf().",
+      "toolName": "cppcheck"
+    },
+    "stringLiteralWrite": {
+      "description": "Modifying string literal directly or indirectly is undefined behaviour.",
+      "toolName": "cppcheck"
+    },
+    "arithOperationsOnVoidPointer": {
+      "description": "&apos;varname&apos; is of type &apos;vartype&apos;. When using void pointers in calculations, the behaviour is undefined.",
+      "toolName": "cppcheck"
+    },
+    "sizeofDereferencedVoidPointer": {
+      "description": "apos;*varname&apos; is of type &apos;void&apos;, the behaviour of &apos;sizeof(void)&apos; is not covered by the ISO C standard.",
+      "toolName": "cppcheck"
+    },
+    "sizeofVoid": {
+      "description": "Behaviour of &apos;sizeof(void)&apos; is not covered by the ISO C standard.",
+      "toolName": "cppcheck"
+    },
+    "divideSizeof": {
+      "description": "Division of result of sizeof() on pointer type.",
+      "toolName": "cppcheck"
+    },
+    "multiplySizeof": {
+      "description": "Multiplying sizeof() with sizeof() indicates a logic error.",
+      "toolName": "cppcheck"
+    },
+    "sizeofFunctionCall": {
+      "description": "Found function call inside sizeof().",
+      "toolName": "cppcheck"
+    },
+    "sizeofCalculation": {
+      "description": "Found calculation inside sizeof().",
+      "toolName": "cppcheck"
+    },
+    "sizeofsizeof": {
+      "description": "Calling &apos;sizeof&apos; on &apos;sizeof&apos;.",
+      "toolName": "cppcheck"
+    },
+    "sizeofwithnumericparameter": {
+      "description": "Suspicious usage of &apos;sizeof&apos; with a numeric constant as parameter.",
+      "toolName": "cppcheck"
+    },
+    "sizeofDivisionMemfunc": {
+      "description": "Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?",
+      "toolName": "cppcheck"
+    },
+    "pointerSize": {
+      "description": "Size of pointer &apos;varname&apos; used instead of size of its data.",
+      "toolName": "cppcheck"
+    },
+    "sizeofwithsilentarraypointer": {
+      "description": "Using &apos;sizeof&apos; on array given as function argument returns size of a pointer.",
+      "toolName": "cppcheck"
+    },
+    "localMutex": {
+      "description": "The lock is ineffective because the mutex is locked at the same scope as the mutex itself.",
+      "toolName": "cppcheck"
+    },
+    "globalLockGuard": {
+      "description": "Lock guard is defined globally. Lock guards are intended to be local. A global lock guard could lead to a deadlock since it won&apos;t unlock until the end of the program.",
+      "toolName": "cppcheck"
+    },
+    "knownEmptyContainer": {
+      "description": "Iterating over container &apos;var&apos; that is always empty.",
+      "toolName": "cppcheck"
+    },
+    "useStlAlgorithm": {
+      "description": "Consider using  algorithm instead of a raw loop.",
+      "toolName": "cppcheck"
+    },
+    "reademptycontainer": {
+      "description": "Reading from empty STL container &apos;var&apos;",
+      "toolName": "cppcheck"
+    },
+    "derefInvalidIterator": {
+      "description": "Possible dereference of an invalid iterator: i",
+      "toolName": "cppcheck"
+    },
+    "uselessCallsRemove": {
+      "description": "Return value of std::remove() ignored. Elements remain in container.",
+      "toolName": "cppcheck"
+    },
+    "uselessCallsEmpty": {
+      "description": "Ineffective call of function &apos;empty()&apos;. Did you intend to call &apos;clear()&apos; instead?",
+      "toolName": "cppcheck"
+    },
+    "uselessCallsSubstr": {
+      "description": "Ineffective call of function &apos;substr&apos; because it returns a copy of the object. Use operator= instead.",
+      "toolName": "cppcheck"
+    },
+    "uselessCallsSwap": {
+      "description": "It is inefficient to swap a object with itself by calling &apos;str.swap(str)&apos;",
+      "toolName": "cppcheck"
+    },
+    "uselessCallsCompare": {
+      "description": "It is inefficient to call &apos;str.find(str)&apos; as it always returns 0.",
+      "toolName": "cppcheck"
+    },
+    "redundantIfRemove": {
+      "description": "Redundant checking of STL container element existence before removing it.",
+      "toolName": "cppcheck"
+    },
+    "StlMissingComparison": {
+      "description": "Missing bounds check for extra iterator increment in loop.",
+      "toolName": "cppcheck"
+    },
+    "stlSize": {
+      "description": "Possible inefficient checking for &apos;list&apos; emptiness.",
+      "toolName": "cppcheck"
+    },
+    "stlcstrthrow": {
+      "description": "Dangerous usage of c_str(). The value returned by c_str() is invalid after throwing exception.",
+      "toolName": "cppcheck"
+    },
+    "stlcstrParam": {
+      "description": "Passing the result of c_str() to a function that takes std::string as argument no. 0 is slow and redundant.",
+      "toolName": "cppcheck"
+    },
+    "stlcstrReturn": {
+      "description": "Returning the result of c_str() in a function that returns std::string is slow and redundant.",
+      "toolName": "cppcheck"
+    },
+    "stlcstr": {
+      "description": "Dangerous usage of c_str(). The value returned by c_str() is invalid after this call.",
+      "toolName": "cppcheck"
+    },
+    "stlFindInsert": {
+      "description": "Searching before insertion is not necessary.",
+      "toolName": "cppcheck"
+    },
+    "stlIfStrFind": {
+      "description": "Inefficient usage of string::find() in condition; string::starts_with() could be faster.",
+      "toolName": "cppcheck"
+    },
+    "stlIfFind": {
+      "description": "Suspicious condition. The result of find() is an iterator, but it is not properly checked.",
+      "toolName": "cppcheck"
+    },
+    "stlBoundaries": {
+      "description": "Dangerous comparison using operator&lt; on iterator.",
+      "toolName": "cppcheck"
+    },
+    "negativeContainerIndex": {
+      "description": "Array index -1 is out of bounds.",
+      "toolName": "cppcheck"
+    },
+    "stlOutOfBounds": {
+      "description": "When i==foo.size(), foo[i] is out of bounds.",
+      "toolName": "cppcheck"
+    },
+    "eraseDereference": {
+      "description": "Invalid iterator &apos;iter&apos; used.",
+      "toolName": "cppcheck"
+    },
+    "sameIteratorExpression": {
+      "description": "Same iterators expression are used for algorithm.",
+      "toolName": "cppcheck"
+    },
+    "mismatchingContainerExpression": {
+      "description": "Iterators to containers from different expressions &apos;v1&apos; and &apos;v2&apos; are used together.",
+      "toolName": "cppcheck"
+    },
+    "mismatchingContainers": {
+      "description": "Iterators of different containers &apos;v1&apos; and &apos;v2&apos; are used together.",
+      "toolName": "cppcheck"
+    },
+    "mismatchingContainerIterator": {
+      "description": "Iterator &apos;it&apos; from different container &apos;v1&apos; are used together.",
+      "toolName": "cppcheck"
+    },
+    "invalidContainer": {
+      "description": "Using object that may be invalid.",
+      "toolName": "cppcheck"
+    },
+    "invalidContainerLoop": {
+      "description": "Calling &apos;erase&apos; while iterating the container is invalid.",
+      "toolName": "cppcheck"
+    },
+    "iterators3": {
+      "description": "Same iterator is used with containers &apos;container&apos; that are defined in different scopes.",
+      "toolName": "cppcheck"
+    },
+    "iterators2": {
+      "description": "Same iterator is used with different containers &apos;container0&apos; and &apos;container1&apos;.",
+      "toolName": "cppcheck"
+    },
+    "iterators1": {
+      "description": "Same iterator is used with different containers &apos;container1&apos; and &apos;container2&apos;.",
+      "toolName": "cppcheck"
+    },
+    "invalidIterator1": {
+      "description": "Invalid iterator: iterator",
+      "toolName": "cppcheck"
+    },
+    "containerOutOfBounds": {
+      "description": "Out of bounds access in expression &apos;container[x]&apos;",
+      "toolName": "cppcheck"
+    },
+    "moduloofone": {
+      "description": "Modulo of one is always equal to zero",
+      "toolName": "cppcheck"
+    },
+    "funcArgOrderDifferent": {
+      "description": "Function &apos;function&apos; argument order different: declaration &apos;&apos; definition &apos;&apos;",
+      "toolName": "cppcheck"
+    },
+    "redundantInitialization": {
+      "description": "Redundant initialization for &apos;var&apos;. The initialized value is overwritten before it is read.",
+      "toolName": "cppcheck"
+    },
+    "redundantAssignment": {
+      "description": "Variable &apos;var&apos; is reassigned a value before the old one has been used.",
+      "toolName": "cppcheck"
+    },
+    "comparePointers": {
+      "description": "Comparing pointers that point to different objects",
+      "toolName": "cppcheck"
+    },
+    "knownArgumentHiddenVariableExpression": {
+      "description": "Argument &apos;x*0&apos; to function &apos;func&apos; is always 0. Constant literal calculation disable/hide variable expression &apos;x&apos;.",
+      "toolName": "cppcheck"
+    },
+    "knownArgument": {
+      "description": "Argument &apos;x-x&apos; to function &apos;func&apos; is always 0. It does not matter what value &apos;x&apos; has.",
+      "toolName": "cppcheck"
+    },
+    "shadowArgument": {
+      "description": "Local variable &apos;argument&apos; shadows outer argument",
+      "toolName": "cppcheck"
+    },
+    "shadowFunction": {
+      "description": "Local variable &apos;function&apos; shadows outer function",
+      "toolName": "cppcheck"
+    },
+    "shadowVariable": {
+      "description": "Local variable &apos;variable&apos; shadows outer variable",
+      "toolName": "cppcheck"
+    },
+    "redundantBitwiseOperationInSwitch": {
+      "description": "Redundant bitwise operation on &apos;varname&apos; in &apos;switch&apos; statement. &apos;break;&apos; missing?",
+      "toolName": "cppcheck"
+    },
+    "funcArgNamesDifferent": {
+      "description": "Function &apos;function&apos; argument 2 names different: declaration &apos;A&apos; definition &apos;B&apos;.",
+      "toolName": "cppcheck"
+    },
+    "accessForwarded": {
+      "description": "Access of forwarded variable &apos;v&apos;.",
+      "toolName": "cppcheck"
+    },
+    "accessMoved": {
+      "description": "Access of moved variable &apos;v&apos;.",
+      "toolName": "cppcheck"
+    },
+    "unknownEvaluationOrder": {
+      "description": "Expression &apos;x = x++;&apos; depends on order of evaluation of side effects",
+      "toolName": "cppcheck"
+    },
+    "unusedLabelSwitchConfiguration": {
+      "description": "Label &apos;&apos; is not used. There is #if in function body so the label might be used in code that is removed by the preprocessor. Should this be a &apos;case&apos; of the enclosing switch()?",
+      "toolName": "cppcheck"
+    },
+    "unusedLabelSwitch": {
+      "description": "Label &apos;&apos; is not used. Should this be a &apos;case&apos; of the enclosing switch()?",
+      "toolName": "cppcheck"
+    },
+    "unusedLabelConfiguration": {
+      "description": "Label &apos;&apos; is not used. There is #if in function body so the label might be used in code that is removed by the preprocessor.",
+      "toolName": "cppcheck"
+    },
+    "unusedLabel": {
+      "description": "Label &apos;&apos; is not used.",
+      "toolName": "cppcheck"
+    },
+    "redundantPointerOp": {
+      "description": "Redundant pointer operation on &apos;varname&apos; - it&apos;s already a pointer.",
+      "toolName": "cppcheck"
+    },
+    "commaSeparatedReturn": {
+      "description": "Comma is used in return statement. The comma can easily be misread as a &apos;;&apos;.",
+      "toolName": "cppcheck"
+    },
+    "nanInArithmeticExpression": {
+      "description": "Using NaN/Inf in a computation.",
+      "toolName": "cppcheck"
+    },
+    "varFuncNullUB": {
+      "description": "Passing NULL after the last typed argument to a variadic function leads to undefined behaviour.",
+      "toolName": "cppcheck"
+    },
+    "incompleteArrayFill": {
+      "description": "Array &apos;buffer&apos; is filled incompletely. Did you forget to multiply the size given to &apos;memset()&apos; with &apos;sizeof(*buffer)&apos;?",
+      "toolName": "cppcheck"
+    },
+    "suspiciousSemicolon": {
+      "description": "Suspicious use of ; at the end of &apos;&apos; statement.",
+      "toolName": "cppcheck"
+    },
+    "pointerPositive": {
+      "description": "A pointer can not be negative so it is either pointless or an error to check if it is not.",
+      "toolName": "cppcheck"
+    },
+    "pointerLessThanZero": {
+      "description": "A pointer can not be negative so it is either pointless or an error to check if it is.",
+      "toolName": "cppcheck"
+    },
+    "unsignedPositive": {
+      "description": "Unsigned expression &apos;varname&apos; can&apos;t be negative so it is unnecessary to test it.",
+      "toolName": "cppcheck"
+    },
+    "unsignedLessThanZero": {
+      "description": "Checking if unsigned expression &apos;varname&apos; is less than zero.",
+      "toolName": "cppcheck"
+    },
+    "unreachableCode": {
+      "description": "Statements following return, break, continue, goto or throw will never be executed.",
+      "toolName": "cppcheck"
+    },
+    "duplicateBreak": {
+      "description": "Consecutive return, break, continue, goto or throw statements are unnecessary.",
+      "toolName": "cppcheck"
+    },
+    "duplicateExpressionTernary": {
+      "description": "Same expression in both branches of ternary operator.",
+      "toolName": "cppcheck"
+    },
+    "duplicateValueTernary": {
+      "description": "Same value in both branches of ternary operator.",
+      "toolName": "cppcheck"
+    },
+    "duplicateExpression": {
+      "description": "Same expression on both sides of &apos;&amp;&amp;&apos;.",
+      "toolName": "cppcheck"
+    },
+    "oppositeExpression": {
+      "description": "Opposite expression on both sides of &apos;&amp;&amp;&apos;.",
+      "toolName": "cppcheck"
+    },
+    "duplicateAssignExpression": {
+      "description": "Same expression used in consecutive assignments of &apos;x&apos; and &apos;x&apos;.",
+      "toolName": "cppcheck"
+    },
+    "duplicateBranch": {
+      "description": "Found duplicate branches for &apos;if&apos; and &apos;else&apos;.",
+      "toolName": "cppcheck"
+    },
+    "clarifyStatement": {
+      "description": "In expression like &apos;*A++&apos; the result of &apos;*&apos; is unused. Did you intend to write &apos;(*A)++;&apos;?",
+      "toolName": "cppcheck"
+    },
+    "clarifyCalculation": {
+      "description": "Clarify calculation precedence for &apos;+&apos; and &apos;?&apos;.",
+      "toolName": "cppcheck"
+    },
+    "selfAssignment": {
+      "description": "Redundant assignment of &apos;varname&apos; to itself.",
+      "toolName": "cppcheck"
+    },
+    "suspiciousCase": {
+      "description": "Found suspicious case label in switch(). Operator &apos;||&apos; probably doesn&apos;t work as intended.",
+      "toolName": "cppcheck"
+    },
+    "redundantCopyInSwitch": {
+      "description": "Buffer &apos;var&apos; is being written before its old content has been used. &apos;break;&apos; missing?",
+      "toolName": "cppcheck"
+    },
+    "redundantAssignInSwitch": {
+      "description": "Variable &apos;var&apos; is reassigned a value before the old one has been used. &apos;break;&apos; missing?",
+      "toolName": "cppcheck"
+    },
+    "variableScope": {
+      "description": "The scope of the variable &apos;varname&apos; can be reduced.",
+      "toolName": "cppcheck"
+    },
+    "charBitOp": {
+      "description": "When using &apos;char&apos; variables in bit operations, sign extension can generate unexpected results.",
+      "toolName": "cppcheck"
+    },
+    "unknownSignCharArrayIndex": {
+      "description": "&apos;char&apos; type used as array index.",
+      "toolName": "cppcheck"
+    },
+    "signedCharArrayIndex": {
+      "description": "Signed &apos;char&apos; type used as array index.",
+      "toolName": "cppcheck"
+    },
+    "constStatement": {
+      "description": "Redundant code: Found a statement that begins with type constant.",
+      "toolName": "cppcheck"
+    },
+    "constVariable": {
+      "description": "Variable &apos;x&apos; can be declared with const",
+      "toolName": "cppcheck"
+    },
+    "passedByValue": {
+      "description": "Function parameter &apos;parametername&apos; should be passed by const reference.",
+      "toolName": "cppcheck"
+    },
+    "cstyleCast": {
+      "description": "C-style pointer casting",
+      "toolName": "cppcheck"
+    },
+    "checkCastIntToCharAndBack": {
+      "description": "Storing func_name() return value in char variable and then comparing with EOF.",
+      "toolName": "cppcheck"
+    },
+    "comparisonFunctionIsAlwaysTrueOrFalse": {
+      "description": "Comparison of two identical variables with isless(varName,varName) always evaluates to false.",
+      "toolName": "cppcheck"
+    },
+    "redundantCopy": {
+      "description": "Buffer &apos;var&apos; is being written before its old content has been used.",
+      "toolName": "cppcheck"
+    },
+    "redundantCopyLocalConst": {
+      "description": "Use const reference for &apos;varname&apos; to avoid unnecessary data copying.",
+      "toolName": "cppcheck"
+    },
+    "invalidFree": {
+      "description": "Mismatching address is freed. The address you get from malloc() must be freed without offset.",
+      "toolName": "cppcheck"
+    },
+    "raceAfterInterlockedDecrement": {
+      "description": "Race condition: non-interlocked access after InterlockedDecrement(). Use InterlockedDecrement() return value instead.",
+      "toolName": "cppcheck"
+    },
+    "wrongPipeParameterSize": {
+      "description": "Buffer &apos;varname&apos; must have size of 2 integers if used as parameter of pipe().",
+      "toolName": "cppcheck"
+    },
+    "shiftNegative": {
+      "description": "Shifting by a negative value is undefined behaviour",
+      "toolName": "cppcheck"
+    },
+    "shiftNegativeLHS": {
+      "description": "Shifting a negative value is technically undefined behaviour",
+      "toolName": "cppcheck"
+    },
+    "invalidPointerCast": {
+      "description": "Casting between float * and double * which have an incompatible binary data representation.",
+      "toolName": "cppcheck"
+    },
+    "unusedScopedObject": {
+      "description": "Instance of &apos;varname&apos; object is destroyed immediately",
+      "toolName": "cppcheck"
+    },
+    "zerodivcond": {
+      "description": "Either the condition is redundant or there is division by zero.",
+      "toolName": "cppcheck"
+    },
+    "zerodiv": {
+      "description": "Division by zero",
+      "toolName": "cppcheck"
+    },
+    "nullPointerArithmeticRedundantCheck": {
+      "description": "Either the condition is redundant or there is pointer arithmetic with NULL pointer.",
+      "toolName": "cppcheck"
+    },
+    "nullPointerArithmetic": {
+      "description": "Pointer arithmetic with NULL pointer",
+      "toolName": "cppcheck"
+    },
+    "nullPointerRedundantCheck": {
+      "description": "Either the condition is redundant or there is possible null pointer dereference: pointer.",
+      "toolName": "cppcheck"
+    },
+    "nullPointerDefaultArg": {
+      "description": "Possible null pointer dereference if the default parameter value is used: pointer",
+      "toolName": "cppcheck"
+    },
+    "nullPointer": {
+      "description": "Null pointer dereference",
+      "toolName": "cppcheck"
+    },
+    "memleakOnRealloc": {
+      "description": "Common realloc mistake: &apos;varname&apos; nulled but not freed upon failure",
+      "toolName": "cppcheck"
+    },
+    "mismatchAllocDealloc": {
+      "description": "Mismatching allocation and deallocation: varname",
+      "toolName": "cppcheck"
+    },
+    "mismatchSize": {
+      "description": "The allocated size sz is not a multiple of the underlying type&apos;s size.",
+      "toolName": "cppcheck"
+    },
+    "deallocuse": {
+      "description": "Dereferencing &apos;varname&apos; after it is deallocated / released",
+      "toolName": "cppcheck"
+    },
+    "deallocDealloc": {
+      "description": "Deallocating a deallocated pointer: varname",
+      "toolName": "cppcheck"
+    },
+    "resourceLeak": {
+      "description": "Resource leak: varname",
+      "toolName": "cppcheck"
+    },
+    "memleak": {
+      "description": "Memory leak: varname",
+      "toolName": "cppcheck"
+    },
+    "unsafeClassCanLeak": {
+      "description": "Class &apos;class&apos; is unsafe, &apos;class::varname&apos; can leak by wrong usage.",
+      "toolName": "cppcheck"
+    },
+    "publicAllocationError": {
+      "description": "Possible leak in public function. The pointer &apos;varname&apos; is not deallocated before it is allocated.",
+      "toolName": "cppcheck"
+    },
+    "leakUnsafeArgAlloc": {
+      "description": "Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared&lt;int&gt;() instead.",
+      "toolName": "cppcheck"
+    },
+    "leakReturnValNotUsed": {
+      "description": "Return value of allocation function &apos;funcName&apos; is not stored.",
+      "toolName": "cppcheck"
+    },
+    "leakNoVarFunctionCall": {
+      "description": "Allocation with funcName, funcName doesn&apos;t release it.",
+      "toolName": "cppcheck"
+    },
+    "doubleFree": {
+      "description": "Memory pointed to by &apos;varname&apos; is freed twice.",
+      "toolName": "cppcheck"
+    },
+    "deallocret": {
+      "description": "Returning/dereferencing &apos;p&apos; after it is deallocated / released",
+      "toolName": "cppcheck"
+    },
+    "wrongPrintfScanfParameterPositionError": {
+      "description": "printf: referencing parameter 2 while 1 arguments given",
+      "toolName": "cppcheck"
+    },
+    "invalidScanfFormatWidth_smaller": {
+      "description": "Width -1 given in format string (no. 99) is smaller than destination buffer &apos;[0]&apos;.",
+      "toolName": "cppcheck"
+    },
+    "invalidScanfFormatWidth": {
+      "description": "Width 5 given in format string (no. 10) is larger than destination buffer &apos;[0]&apos;, use %-1s to prevent overflowing it.",
+      "toolName": "cppcheck"
+    },
+    "invalidLengthModifierError": {
+      "description": "&apos;I&apos; in format string (no. 1) is a length modifier and cannot be used without a conversion specifier.",
+      "toolName": "cppcheck"
+    },
+    "invalidPrintfArgType_float": {
+      "description": "%f in format string (no. 1) requires &apos;double&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidPrintfArgType_sint": {
+      "description": "%i in format string (no. 1) requires &apos;int&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidPrintfArgType_uint": {
+      "description": "%u in format string (no. 1) requires &apos;unsigned int&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidPrintfArgType_p": {
+      "description": "%p in format string (no. 1) requires an address but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidPrintfArgType_n": {
+      "description": "%n in format string (no. 1) requires &apos;int *&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidPrintfArgType_s": {
+      "description": "%s in format string (no. 1) requires &apos;char *&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidScanfArgType_float": {
+      "description": "%f in format string (no. 1) requires &apos;float *&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidScanfArgType_int": {
+      "description": "%d in format string (no. 1) requires &apos;int *&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "invalidScanfArgType_s": {
+      "description": "s in format string (no. 1) requires a &apos;char *&apos; but the argument type is Unknown.",
+      "toolName": "cppcheck"
+    },
+    "wrongPrintfScanfArgNum": {
+      "description": "printf format string requires 3 parameters but only 2 are given.",
+      "toolName": "cppcheck"
+    },
+    "invalidscanf": {
+      "description": "scanf() without field width limits can crash with huge input data.",
+      "toolName": "cppcheck"
+    },
+    "seekOnAppendedFile": {
+      "description": "Repositioning operation performed on a file opened in append mode has no effect.",
+      "toolName": "cppcheck"
+    },
+    "useClosedFile": {
+      "description": "Used file that is not opened.",
+      "toolName": "cppcheck"
+    },
+    "writeReadOnlyFile": {
+      "description": "Write operation on a file that was opened only for reading.",
+      "toolName": "cppcheck"
+    },
+    "readWriteOnlyFile": {
+      "description": "Read operation on a file that was opened only for writing.",
+      "toolName": "cppcheck"
+    },
+    "IOWithoutPositioning": {
+      "description": "Read and write operations without a call to a positioning function (fseek, fsetpos or rewind) or fflush in between result in undefined behaviour.",
+      "toolName": "cppcheck"
+    },
+    "fflushOnInputStream": {
+      "description": "fflush() called on input stream &apos;stdin&apos; may result in undefined behaviour on non-linux systems.",
+      "toolName": "cppcheck"
+    },
+    "coutCerrMisusage": {
+      "description": "Invalid usage of output stream: &apos;&lt;&lt; std::cout&apos;.",
+      "toolName": "cppcheck"
+    },
+    "unhandledExceptionSpecification": {
+      "description": "Unhandled exception specification when calling function foo().",
+      "toolName": "cppcheck"
+    },
+    "throwInNoexceptFunction": {
+      "description": "Exception thrown in function declared not to throw exceptions.",
+      "toolName": "cppcheck"
+    },
+    "catchExceptionByValue": {
+      "description": "Exception should be caught by reference.",
+      "toolName": "cppcheck"
+    },
+    "exceptRethrowCopy": {
+      "description": "Throwing a copy of the caught exception instead of rethrowing the original exception",
+      "toolName": "cppcheck"
+    },
+    "exceptDeallocThrow": {
+      "description": "Exception thrown in invalid state, &apos;p&apos; points at deallocated memory",
+      "toolName": "cppcheck"
+    },
+    "exceptThrowInDestructor": {
+      "description": "Class Class is not safe, destructor throws exception",
+      "toolName": "cppcheck"
+    },
+    "duplicateConditionalAssign": {
+      "description": "Duplicate expression for the condition and assignment",
+      "toolName": "cppcheck"
+    },
+    "pointerAdditionResultNotNull": {
+      "description": "Comparison is wrong. Result of &apos;ptr+1&apos; can&apos;t be 0 unless there is pointer overflow, and pointer overflow is undefined behaviour.",
+      "toolName": "cppcheck"
+    },
+    "invalidTestForOverflow": {
+      "description": "Invalid test for overflow &apos;x + c &lt; x&apos;; signed integer overflow is undefined behavior. Some mainstream compilers remove such overflow tests when optimising the code and assume it&apos;s always false.",
+      "toolName": "cppcheck"
+    },
+    "knownConditionTrueFalse": {
+      "description": "Condition &apos;x&apos; is always false",
+      "toolName": "cppcheck"
+    },
+    "clarifyCondition": {
+      "description": "Suspicious condition (assignment + comparison); Clarify expression with parentheses.",
+      "toolName": "cppcheck"
+    },
+    "moduloAlwaysTrueFalse": {
+      "description": "Comparison of modulo result is predetermined, because it is always less than 1.",
+      "toolName": "cppcheck"
+    },
+    "redundantCondition": {
+      "description": "Redundant condition: If x &gt; 11 the condition x &gt; 10 is always true.",
+      "toolName": "cppcheck"
+    },
+    "incorrectLogicOperator": {
+      "description": "Logical disjunction always evaluates to true: foo &gt; 3 &amp;&amp; foo &lt; 4.",
+      "toolName": "cppcheck"
+    },
+    "identicalConditionAfterEarlyExit": {
+      "description": "Identical condition &apos;x&apos;, second condition is always false",
+      "toolName": "cppcheck"
+    },
+    "identicalInnerCondition": {
+      "description": "Identical inner &apos;if&apos; condition is always true.",
+      "toolName": "cppcheck"
+    },
+    "oppositeInnerCondition": {
+      "description": "Opposite inner &apos;if&apos; condition leads to a dead code block.",
+      "toolName": "cppcheck"
+    },
+    "mismatchingBitAnd": {
+      "description": "Mismatching bitmasks. Result is always 0 (X = Y &amp; 0xf0; Z = X &amp; 0x1; =&gt; Z=0).",
+      "toolName": "cppcheck"
+    },
+    "multiCondition": {
+      "description": "Expression is always false because &apos;else if&apos; condition matches previous condition at line 1.",
+      "toolName": "cppcheck"
+    },
+    "duplicateCondition": {
+      "description": "The if condition is the same as the previous if condition",
+      "toolName": "cppcheck"
+    },
+    "comparisonError": {
+      "description": "Expression &apos;(X &amp; 0x6) == 0x1&apos; is always false.",
+      "toolName": "cppcheck"
+    },
+    "badBitmaskCheck": {
+      "description": "Result of operator &apos;|&apos; is always true if one operand is non-zero.",
+      "toolName": "cppcheck"
+    },
+    "assignIfError": {
+      "description": "Mismatching assignment and comparison, comparison &apos;&apos; is always false.",
+      "toolName": "cppcheck"
+    },
+    "unsafeClassRefMember": {
+      "description": "Unsafe class: The const reference member &apos;UnsafeClass::var&apos; is initialized by a const reference constructor argument. You need to be careful about lifetime issues.",
+      "toolName": "cppcheck"
+    },
+    "thisUseAfterFree": {
+      "description": "Using member &apos;x&apos; when &apos;this&apos; might be invalid",
+      "toolName": "cppcheck"
+    },
+    "missingOverride": {
+      "description": "The function &apos;&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.",
+      "toolName": "cppcheck"
+    },
+    "virtualCallInConstructor": {
+      "description": "Virtual function &apos;f&apos; is called from constructor &apos;&apos; at line 1. Dynamic binding is not used.",
+      "toolName": "cppcheck"
+    },
+    "pureVirtualCall": {
+      "description": "Call of pure virtual function &apos;f&apos; in constructor.",
+      "toolName": "cppcheck"
+    },
+    "copyCtorAndEqOperator": {
+      "description": "The class &apos;class&apos; has &apos;operator=&apos; but lack of &apos;copy constructor&apos;.",
+      "toolName": "cppcheck"
+    },
+    "duplInheritedMember": {
+      "description": "The class &apos;class&apos; defines member variable with name &apos;variable&apos; also defined in its parent class &apos;class&apos;.",
+      "toolName": "cppcheck"
+    },
+    "selfInitialization": {
+      "description": "Member variable &apos;var&apos; is initialized by itself.",
+      "toolName": "cppcheck"
+    },
+    "useInitializationList": {
+      "description": "Variable &apos;variable&apos; is assigned in constructor body. Consider performing initialization in initialization list.",
+      "toolName": "cppcheck"
+    },
+    "initializerList": {
+      "description": "Member variable &apos;class::variable&apos; is in the wrong place in the initializer list.",
+      "toolName": "cppcheck"
+    },
+    "functionStatic": {
+      "description": "Technically the member function &apos;class::function&apos; can be static (but you may consider moving to unnamed namespace).",
+      "toolName": "cppcheck"
+    },
+    "functionConst": {
+      "description": "Technically the member function &apos;class::function&apos; can be const.",
+      "toolName": "cppcheck"
+    },
+    "operatorEqToSelf": {
+      "description": "apos;operator=&apos; should check for assignment to self to avoid problems with dynamic memory.",
+      "toolName": "cppcheck"
+    },
+    "operatorEqShouldBeLeftUnimplemented": {
+      "description": "&apos;operator=&apos; should either return reference to &apos;this&apos; instance or be declared private and left unimplemented.",
+      "toolName": "cppcheck"
+    },
+    "operatorEqMissingReturnStatement": {
+      "description": "No &apos;return&apos; statement in non-void function causes undefined behavior.",
+      "toolName": "cppcheck"
+    },
+    "operatorEqRetRefThis": {
+      "description": "&apos;operator=&apos; should return reference to &apos;this&apos; instance.",
+      "toolName": "cppcheck"
+    },
+    "thisSubtraction": {
+      "description": "Suspicious pointer subtraction. Did you intend to write &apos;-&gt;&apos;?\"",
+      "toolName": "cppcheck"
+    },
+    "virtualDestructor": {
+      "description": "Class &apos;Base&apos; which is inherited by class &apos;Derived&apos; does not have a virtual destructor.",
+      "toolName": "cppcheck"
+    },
+    "mallocOnClassError": {
+      "description": "Memory for class instance allocated with malloc(), but class contains a std::string.",
+      "toolName": "cppcheck"
+    },
+    "mallocOnClassWarning": {
+      "description": "Memory for class instance allocated with malloc(), but class provides constructors.",
+      "toolName": "cppcheck"
+    },
+    "memsetClassFloat": {
+      "description": "Using memset() on class which contains a floating point number.",
+      "toolName": "cppcheck"
+    },
+    "memsetClassReference": {
+      "description": "Using &apos;memfunc&apos; on class that contains a reference.",
+      "toolName": "cppcheck"
+    },
+    "memsetClass": {
+      "description": "Using &apos;memfunc&apos; on class that contains a classname.",
+      "toolName": "cppcheck"
+    },
+    "unusedPrivateFunction": {
+      "description": "Unused private function: &apos;classname::funcname&apos;",
+      "toolName": "cppcheck"
+    },
+    "operatorEqVarError": {
+      "description": "Member variable &apos;classname::&apos; is not assigned a value in &apos;classname::operator=&apos;.",
+      "toolName": "cppcheck"
+    },
+    "uninitDerivedMemberVarPrivate": {
+      "description": "Member variable &apos;classname::varnamepriv&apos; is not initialized in the constructor. Maybe it should be initialized directly in the class classname?",
+      "toolName": "cppcheck"
+    },
+    "uninitDerivedMemberVar": {
+      "description": "Member variable &apos;classname::varname&apos; is not initialized in the constructor. Maybe it should be initialized directly in the class classname?",
+      "toolName": "cppcheck"
+    },
+    "uninitMemberVarPrivate": {
+      "description": "Member variable &apos;classname::varnamepriv&apos; is not initialized in the constructor.",
+      "toolName": "cppcheck"
+    },
+    "uninitMemberVar": {
+      "description": "Member variable &apos;classname::varname&apos; is not initialized in the constructor.",
+      "toolName": "cppcheck"
+    },
+    "noDestructor": {
+      "description": "Class &apos;class&apos; does not have a destructor which is recommended since it has dynamic memory/resource allocation(s).",
+      "toolName": "cppcheck"
+    },
+    "noOperatorEq": {
+      "description": "Class &apos;class&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).",
+      "toolName": "cppcheck"
+    },
+    "noCopyConstructor": {
+      "description": "Class &apos;class&apos; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).",
+      "toolName": "cppcheck"
+    },
+    "copyCtorPointerCopying": {
+      "description": "Value of pointer &apos;var&apos;, which points to allocated memory, is copied in copy constructor instead of allocating new memory.",
+      "toolName": "cppcheck"
+    },
+    "noExplicitConstructor": {
+      "description": "Class &apos;classname&apos; has a constructor with 1 argument that is not explicit.",
+      "toolName": "cppcheck"
+    },
+    "noConstructor": {
+      "description": "The class &apos;classname&apos; does not have a constructor although it has private member variables.",
+      "toolName": "cppcheck"
+    },
+    "memsetValueOutOfRange": {
+      "description": "The 2nd memset() argument &apos;varname&apos; doesn&apos;t fit into an &apos;unsigned char&apos;.",
+      "toolName": "cppcheck"
+    },
+    "memsetFloat": {
+      "description": "The 2nd memset() argument &apos;varname&apos; is a float, its representation is implementation defined.",
+      "toolName": "cppcheck"
+    },
+    "memsetZeroBytes": {
+      "description": "memset() called to fill 0 bytes. The second and third arguments might be inverted. The function memset ( void * ptr, int value, size_t num ) sets the first num bytes of the block of memory pointed by ptr to the specified value.",
+      "toolName": "cppcheck"
+    },
+    "unpreciseMathCall": {
+      "description": "Expression &apos;1 - erf(x)&apos; can be replaced by &apos;erfc(x)&apos; to avoid loss of precision.",
+      "toolName": "cppcheck"
+    },
+    "wrongmathcall": {
+      "description": "Passing value &apos;#&apos; to #() leads to implementation-defined result.",
+      "toolName": "cppcheck"
+    },
+    "ignoredReturnValue": {
+      "description": "Return value of function malloc() is not used.",
+      "toolName": "cppcheck"
+    },
+    "invalidFunctionArgStr": {
+      "description": "Invalid func_name() argument nr 1. A nul-terminated string is required.",
+      "toolName": "cppcheck"
+    },
+    "invalidFunctionArgBool": {
+      "description": "Invalid func_name() argument nr 1. A non-boolean value is required.",
+      "toolName": "cppcheck"
+    },
+    "invalidFunctionArg": {
+      "description": "Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are &apos;1:4&apos;.",
+      "toolName": "cppcheck"
+    },
+    "objectIndex": {
+      "description": "The address of local variable &apos;&apos; is accessed at non-zero index.",
+      "toolName": "cppcheck"
+    },
+    "bufferAccessOutOfBounds": {
+      "description": "Buffer is accessed out of bounds: buf",
+      "toolName": "cppcheck"
+    },
+    "arrayIndexThenCheck": {
+      "description": "Array index &apos;i&apos; is used before limits check.",
+      "toolName": "cppcheck"
+    },
+    "negativeIndex": {
+      "description": "Negative array index",
+      "toolName": "cppcheck"
+    },
+    "pointerOutOfBounds": {
+      "description": "Pointer arithmetic overflow.",
+      "toolName": "cppcheck"
+    },
+    "arrayIndexOutOfBoundsCond": {
+      "description": "Array &apos;arr[16]&apos; accessed at index 16, which is out of bounds.",
+      "toolName": "cppcheck"
+    },
+    "arrayIndexOutOfBounds": {
+      "description": "Array &apos;arr[16]&apos; accessed at index 16, which is out of bounds.",
+      "toolName": "cppcheck"
+    },
+    "boostForeachError": {
+      "description": "BOOST_FOREACH caches the end() iterator. It&apos;s undefined behavior if you modify the container inside.",
+      "toolName": "cppcheck"
+    },
+    "returnNonBoolInBooleanFunction": {
+      "description": "Non-boolean value returned from function returning bool",
+      "toolName": "cppcheck"
+    },
+    "comparisonOfBoolWithInvalidComparator": {
+      "description": "Comparison of a boolean value using relational operator (&lt;, &gt;, &lt;= or &gt;=).",
+      "toolName": "cppcheck"
+    },
+    "pointerArithBool": {
+      "description": "Converting pointer arithmetic result to bool. The bool is always true unless there is undefined behaviour.",
+      "toolName": "cppcheck"
+    },
+    "compareBoolExpressionWithInt": {
+      "description": "Comparison of a boolean expression with an integer other than 0 or 1.",
+      "toolName": "cppcheck"
+    },
+    "bitwiseOnBoolean": {
+      "description": "Boolean expression &apos;expression&apos; is used in bitwise operation. Did you mean &apos;&amp;&amp;&apos;?",
+      "toolName": "cppcheck"
+    },
+    "incrementboolean": {
+      "description": "Incrementing a variable of type &apos;bool&apos; with postfix operator++ is deprecated by the C++ Standard. You should assign it the value &apos;true&apos; instead.",
+      "toolName": "cppcheck"
+    },
+    "comparisonOfBoolWithBoolError": {
+      "description": "Comparison of a variable having boolean value using relational (&lt;, &gt;, &lt;= or &gt;=) operator.\"",
+      "toolName": "cppcheck"
+    },
+    "comparisonOfTwoFuncsReturningBoolError": {
+      "description": "Comparison of two functions returning boolean value using relational (&lt;, &gt;, &lt;= or &gt;=) operator.",
+      "toolName": "cppcheck"
+    },
+    "comparisonOfFuncReturningBoolError": {
+      "description": "Comparison of a function returning boolean value using relational (&lt;, &gt;, &lt;= or &gt;=) operator.",
+      "toolName": "cppcheck"
+    },
+    "assignBoolToFloat": {
+      "description": "Boolean value assigned to floating point variable.",
+      "toolName": "cppcheck"
+    },
+    "assignBoolToPointer": {
+      "description": "Boolean value assigned to pointer.",
+      "toolName": "cppcheck"
+    },
+    "danglingTemporaryLifetime": {
+      "description": "Using object to temporary.",
+      "toolName": "cppcheck"
+    },
+    "danglingLifetime": {
+      "description": "Non-local variable &apos;x&apos; will use object.\"",
+      "toolName": "cppcheck"
+    },
+    "invalidLifetime": {
+      "description": "Using object that is out of scope.",
+      "toolName": "cppcheck"
+    },
+    "returnDanglingLifetime": {
+      "description": "Returning object that will be invalid when returning.",
+      "toolName": "cppcheck"
+    },
+    "uselessAssignmentPtrArg": {
+      "description": "Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?",
+      "toolName": "cppcheck"
+    },
+    "uselessAssignmentArg": {
+      "description": "Assignment of function parameter has no effect outside the function.",
+      "toolName": "cppcheck"
+    },
+    "returnAddressOfFunctionParameter": {
+      "description": "Address of function parameter &apos;parameter&apos; returned.\"",
+      "toolName": "cppcheck"
+    },
+    "autovarInvalidDeallocation": {
+      "description": "Deallocation of an auto-variable results in undefined behaviour.",
+      "toolName": "cppcheck"
+    },
+    "danglingTempReference": {
+      "description": "Using reference to dangling temporary.",
+      "toolName": "cppcheck"
+    },
+    "returnTempReference": {
+      "description": "Reference to temporary returned.",
+      "toolName": "cppcheck"
+    },
+    "danglingReference": {
+      "description": "Non-local reference variable &apos;x&apos; to local variable &apos;y&apos;",
+      "toolName": "cppcheck"
+    },
+    "returnReference": {
+      "description": "Reference to local variable returned.",
+      "toolName": "cppcheck"
+    },
+    "returnLocalVariable": {
+      "description": "Pointer to local array variable returned.",
+      "toolName": "cppcheck"
+    },
+    "returnAddressOfAutoVariable": {
+      "description": "Address of an auto-variable returned.",
+      "toolName": "cppcheck"
+    },
+    "autoVariables": {
+      "description": "Address of local auto-variable assigned to a function parameter.",
+      "toolName": "cppcheck"
+    },
+    "assignmentInAssert": {
+      "description": "Assert statement modifies &apos;var&apos;.",
+      "toolName": "cppcheck"
+    },
+    "assertWithSideEffect": {
+      "description": "Assert statement calls a function which may have desired side effects: &apos;function&apos;",
+      "toolName": "cppcheck"
+    },
+    "CastAddressToIntegerAtReturn": {
+      "description": "Returning an address value in a function with integer return type is not portable.",
+      "toolName": "cppcheck"
+    },
+    "CastIntegerToAddressAtReturn": {
+      "description": "Returning an integer in a function with pointer return type is not portable.",
+      "toolName": "cppcheck"
+    },
+    "purgedConfiguration": {
+      "description": "The configuration &apos;&apos; was not checked because its code equals another one.",
+      "toolName": "cppcheck"
+    },
+    "toomanyconfigs": {
+      "description": "Too many #ifdef configurations - cppcheck only checks 12 configurations.",
+      "toolName": "cppcheck"
+    },
+    "AssignmentAddressToInteger": {
+      "description": "Assigning a pointer to an integer is not portable.",
+      "toolName": "cppcheck"
+    },
+    "AssignmentIntegerToAddress": {
+      "description": "Assigning an integer to a pointer is not portable.",
+      "toolName": "cppcheck"
+    },
+    "getsCalled": {
+      "description": "Obsolete function 'gets' called. It is recommended to use 'fgets' or 'gets_s' instead",
+      "toolName": "cppcheck"
+    },
+    "unknownMacro": {
+      "description": "There is an unknown macro here somewhere. Configuration is required. If DEFINE_STACK_OF is a macro then please configure it",
+      "toolName": "cppcheck"
+    }
+  }
+}

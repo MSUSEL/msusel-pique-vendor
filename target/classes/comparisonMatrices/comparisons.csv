@@ -1,0 +1,10 @@
+﻿Vendor Security Quality,Confidentiality,Authenticity,Integrity,Cross_cutting,Limit_exposure,CWE-710 Improper_adherence_to_coding_standards,CWE-691 Insufficient_control_flow_management,CWE-398 Code_quality,Misc_quality_aspect
+Confidentiality,1,4,4,4,1,9,4,9,9
+Authenticity,0.25,1,4,4,4,9,4,9,9
+Integrity,0.25,0.25,1,1,1,9,4,9,9
+Cross_cutting,0.25,0.25,1,1,1,4,1,4,9
+Limit_exposure,1,0.25,1,1,1,4,1,4,9
+CWE-710 Improper_adherence_to_coding_standards,0.1111,0.1111,0.1111,0.25,0.25,1,1,1,9
+CWE-691 Insufficient_control_flow_management,0.25,0.25,0.25,1,1,1,1,1,9
+CWE-398 Code_quality,0.1111,0.1111,0.1111,0.25,0.25,1,1,1,9
+Misc_quality_aspect,0.1111,0.1111,0.1111,0.1111,0.1111,0.1111,0.1111,0.1111,1

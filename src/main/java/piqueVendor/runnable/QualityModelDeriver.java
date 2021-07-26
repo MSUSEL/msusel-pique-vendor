@@ -38,6 +38,7 @@ import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelExport;
 import pique.model.QualityModelImport;
+import tool.CPPCheckToolWrapper;
 import tool.FlawfinderToolWrapper;
 import utilities.PiqueProperties;
 
@@ -68,16 +69,22 @@ public class QualityModelDeriver {
 
         // Initialize objects
         String projectRootFlag = prop.getProperty("tool.filepath");
+        //String projectRootFlag2 = "C:\\Users\\ernes\\IdeaProjects\\myVendor6";
+        String projectRootFlag2 = prop.getProperty("tool2.filepath");
         Path toolLocation = Paths.get(projectRootFlag);
+        Path toolLocation2 = Paths.get(projectRootFlag2);
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
+        Path comparisonMatrices = Paths.get(prop.getProperty("comparisons.directory"));
 
         ITool flawfinderToolWrapper = new FlawfinderToolWrapper(toolLocation);
         Set<ITool> tools = Stream.of(flawfinderToolWrapper).collect(Collectors.toSet());
+        ITool cppCheckToolWrapper = new CPPCheckToolWrapper(toolLocation2);
+        tools.addAll(Stream.of(cppCheckToolWrapper).collect(Collectors.toSet()));
 
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 
-        QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
+        QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag, comparisonMatrices);
 
         Path jsonOutput = new QualityModelExport(derivedQualityModel)
                 .exportToJson(derivedQualityModel
@@ -88,7 +95,7 @@ public class QualityModelDeriver {
 
 
     public static QualityModel deriveModel(QualityModel qmDesign, Set<ITool> tools,
-                                           Path benchmarkRepository, String projectRootFlag) {
+                                           Path benchmarkRepository, String projectRootFlag, Path comparisonMatrices) {
 
         // (1) Derive thresholds
         IBenchmarker benchmarker = qmDesign.getBenchmarker();
@@ -99,7 +106,7 @@ public class QualityModelDeriver {
         IWeighter weighter = qmDesign.getWeighter();
         // TODO (1.0): Consider, instead of weighting all nodes in one sweep here, dynamically assigning IWeighter
         //  ojbects to each node to have them weight using JIT evaluation functions.
-        Set<WeightResult> weights = weighter.elicitateWeights(qmDesign);
+        Set<WeightResult> weights = weighter.elicitateWeights(qmDesign, comparisonMatrices);
         // TODO: assert WeightResult names match expected TQI, QualityAspect, and ProductFactor names from quality model description
 
 

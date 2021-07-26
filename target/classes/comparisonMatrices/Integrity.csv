@@ -1,0 +1,5 @@
+﻿Integrity,CWE-77 OS_command_injection,CWE-190 Integer_wraparound,CWE-119 Improper_restriction_of_operations_in_memory,CWE-682 Incorrect_calculation
+CWE-77 OS_command_injection,1,9,4,9
+CWE-190 Integer_wraparound,0.1111,1,0.25,9
+CWE-119 Improper_restriction_of_operations_in_memory,0.25,4,1,9
+CWE-682 Incorrect_calculation,0.1111,0.1111,0.1111,1

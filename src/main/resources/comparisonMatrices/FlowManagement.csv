@@ -1,0 +1,4 @@
+﻿CWE-691 Insufficient_control_flow_management,CWE-362 race_conditions,CWE-670 Always_incorrect_control_flow,CWE-664 Improper_control_of_a_resource
+CWE-362 race_conditions,1,1,1
+CWE-670 Always_incorrect_control_flow,1,1,1
+CWE-664 Improper_control_of_a_resource,1,1,1
