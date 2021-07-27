@@ -3,19 +3,19 @@
     <cppcheck version="2.4.1"/>
     <errors>
         <error id="arithOperationsOnVoidPointer" severity="portability" msg="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined." verbose="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on &apos;void *&apos; is a GNU C extension, which defines the &apos;sizeof(void)&apos; to be 1." cwe="467">
-            <location file0="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" line="695" column="41"/>
+            <location file0="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" line="695" column="41"/>
             <symbol>data</symbol>
         </error>
         <error id="arithOperationsOnVoidPointer" severity="portability" msg="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined." verbose="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on &apos;void *&apos; is a GNU C extension, which defines the &apos;sizeof(void)&apos; to be 1." cwe="467">
-            <location file0="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" line="696" column="15"/>
+            <location file0="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" line="696" column="15"/>
             <symbol>data</symbol>
         </error>
         <error id="arithOperationsOnVoidPointer" severity="portability" msg="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined." verbose="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on &apos;void *&apos; is a GNU C extension, which defines the &apos;sizeof(void)&apos; to be 1." cwe="467">
-            <location file0="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" line="698" column="41"/>
+            <location file0="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" line="698" column="41"/>
             <symbol>data</symbol>
         </error>
         <error id="arithOperationsOnVoidPointer" severity="portability" msg="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined." verbose="&apos;data&apos; is of type &apos;void *&apos;. When using void pointers in calculations, the behaviour is undefined. Arithmetic operations on &apos;void *&apos; is a GNU C extension, which defines the &apos;sizeof(void)&apos; to be 1." cwe="467">
-            <location file0="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor8\src\main\resources\projectToAssess\testmgr.c" line="699" column="15"/>
+            <location file0="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" file="C:\Users\ernes\IdeaProjects\myVendor13\src\main\resources\projectToAssess\testmgr.c" line="699" column="15"/>
             <symbol>data</symbol>
         </error>
         <error id="missingInclude" severity="information" msg="Cppcheck cannot find all the include files (use --check-config for details)" verbose="Cppcheck cannot find all the include files. Cppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project&apos;s include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config."/>

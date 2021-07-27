@@ -25,6 +25,7 @@ package utilities;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Properties;
+import java.io.File;
 
 public class PiqueProperties {
 

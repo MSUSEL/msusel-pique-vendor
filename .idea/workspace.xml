@@ -5,7 +5,88 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9363bf8b-3254-461c-b401-33d4526150fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/CVendorQualityModel.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/CVendorQualityModel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/cppcheckOutput.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/cppcheckOutput.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/cppcheckOutput.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/cppcheckOutput.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/flawfinderOutput.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/flawfinderOutput.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/flawfinderOutput.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/flawfinderOutput.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calibration/BinaryCWEWeighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calibration/BinaryCWEWeighter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piqueVendor/runnable/SingleProjectEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piqueVendor/runnable/SingleProjectEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/PiqueProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/PiqueProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/console.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/console.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/module.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/module.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/process.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/process.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/ptrace.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/ptrace.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/signal.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/signal.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/smp.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/smp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/trace_kprobe_selftest.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/trace_kprobe_selftest.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/trace_nop.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/trace_nop.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/trace_recursion_record.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/trace_recursion_record.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/trace_sched_wakeup.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/trace_sched_wakeup.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/traps.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/traps.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/uengine.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/uengine.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/via82c505.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/via82c505.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/benchmark/vic.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/benchmark/vic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/piqueVendor.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/piqueVendor.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/console.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/console.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/module.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/module.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/process.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/process.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/ptrace.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/ptrace.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/signal.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/signal.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/smp.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/smp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_irqsoff.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_irqsoff.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_kdb.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_kdb.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_kprobe.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_kprobe.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_mmiotrace.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_mmiotrace.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_output.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_output.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_preemptirq.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_preemptirq.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_printk.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_printk.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_probe.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_probe.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_sched_switch.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_sched_switch.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_selftest.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_selftest.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_selftest_dynamic.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_selftest_dynamic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_seq.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_seq.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_stack.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_stack.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_stat.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_stat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_syscalls.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_syscalls.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/trace_uprobe.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/trace_uprobe.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/tracepoint.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/tracepoint.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/tracing_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/tracing_map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/transition.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/transition.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/traps.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/traps.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/uengine.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/uengine.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier134.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier190.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier250_22.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier327.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier362.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier377.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier676.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier732.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier78.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier785.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/verifier807_20.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/via82c505.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/via82c505.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/benchmark/vic.c" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/benchmark/vic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calibration/BinaryBenchmarker$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calibration/BinaryBenchmarker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calibration/BinaryCWEWeighter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calibration/BinaryCWEWeighter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evaluator/MeasureEvaluator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evaluator/QualityAspectEvaluator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evaluator/UtilityFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evaluator/WeightedAverageEvaluator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/piqueVendor.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/piqueVendor.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/piqueVendor/runnable/QualityModelDeriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/piqueVendor/runnable/QualityModelDeriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/piqueVendor/runnable/SingleProjectEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/piqueVendor/runnable/SingleProjectEvaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tool/CPPCheckToolWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tool/CPPCheckToolWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tool/FlawfinderToolWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tool/FlawfinderToolWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/PiqueProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/PiqueProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/helperFunctions.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

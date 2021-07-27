@@ -1,3 +1,11 @@
 # Default ignored files
 /shelf/
+<<<<<<< HEAD:.gitignore
 /workspace.xmlgit status
+=======
+/workspace.xml
+*.class
+target/
+.idea/
+out/
+>>>>>>> main:.idea/.gitignore
