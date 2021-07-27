@@ -1,1 +1,1 @@
-# Copy-msusel-pique-vendor
+# msusel-pique-vendor
