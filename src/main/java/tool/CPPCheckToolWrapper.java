@@ -57,7 +57,6 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
 
     }
 
-    // Methods
     /**
      * @param path The path to a binary file for the desired solution of project to
      *             analyze
