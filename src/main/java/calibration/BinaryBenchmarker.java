@@ -58,7 +58,7 @@ public class BinaryBenchmarker implements IBenchmarker {
     public Map<String, Double[]> deriveThresholds(Path benchmarkRepository, QualityModel qmDescription, Set<ITool> tools,
                                                   String projectRootFlag) {
 
-        // Collect benchmark binaries
+        // Collect benchmark projects
         Set<Path> projectRoots = new HashSet<>();
         File[] binaryFiles = benchmarkRepository.toFile().listFiles();
         for (File file : binaryFiles) {
@@ -108,7 +108,7 @@ public class BinaryBenchmarker implements IBenchmarker {
             project.evaluateMeasures();
 
             // Add new project (with tool findings information included) to the list
-            projects.add(project); //Un arrayList de proyectos
+            projects.add(project);
 
             // Print information
             System.out.println("\n\tFinished analyzing project " + project.getName());
