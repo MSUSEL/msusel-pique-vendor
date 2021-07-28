@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9363bf8b-3254-461c-b401-33d4526150fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/CVendorQualityModel.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/CVendorQualityModel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/testmgrWeak_evalResults.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/testmgrWeak_evalResults.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/testmgr_evalResults.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/testmgr_evalResults.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piqueVendor/runnable/SingleProjectEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piqueVendor/runnable/SingleProjectEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/piqueVendor/runnable/SingleProjectEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/piqueVendor/runnable/SingleProjectEvaluator.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

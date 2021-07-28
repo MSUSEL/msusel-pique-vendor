@@ -59,7 +59,6 @@ public class SingleProjectEvaluator {
         Properties prop = PiqueProperties.getProperties();
 
         Path projectRoot = Paths.get(prop.getProperty("project.root"));
-        Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         Path resultsDir = Paths.get(prop.getProperty("results.directory"));
 
         // Initialize objects
@@ -67,7 +66,6 @@ public class SingleProjectEvaluator {
         String projectRootFlag2 = prop.getProperty("tool2.filepath");
         Path toolLocation = Paths.get(projectRootFlag);
         Path toolLocation2 = Paths.get(projectRootFlag2);
-        Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
         Path qmLocation = Paths.get("out/CVendorQualityModel.json");
 
@@ -75,8 +73,6 @@ public class SingleProjectEvaluator {
         Set<ITool> tools = Stream.of(flawfinderToolWrapper).collect(Collectors.toSet());
         ITool cppCheckToolWrapper = new CPPCheckToolWrapper(toolLocation2);
         tools.addAll(Stream.of(cppCheckToolWrapper).collect(Collectors.toSet()));
-        /*Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
-        System.out.println("output: " + outputPath.getFileName());*/
 
         Set<Path> projectRoots = new HashSet<>();
         File[] filesToAssess = projectRoot.toFile().listFiles();
@@ -92,7 +88,7 @@ public class SingleProjectEvaluator {
         }
 
     }
-    //region Get / Set
+
     public Project getEvaluatedProject() {
         return project;
     }
@@ -105,11 +101,11 @@ public class SingleProjectEvaluator {
      * quality model.
      *
      * @param projectDir
-     *      Path to root directory of project to be analyzed.
+     *      Path to root directory of projects to be analyzed.
      * @param resultsDir
      *      Directory to place the analysis results in. Does not needy to exist initially.
      * @param qmLocation
-     *      Path to a completely derived quality model (likely .xml format).
+     *      Path to a completely derived quality model (likely .json format).
      * @return
      *      The path to the produced quality analysis file on the hard disk.
      */
@@ -223,12 +219,6 @@ public class SingleProjectEvaluator {
             if (characteristic.getWeights() == null) {
                 throw new RuntimeException("The project's quality model does not have any weights instantiated to its characteristic node");
             }
-
-//            characteristic.getChildren().values().forEach(productFactor -> {
-//                if (productFactor.getMeasure().getThresholds() == null) {
-//                    throw new RuntimeException("The project's quality model does not have any thresholds instantiated to its measure node.");
-//                }
-//            });
         });
     }
 }

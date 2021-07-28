@@ -69,7 +69,6 @@ public class QualityModelDeriver {
 
         // Initialize objects
         String projectRootFlag = prop.getProperty("tool.filepath");
-        //String projectRootFlag2 = "C:\\Users\\ernes\\IdeaProjects\\myVendor6";
         String projectRootFlag2 = prop.getProperty("tool2.filepath");
         Path toolLocation = Paths.get(projectRootFlag);
         Path toolLocation2 = Paths.get(projectRootFlag2);
