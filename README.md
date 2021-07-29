@@ -1,5 +1,5 @@
 # msusel-pique-vendor
-msusel-pique-vendor is a project developed as a National Science Foundation Research Experience for Undergraduates at Montana State University in the summer of 2021. msusel-pique-vendor is an extension of msusel-pique. It allows users to derive quality assessment models and perform security quality assessments for projects written in the C programming language. The security analysis is performed using the flawfinder and cppcheck static analyzers for the C language.
+msusel-pique-vendor is a project developed as a National Science Foundation Research Experience for Undergraduates, at Montana State University, in the summer of 2021. msusel-pique-vendor is an extension of msusel-pique. It allows users to derive quality assessment models and perform security quality assessments for projects written in the C programming language. The security analysis is performed using the flawfinder and cppcheck static analyzers for the C language.
 
 ## Introduction: msusel-pique
 msusel-pique is a fork of the QATCH project found from QuthEceSoftEng's [GitHub](https://github.com/AuthEceSoftEng/qatch) and [Website](http://softeng.issel.ee.auth.gr/).  
