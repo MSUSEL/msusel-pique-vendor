@@ -46,16 +46,16 @@ import utilities.PiqueProperties;
  * (e.g. qatch-csharp) to provide the language specific tools.
  */
 // TODO (1.0): turn into static methods (maybe unless logger problems)
-public class SingleProjectEvaluator {
+public class ProjectsEvaluator {
 
     public static void main(String[] args){
-        new SingleProjectEvaluator();
+        new ProjectsEvaluator();
     }
 
     private Project project;
 
 
-    public SingleProjectEvaluator(){
+    public ProjectsEvaluator(){
         Properties prop = PiqueProperties.getProperties();
 
         Path projectRoot = Paths.get(prop.getProperty("project.root"));
