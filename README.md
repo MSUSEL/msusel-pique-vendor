@@ -1,7 +1,13 @@
 # msusel-pique-vendor
-msusel-pique-vendor is a project developed as a National Science Foundation Research Experience for Undergraduates, at Montana State University, in the summer of 2021. msusel-pique-vendor is an extension of msusel-pique. It allows users to derive quality assessment models and perform security quality assessments for projects written in the C programming language. The security analysis is performed using the flawfinder and cppcheck static analyzers for the C language.
+msusel-pique-vendor is a project developed during the summer of 2021 for the National Science Foundation Research Experience for Undergraduates at Montana State University. It was developed by Ernesto Ortiz and Eleanor Mengel under the direction of Dr. Derek Reimanis. The present document gives the background to the project, and then it describes how to run the system.
 
-## Introduction: msusel-pique
+
+# Introduction: security quality assessments
+The goal of this project is to produce quality models that can be used to perform security quality assessments for projects written in the C programming language. A quality model is a definition of different software characteristics that may be used to describe its quality. This definition is given to the pique platform, along with the path to static analysis tools, and a repository of C language projects that are to be used for benchmarking. A model derivation process is then run in pique, and this outputs a quality model that is ready to perform security assessments for C language projects.
+
+msusel-pique-vendor is an extension of msusel-pique, it extends the pique libraries to create a working system for C security quality investigation. The security analysis is performed using the flawfinder and cppcheck static analyzers for the C language which are used as tools for the pique-vendor platform.
+
+## msusel-pique: origin and structure
 msusel-pique is a fork of the QATCH project found from QuthEceSoftEng's [GitHub](https://github.com/AuthEceSoftEng/qatch) and [Website](http://softeng.issel.ee.auth.gr/).  
 
 This fork modifies QATCH to behave more like a library by modularizing code, introducing maven project structure, removing GUI elements, removing main methods, and having all methods be language and tool agnostic.
@@ -39,7 +45,7 @@ The pique-vendor evaluator component has three classes that extend the pique Eva
 # Static Analysis Tools
 The following static analyzer will need to be installed:
 flawfinder - https://github.com/david-a-wheeler/flawfinder
-cppcheck - http://cppcheck.sourceforge.net/
+cppcheck - http://cppcheck.sourceforge.net/ note: the files for cppcheck are included as part of this project.
 
 ___
 
@@ -65,3 +71,10 @@ To derive a new model:
 write the description of the model and add it to the resources directory and write its name as a new value for blankqm.filepath in the piqueVendor.properties file. Subjective comparison matrices for this model should be added to the comparisonMatrices directory.
 
 The benchmark directory contains the base files against whose values the projects that are to be assessed are measured. The contents of this directory should be adjusted before deriving a model, if so desired.
+
+
+## References
+Rice, David. 2020. An Extensible, Hierarchical Architecture for Analysis of Software Quality Assurance. [Master’s thesis, Montana State University].
+M. Siavvas, K. Chatzidimitriou, and A. Symeonidis. Qatch - an adaptive framework for software product quality assessment. Expert Systems With Applications, 86:350–366, 2017.
+S. Wagner, K. Lochmann, S. Winter, F. Deissenboeck, E. Juergens, M. Herrmannsdoerfer, L. Heinemann, M. Kläs, J. Heidrich, R. Ploesch, A. Göeb, and C. Koerner. The quamoco quality meta-model, technical report. Technical Report TUM-I1281, Technische Universität, München, 2012.
+
