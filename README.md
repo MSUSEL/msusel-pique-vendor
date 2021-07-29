@@ -3,9 +3,9 @@ msusel-pique-vendor is a project developed during the summer of 2021 for the Nat
 
 
 # Introduction: security quality assessments
-The goal of this project is to produce quality models that can be used to perform security quality assessments for projects written in the C programming language. A quality model is a definition of different software characteristics that may be used to describe its quality. This definition is given to the pique platform, along with the path to static analysis tools, and a repository of C language projects that are to be used for benchmarking. A model derivation process is then run in pique, and this outputs a quality model that is ready to perform security assessments for C language projects.
+The goal of this project is to produce quality models that can be used to perform security quality assessments for projects written in the C programming language. A quality model is a definition of different software characteristics that may be used to describe its quality. This definition is given to the PIQUE platform, along with the path to static analysis tools, and a repository of C language projects that are to be used for benchmarking. A model derivation process is then run in PIQUE, and this outputs a quality model that is ready to perform security assessments for C language projects.
 
-msusel-pique-vendor is an extension of msusel-pique, it extends the pique libraries to create a working system for C security quality investigation. The security analysis is performed using the flawfinder and cppcheck static analyzers for the C language which are used as tools for the pique-vendor platform.
+msusel-pique-vendor is an extension of msusel-pique. It extends the PIQUE libraries to create a working system for C security quality investigation. The security analysis is performed using the Flawfinder and Cppcheck static analyzers for the C language which are used as tools for the pique-vendor platform.
 
 ## msusel-pique: origin and structure
 msusel-pique is a fork of the QATCH project found from QuthEceSoftEng's [GitHub](https://github.com/AuthEceSoftEng/qatch) and [Website](http://softeng.issel.ee.auth.gr/).  
@@ -34,18 +34,18 @@ Language specific extensions of PIQUE fulfill the interface contracts required b
 
 
 ## Components: msusel-pique-vendor
-piqueVendor.runnable extends the basic functionalities of the pique runnable component. Changes were made in the QualityModelDeriver and ProjectsEvaluator classes. 
+piqueVendor.runnable extends the basic functionalities of the PIQUE runnable component. Changes were made in the QualityModelDeriver and ProjectsEvaluator classes. 
 
-The tool component in pique vendor is an extension of the analysis component in pique. The classes FlawfinderToolWrapper and CppCheckToolWrapper are implementations of the pique ITool interface.
+The tool component in pique-vendor is an extension of the analysis component in PIQUE. The classes FlawfinderToolWrapper and CppCheckToolWrapper are implementations of the PIQUE ITool interface.
 
-The calibration component on pique-vendor has classes BinaryBenchmarker and BinaryWeighter which implement the pique IBenchmarker and IWeighter interfaces, respectively.
+The calibration component on pique-vendor has classes BinaryBenchmarker and BinaryWeighter which implement the PIQUE IBenchmarker and IWeighter interfaces, respectively.
 
-The pique-vendor evaluator component has three classes that extend the pique Evaluator class and it has one class that extends the pique DefaultUtility class. 
+The pique-vendor evaluator component has three classes that extend the PIQUE Evaluator class and it has one class that extends the PIQUE DefaultUtility class. 
 
 # Static Analysis Tools
 The following static analyzer will need to be installed:
-flawfinder - https://github.com/david-a-wheeler/flawfinder
-cppcheck - http://cppcheck.sourceforge.net/ note: the files for cppcheck are included as part of this project.
+Flawfinder - https://github.com/david-a-wheeler/flawfinder
+Cppcheck - http://cppcheck.sourceforge.net/ note: the files for Cppcheck are included as part of this project.
 
 ___
 
