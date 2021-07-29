@@ -74,7 +74,7 @@ The benchmark directory contains the base files against whose values the project
 
 
 ## References
-Rice, David. 2020. An Extensible, Hierarchical Architecture for Analysis of Software Quality Assurance. [Master’s thesis, Montana State University].
-M. Siavvas, K. Chatzidimitriou, and A. Symeonidis. Qatch - an adaptive framework for software product quality assessment. Expert Systems With Applications, 86:350–366, 2017.
+Rice, David. 2020. An Extensible, Hierarchical Architecture for Analysis of Software Quality Assurance. [Master’s thesis, Montana State University]. <br/>
+M. Siavvas, K. Chatzidimitriou, and A. Symeonidis. Qatch - an adaptive framework for software product quality assessment. Expert Systems With Applications, 86:350–366, 2017.<br/>
 S. Wagner, K. Lochmann, S. Winter, F. Deissenboeck, E. Juergens, M. Herrmannsdoerfer, L. Heinemann, M. Kläs, J. Heidrich, R. Ploesch, A. Göeb, and C. Koerner. The quamoco quality meta-model, technical report. Technical Report TUM-I1281, Technische Universität, München, 2012.
 
