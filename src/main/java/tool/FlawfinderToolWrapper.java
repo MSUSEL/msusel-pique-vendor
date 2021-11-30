@@ -1,6 +1,7 @@
 /**
  * MIT License
- * Copyright (c) 2019 Montana State University Software Engineering Labs
+ *
+ * Copyright (c) 2021 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,6 +55,7 @@ import pique.model.Finding;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
+import pique.utility.BigDecimalWithContext;
 import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
@@ -67,7 +69,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 
 	// Methods
 	/**
-	 * @param path The path to a binary file for the desired solution of project to
+	 * @param projectLocation The path to a binary file for the desired solution of project to
 	 *             analyze
 	 * @return The path to the analysis results file
 	 */
@@ -76,6 +78,9 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 		File tempResults = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.csv");
 		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
+
+
+		//TODO -- not .exe anymore
 
 		String cmd = String.format("cmd /c flawfinder.exe --csv %s -> %s",
 				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
@@ -142,7 +147,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 				}
 				Finding finding = new Finding("",0,0, severityList.get(i));
 				finding.setName(ruleIDList.get(i));
-				finding.setValue(1.0);
+				finding.setValue(new BigDecimalWithContext(1.0));
 				diag.setChild(finding);
 				diag.getValue();
 				diagnosticsFound.put(diag.getName(), diag);

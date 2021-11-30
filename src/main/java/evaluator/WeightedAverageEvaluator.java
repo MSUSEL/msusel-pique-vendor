@@ -1,6 +1,7 @@
 /**
  * MIT License
- * Copyright (c) 2019 Montana State University Software Engineering Labs
+ *
+ * Copyright (c) 2021 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,16 +23,24 @@
  */
 package evaluator;
 
+import java.math.BigDecimal;
+
 import pique.evaluation.Evaluator;
 import pique.model.ModelNode;
+import pique.utility.BigDecimalWithContext;
 
+/**
+ * Evaluates a node as the sum of children multiplied by their edge weight.
+ */
 public class WeightedAverageEvaluator extends Evaluator {
 
     @Override
-    public double evaluate(ModelNode modelNode) {
-        double weightedSum = 0.0;
+    public BigDecimal evaluate(ModelNode modelNode) {
+        BigDecimal weightedSum = new BigDecimalWithContext(0.0);
         for (ModelNode child : modelNode.getChildren().values()) {
-        	weightedSum += child.getValue() * modelNode.getWeight(child.getName());
+            weightedSum = weightedSum.add(
+                child.getValue().multiply(
+                    modelNode.getWeight(child.getName())));
         }
         return weightedSum;
     }

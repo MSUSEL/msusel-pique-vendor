@@ -1,6 +1,7 @@
 /**
  * MIT License
- * Copyright (c) 2019 Montana State University Software Engineering Labs
+ *
+ * Copyright (c) 2021 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +24,7 @@
 package piqueVendor.runnable;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -144,7 +146,7 @@ public class ProjectsEvaluator {
             project.getQualityModel().getQualityAspect(qaName).setValue(qa.getValue());
         });
 
-        double tqiValue = project.evaluateTqi();
+        BigDecimal tqiValue = project.evaluateTqi();
 
         // Create a file of the results and return its path
         return project.exportToJson(resultsDir);

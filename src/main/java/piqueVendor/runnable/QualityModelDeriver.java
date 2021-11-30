@@ -1,6 +1,7 @@
 /**
  * MIT License
- * Copyright (c) 2019 Montana State University Software Engineering Labs
+ *
+ * Copyright (c) 2021 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +23,7 @@
  */
 package piqueVendor.runnable;
 
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -30,6 +32,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
 import pique.calibration.IBenchmarker;
 import pique.calibration.IWeighter;
@@ -52,6 +56,8 @@ import utilities.PiqueProperties;
  */
 public class QualityModelDeriver {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(QualityModelDeriver.class);
+
     public static void main(String[] args){
         new QualityModelDeriver();
     }
@@ -61,6 +67,7 @@ public class QualityModelDeriver {
     }
 
     private void init(){
+        LOGGER.info("Beginning deriver");
 
         Properties prop = PiqueProperties.getProperties();
 
@@ -68,26 +75,26 @@ public class QualityModelDeriver {
         Path derivedModelFilePath = Paths.get(prop.getProperty("results.directory"));
 
         // Initialize objects
-        String projectRootFlag = prop.getProperty("tool.filepath");
-        String projectRootFlag2 = prop.getProperty("tool2.filepath");
-        Path toolLocation = Paths.get(projectRootFlag);
-        Path toolLocation2 = Paths.get(projectRootFlag2);
+        //why do we have projectRootFlag? TODO
+        String projectRootFlag = "";
+        Path cppCheckLocation = Paths.get(prop.getProperty("tool.cppcheck.filepath"));
+        Path flawFinderLocation = Paths.get(prop.getProperty("tool.flawfinder.filepath"));
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
         Path comparisonMatrices = Paths.get(prop.getProperty("comparisons.directory"));
 
-        ITool flawfinderToolWrapper = new FlawfinderToolWrapper(toolLocation);
-        Set<ITool> tools = Stream.of(flawfinderToolWrapper).collect(Collectors.toSet());
-        ITool cppCheckToolWrapper = new CPPCheckToolWrapper(toolLocation2);
-        tools.addAll(Stream.of(cppCheckToolWrapper).collect(Collectors.toSet()));
+        ITool cppCheckToolWrapper = new CPPCheckToolWrapper(cppCheckLocation);
+        //ITool flawfinderToolWrapper = new FlawfinderToolWrapper(flawFinderLocation);
+
+        Set<ITool> tools = Stream.of(cppCheckToolWrapper).collect(Collectors.toSet());
+        //tools.addAll(Stream.of(flawFinderToolWrapper).collect(Collectors.toSet()));
+
 
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 
         QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag, comparisonMatrices);
 
-        Path jsonOutput = new QualityModelExport(derivedQualityModel)
-                .exportToJson(derivedQualityModel
-                        .getName(), derivedModelFilePath);
+        Path jsonOutput = new QualityModelExport(derivedQualityModel).exportToJson(derivedQualityModel.getName(), derivedModelFilePath);
 
         System.out.println("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath().toString());
     }
@@ -98,7 +105,7 @@ public class QualityModelDeriver {
 
         // (1) Derive thresholds
         IBenchmarker benchmarker = qmDesign.getBenchmarker();
-        Map<String, Double[]> measureNameThresholdMappings = benchmarker.deriveThresholds(
+        Map<String, BigDecimal[]> measureNameThresholdMappings = benchmarker.deriveThresholds(
                 benchmarkRepository, qmDesign, tools, projectRootFlag);
 
         // (2) Elicitate weights

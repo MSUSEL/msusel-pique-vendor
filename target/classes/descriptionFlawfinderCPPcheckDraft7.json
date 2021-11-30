@@ -2,9 +2,9 @@
   "name": "C Vendor Quality Model",
   "additionalData": {},
   "global_config": {
-    "benchmark_strategy": "calibration.BinaryBenchmarker",
-    "normalizer": "evaluator.NoNormalizer",
-    "weights_strategy": "calibration.BinaryCWEWeighter"
+    "benchmark_strategy": "pique.calibration.MeanSDBenchmarker",
+    "normalizer": "pique.evaluator.NoNormalizer",
+    "weights_strategy": "pique.calibration.NaiveWeighter"
   },
   "factors": {
     "tqi": {
@@ -285,7 +285,7 @@
       "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1048": {},
         "FF1049": {},
@@ -297,7 +297,7 @@
       "description": "The software performs an operation at a privilege level that is higher than the minimum level required, which creates new weaknesses or amplifies the consequences of other weaknesses.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1056": {}
       }
@@ -306,7 +306,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1052": {}
       }
@@ -315,7 +315,7 @@
       "description": "Creating and using insecure temporary files can leave application and system data vulnerable to attack.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1036": {},
         "FF1038": {},
@@ -326,7 +326,7 @@
       "description": "The product specifies permissions for a security-critical resource in a way that allows that resource to be read or modified by unintended actors.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1041": {},
         "FF1042": {},
@@ -338,7 +338,7 @@
       "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1016": {},
         "FF1017": {},
@@ -350,7 +350,7 @@
       "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1043": {},
         "FF1044": {},
@@ -362,7 +362,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1065": {}
       }
@@ -371,7 +371,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1014": {},
         "FF1020": {},
@@ -385,7 +385,7 @@
       "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1001": {},
         "FF1002": {},
@@ -409,7 +409,7 @@
       "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1022": {},
         "FF1071": {}
@@ -419,7 +419,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1013": {}
       }
@@ -428,7 +428,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1026": {}
       }
@@ -437,7 +437,7 @@
       "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1047": {},
         "integerOverflow": {},
@@ -448,7 +448,7 @@
       "description": "The application uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1062": {}
       }
@@ -457,7 +457,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1053": {},
         "FF1054": {},
@@ -468,7 +468,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1058": {},
         "FF1059": {}
@@ -478,7 +478,7 @@
       "description": "The program contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1031": {},
         "FF1032": {},
@@ -492,7 +492,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1030": {}
       }
@@ -501,7 +501,7 @@
       "description": " ",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1035": {}
       }
@@ -510,7 +510,7 @@
       "description": "The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "FF1066": {},
         "FF1069": {},
@@ -520,7 +520,7 @@
     "CWE-786": {
       "description": "The software reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "positive": false,
       "children": {
         "negativeIndex": {},
@@ -531,7 +531,7 @@
       "description": "The product divides a value by zero.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "zerodiv": {},
         "zerodivcond": {},
@@ -542,7 +542,7 @@
       "description": "This software includes weaknesses that do not directly introduce a weakness or vulnerability, but indicate that the product has not been carefully developed or maintained.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "toomanyconfigs": {},
         "assertWithSideEffect": {},
@@ -642,7 +642,7 @@
       "description": "The software uses an API function, data structure, or other entity in a way that relies on properties that are not always guaranteed to hold for that entity.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "AssignmentAddressToInteger": {},
         "AssignmentIntegerToAddress": {},
@@ -666,7 +666,7 @@
       "description": "A function returns the address of a stack variable, which will cause unintended program behavior, typically in the form of a crash.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "autoVariables": {},
         "returnAddressOfAutoVariable": {},
@@ -686,7 +686,7 @@
       "description": "The application calls free() on a pointer to memory that was not allocated using associated heap allocation functions such as malloc(), calloc(), or realloc().",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "autovarInvalidDeallocation": {}
       }
@@ -695,7 +695,7 @@
       "description": "The software contains an expression that will always evaluate to true.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "pointerArithBool": {},
         "badBitmaskCheck": {},
@@ -709,7 +709,7 @@
       "description": "The software sets a pointer to a specific address other than NULL or 0.\n+",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "assignBoolToPointer": {}
       }
@@ -718,7 +718,7 @@
       "description": "The software does not correctly convert an object, resource, or structure from one type to a different type.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "assignBoolToFloat": {},
         "invalidLengthModifierError": {},
@@ -731,7 +731,7 @@
       "description": "The software does not maintain or incorrectly maintains control over a resource throughout its lifetime of creation, use, and release.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "boostForeachError": {},
         "IOWithoutPositioning": {},
@@ -759,7 +759,7 @@
       "description": "The software does not correctly calculate the size to be used when allocating a buffer, which could lead to a buffer overflow.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "mismatchSize": {},
         "incompleteArrayFill": {}
@@ -769,7 +769,7 @@
       "description": "The software performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "nullPointerArithmetic": {},
         "nullPointerArithmeticRedundantCheck": {},
@@ -788,7 +788,7 @@
       "description": "The program does not release or incorrectly releases a resource before it is made available for re-use.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "virtualDestructor": {}
       }
@@ -797,7 +797,7 @@
       "description": "The software does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.\n+ Extended Description",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "memsetClassReference": {},
         "mallocOnClassError": {},
@@ -810,7 +810,7 @@
       "description": "The application attempts to return a memory resource to the system, but it calls a release function that is not compatible with the function that was originally used to allocate that resource.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "memsetClass": {},
         "mallocOnClassWarning": {},
@@ -822,7 +822,7 @@
       "description": "Ignoring exceptions and other error conditions may allow an attacker to induce unexpected behavior unnoticed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "invalidTestForOverflow": {}
       }
@@ -831,7 +831,7 @@
       "description": "The software contains an expression that will always evaluate to false.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "knownConditionTrueFalse": {},
         "comparisonFunctionIsAlwaysTrueOrFalse": {},
@@ -848,7 +848,7 @@
       "description": "The software does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "ignoredReturnValue": {}
       }
@@ -857,7 +857,7 @@
       "description": "The product calls a function, procedure, or routine with arguments that are not correctly specified, leading to always-incorrect behavior and resultant weaknesses.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "invalidFunctionArg": {},
         "invalidFunctionArgBool": {},
@@ -872,7 +872,7 @@
       "description": "The software calls a function, procedure, or routine, but the caller specifies an argument that is the wrong data type, which may lead to resultant weaknesses.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "memsetValueOutOfRange": {},
         "invalidScanfArgType_s": {},
@@ -891,7 +891,7 @@
       "description": "The software does not properly anticipate or handle exceptional conditions that rarely occur during normal operation of the software.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "unhandledExceptionSpecification": {}
       }
@@ -900,7 +900,7 @@
       "description": "The software calls a function, procedure, or routine, but the caller specifies an argument that contains the wrong value, which may lead to resultant weaknesses.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "memsetZeroBytes": {},
         "invalidScanfFormatWidth": {}
@@ -910,7 +910,7 @@
       "description": "The software calls a function, procedure, or routine, but the caller specifies the wrong variable or reference as one of the arguments, which may lead to undefined behavior and resultant weaknesses.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "memsetFloat": {},
         "va_start_wrongParameter": {}
@@ -920,7 +920,7 @@
       "description": "The software calls a function, procedure, or routine, but the caller specifies too many arguments, or too few arguments, which may lead to undefined behavior and resultant weaknesses.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "wrongPrintfScanfArgNum": {},
         "wrongPrintfScanfParameterPositionError": {}
@@ -930,7 +930,7 @@
       "description": "The software uses or accesses a file descriptor after it has been closed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "useClosedFile": {}
       }
@@ -939,7 +939,7 @@
       "description": "The software uses, accesses, or otherwise operates on a resource after that resource has been expired, released, or revoked.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "deallocret": {},
         "accessMoved": {},
@@ -950,7 +950,7 @@
       "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "doubleFree": {},
         "deallocDealloc": {}
@@ -960,7 +960,7 @@
       "description": "The software does not sufficiently track and release allocated memory after it has been used, which slowly consumes remaining memory.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "leakUnsafeArgAlloc": {},
         "memleak": {},
@@ -971,7 +971,7 @@
       "description": "The software does not properly maintain a reference to a resource that has been allocated, which prevents the resource from being reclaimed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "leakReturnValNotUsed": {}
       }
@@ -980,7 +980,7 @@
       "description": "The software does not release a resource after its effective lifetime has ended, i.e., after the resource is no longer needed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "leakNoVarFunctionCall": {}
       }
@@ -989,7 +989,7 @@
       "description": "Wrap around errors occur whenever a value is incremented past the maximum value for its type and therefore \"wraps around\" to a very small, negative, or undefined value.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "signedCharArrayIndex": {}
       }
@@ -998,7 +998,7 @@
       "description": "Truncation errors occur when a primitive is cast to a primitive of a smaller size and data is lost in the conversion.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "checkCastIntToCharAndBack": {},
         "truncLongCastAssignment": {},
@@ -1009,7 +1009,7 @@
       "description": "The behavior of this function is undefined unless its control parameter is set to a specific value.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "varFuncNullUB": {}
       }
@@ -1018,7 +1018,7 @@
       "description": "The software contains dead code, which can never be executed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "duplicateBreak": {},
         "unreachableCode": {},
@@ -1029,7 +1029,7 @@
       "description": "The variable's value is assigned but never used, making it a dead store.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "unusedScopedObject": {},
         "redundantCopy": {},
@@ -1047,7 +1047,7 @@
       "description": "The software calls a function, procedure, or routine, but the caller specifies the arguments in an incorrect order, leading to resultant weaknesses",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "funcArgOrderDifferent": {}
       }
@@ -1056,7 +1056,7 @@
       "description": "The software contains a conditional statement with multiple logical expressions in which one of the non-leading expressions may produce side effects. This may lead to an unexpected state in the program after the execution of the conditional, because short-circuiting logic may prevent the side effects from occurring.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "unknownEvaluationOrder": {}
       }
@@ -1065,7 +1065,7 @@
       "description": "The program uses an expression in which operator precedence causes incorrect logic to be used.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "clarifyCalculation": {},
         "clarifyStatement": {}
@@ -1075,7 +1075,7 @@
       "description": "The code calls sizeof() on a malloced pointer type, which always returns the wordsize/8. This can produce an unexpected result if the programmer intended to determine how much memory has been allocated.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "sizeofwithsilentarraypointer": {},
         "pointerSize": {},
@@ -1086,7 +1086,7 @@
       "description": "The product uses the wrong operator when comparing a string, such as using \"==\" when the .equals() method should be used instead.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "stlIfStrFind": {}
       }
@@ -1095,7 +1095,7 @@
       "description": "The software does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "localMutex": {}
       }
@@ -1104,7 +1104,7 @@
       "description": "The program dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "derefInvalidIterator": {}
       }
@@ -1113,7 +1113,7 @@
       "description": "The software contains multiple threads or executable segments that are waiting for each other to release a necessary lock, resulting in deadlock.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "globalLockGuard": {}
       }
@@ -1122,7 +1122,7 @@
       "description": "The software performs an iteration or loop without sufficiently limiting the number of times that the loop is executed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "StlMissingComparison": {}
       }
@@ -1131,7 +1131,7 @@
       "description": "The program compares object references instead of the contents of the objects themselves, preventing it from detecting equivalent objects.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "literalWithCharPtrCompare": {},
         "charLiteralWithCharPtrCompare": {}
@@ -1141,7 +1141,7 @@
       "description": "The software uses a signed primitive and performs a cast to an unsigned primitive, which can produce an unexpected value if the value of the signed primitive can not be represented using an unsigned primitive.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "signConversion": {}
       }
@@ -1150,7 +1150,7 @@
       "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "invalidscanf": {}
       }
@@ -1159,7 +1159,7 @@
       "description": "The software reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "arrayIndexOutOfBounds": {},
         "arrayIndexOutOfBoundsCond": {},
@@ -1171,7 +1171,7 @@
       "description": "The software does not release a file descriptor or handle after its effective lifetime has ended, i.e., after the file descriptor/handle is no longer needed.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "resourceLeak": {}
       }
@@ -1180,7 +1180,7 @@
       "description": "Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "deallocuse": {}
       }
@@ -1189,7 +1189,7 @@
       "description": "The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "uninitdata": {},
         "uninitvar": {},
@@ -1200,7 +1200,7 @@
       "description": "The code uses deprecated or obsolete functions, which suggests that the code has not been actively reviewed or maintained.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "getsCalled": {}
       }
@@ -1209,7 +1209,7 @@
       "description": "A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "nullPointer": {},
         "nullPointerDefaultArg": {},
@@ -1221,7 +1221,7 @@
       "description": "This error is from something other than a CWE.",
       "positive": false,
       "utility_function": "evaluator.UtilityFunction",
-      "eval_strategy": "evaluator.MeasureEvaluator",
+      "eval_strategy": "evaluator.WeightedAverageEvaluator",
       "children": {
         "purgedConfiguration": {},
         "comparisonOfBoolWithInvalidComparator": {},

@@ -1,6 +1,7 @@
 /**
  * MIT License
- * Copyright (c) 2019 Montana State University Software Engineering Labs
+ *
+ * Copyright (c) 2021 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +24,23 @@
 package tool;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.List;
+import java.util.*;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.lang.Integer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import org.json.XML;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
@@ -46,11 +48,12 @@ import pique.model.Finding;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
+import pique.utility.BigDecimalWithContext;
 import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
 public class CPPCheckToolWrapper extends Tool implements ITool  {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(CPPCheckToolWrapper.class);
 
     public CPPCheckToolWrapper(Path toolRoot) {
         super("cppcheck", toolRoot);
@@ -58,29 +61,61 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
     }
 
     /**
-     * @param path The path to a binary file for the desired solution of project to
+     * @param  projectLocation path to a binary file for the desired solution of project to
      *             analyze
      * @return The path to the analysis results file
      */
     @Override
     public Path analyze(Path projectLocation) {
-        File tempResults = new File(System.getProperty("user.dir") + "/out/cppcheckOutput.xml");
+        File tempResults = new File(System.getProperty("user.dir") + "\\out\\cppcheckSTDOUT.out");
         tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
         tempResults.getParentFile().mkdirs();
-        Path project = Paths.get("project.root");
-        System.out.println(project.toString());
 
-        String cmd = String.format("cmd /c cppcheck.exe --enable=all --xml %s --output-file=%s",
-                projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
-        //TODO: replace all absolute paths with path from properties file
-        try {
-            System.out.println(helperFunctions.getOutputFromProgram(cmd));
+        String[] cmd = {"."+PiqueProperties.getProperties().getProperty("tool.cppcheck.filepath"),
+            projectLocation.toString(),
+            "--enable=all",
+            "--xml", "%s",
+            "--output-file="+"\""+System.getProperty("user.dir")+"\\"+PiqueProperties.getProperties().getProperty("results.directory")+"cppcheckOutput.xml\""};
 
-        } catch (IOException  e) {
+        //System.out.println(Arrays.toString(cmd));
+        String out = "";
+        try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
+            out = getOutputFromProgram(cmd,LOGGER);
+            writer.write(out);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
         return tempResults.toPath();
+    }
+
+     /**
+     * Taken directly from https://stackoverflow.com/questions/13008526/runtime-getruntime-execcmd-hanging
+     *
+     * @param program - A string as would be passed to Runtime.getRuntime().exec(program)
+     * @return the text output of the command. Includes input and error.
+     * @throws IOException
+     */
+    public static String getOutputFromProgram(String[] program, Logger logger) throws IOException {
+        if(logger!=null) logger.debug("Executing: " + String.join(" ", program));
+        Process proc = Runtime.getRuntime().exec(program);
+        return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
+            StringBuilder output = new StringBuilder();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(isForOutput))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    if(logger!=null) {
+                        logger.debug(line);
+                        System.out.println(line);
+                    }
+                    output.append(line);
+                    output.append("\n");
+                }
+            } catch (IOException e) {
+                logger.error("Failed to get output of execution.");
+                throw new RuntimeException(e);
+            }
+            return output;
+        }).collect(Collectors.joining());
     }
 
 
@@ -126,8 +161,8 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
             return diagnosticsUniverseForTool;
         }
 
-        ArrayList<String> IDList = new ArrayList<String>();
-        ArrayList<Integer> severityList = new ArrayList<Integer>();
+        ArrayList<String> IDList = new ArrayList<>();
+        ArrayList<Integer> severityList = new ArrayList<>();
 
         try {
 
@@ -156,7 +191,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
                 }
                 Finding finding = new Finding("",0,0,severityList.get(i));
                 finding.setName(IDList.get(i));
-                finding.setValue(1.0);
+                finding.setValue(new BigDecimalWithContext(1.0));
                 diag.setChild(finding); //Null pointer
                 diag.getValue();
                 diagnosticsFound.put(diag.getName(), diag);
