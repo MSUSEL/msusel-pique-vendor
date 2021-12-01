@@ -1,1 +1,129 @@
 [main] INFO piqueVendor.runnable.QualityModelDeriver - Beginning deriver
+[main] INFO piqueVendor.runnable.QualityModelDeriver - Loaded Properties
+[main] INFO piqueVendor.runnable.QualityModelDeriver - Initialized CPPCheck Tool Wrapper
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_selftest.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_selftest.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_selftest.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_uprobe.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_uprobe.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_uprobe.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier377.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier377.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier377.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\smp.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\smp.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\smp.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\tracepoint.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\tracepoint.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\tracepoint.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_preemptirq.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_preemptirq.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_preemptirq.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_syscalls.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_syscalls.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_syscalls.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\traps.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\traps.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\traps.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\module.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\module.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\module.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\console.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\console.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\console.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_kdb.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_kdb.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_kdb.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier732.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier732.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier732.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\signal.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\signal.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\signal.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\ptrace.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\ptrace.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\ptrace.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_printk.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_printk.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_printk.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier134.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier134.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier134.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\uengine.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\uengine.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\uengine.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\process.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\process.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\process.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier676.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier676.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier676.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\via82c505.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\via82c505.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\via82c505.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_kprobe.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_kprobe.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_kprobe.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\transition.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\transition.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\transition.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_stack.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_stack.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_stack.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_stat.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_stat.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_stat.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier78.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier78.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier78.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_selftest_dynamic.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_selftest_dynamic.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_selftest_dynamic.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_output.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_output.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_output.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier190.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier190.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier190.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier807_20.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier807_20.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier807_20.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\vic.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\vic.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\vic.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_irqsoff.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_irqsoff.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_irqsoff.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_seq.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_seq.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_seq.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier327.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier327.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier327.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\tracing_map.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\tracing_map.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\tracing_map.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_probe.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_probe.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_probe.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_sched_switch.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_sched_switch.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_sched_switch.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier785.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier785.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier785.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier250_22.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier250_22.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier250_22.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_mmiotrace.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\trace_mmiotrace.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\trace_mmiotrace.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier362.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\verifier362.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\verifier362.c
+[main] INFO tool.CPPCheckToolWrapper - Built CPPCheck command: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\tree.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Executing: ./src/main/resources/tools/cppcheck/cppcheck.exe src\main\resources\benchmark\tree.c --enable=all --xml --output-file=out\cppcheckOutput.xml
+[main] INFO tool.CPPCheckToolWrapper - Finished analyzing: src\main\resources\benchmark\tree.c

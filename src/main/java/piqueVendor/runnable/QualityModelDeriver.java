@@ -70,7 +70,6 @@ public class QualityModelDeriver {
         LOGGER.info("Beginning deriver");
 
         Properties prop = PiqueProperties.getProperties();
-
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         Path derivedModelFilePath = Paths.get(prop.getProperty("results.directory"));
 
@@ -82,7 +81,11 @@ public class QualityModelDeriver {
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
         Path comparisonMatrices = Paths.get(prop.getProperty("comparisons.directory"));
 
+        LOGGER.info("Loaded Properties");
+
         ITool cppCheckToolWrapper = new CPPCheckToolWrapper(cppCheckLocation);
+        LOGGER.info("Initialized CPPCheck Tool Wrapper");
+
         //ITool flawfinderToolWrapper = new FlawfinderToolWrapper(flawFinderLocation);
 
         Set<ITool> tools = Stream.of(cppCheckToolWrapper).collect(Collectors.toSet());

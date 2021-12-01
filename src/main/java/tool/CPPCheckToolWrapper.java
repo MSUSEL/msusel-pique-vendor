@@ -67,25 +67,35 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
      */
     @Override
     public Path analyze(Path projectLocation) {
-        File tempResults = new File(System.getProperty("user.dir") + "\\out\\cppcheckSTDOUT.out");
-        tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
-        tempResults.getParentFile().mkdirs();
+        File toolResults = new File(PiqueProperties.getProperties().getProperty("results.directory") + "cppcheckOutput.xml");
+        toolResults.delete();
+        toolResults.getParentFile().mkdirs();
+
+        File toolSTDOUT = new File(PiqueProperties.getProperties().getProperty("results.directory") + "cppcheckSTDOUT.out");
+        toolSTDOUT.delete(); // clear out the last output. May want to change this to rename rather than delete.
+        toolSTDOUT.getParentFile().mkdirs();
 
         String[] cmd = {"."+PiqueProperties.getProperties().getProperty("tool.cppcheck.filepath"),
             projectLocation.toString(),
             "--enable=all",
-            "--xml", "%s",
-            "--output-file="+"\""+System.getProperty("user.dir")+"\\"+PiqueProperties.getProperties().getProperty("results.directory")+"cppcheckOutput.xml\""};
+            "--xml",
+            "--output-file="+toolResults.toString()};
 
-        //System.out.println(Arrays.toString(cmd));
+        LOGGER.info("Built CPPCheck command: " + Arrays.toString(cmd)
+            .replace(",", "")  //remove the commas
+            .replace("[", "")  //remove the right bracket
+            .replace("]", "")  //remove the left bracket
+            .trim());           //remove trailing spaces from partially initialized arrays);
+
         String out = "";
-        try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
+        try (BufferedWriter writer = Files.newBufferedWriter(toolSTDOUT.toPath())) {
             out = getOutputFromProgram(cmd,LOGGER);
             writer.write(out);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return tempResults.toPath();
+        LOGGER.info("Finished analyzing: " + projectLocation);
+        return toolResults.toPath();
     }
 
      /**
@@ -96,7 +106,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
      * @throws IOException
      */
     public static String getOutputFromProgram(String[] program, Logger logger) throws IOException {
-        if(logger!=null) logger.debug("Executing: " + String.join(" ", program));
+        if(logger!=null) logger.info("Executing: " + String.join(" ", program));
         Process proc = Runtime.getRuntime().exec(program);
         return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
             StringBuilder output = new StringBuilder();
@@ -113,6 +123,9 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
             } catch (IOException e) {
                 logger.error("Failed to get output of execution.");
                 throw new RuntimeException(e);
+            } catch (SecurityException e2){
+                logger.error("Unable to create subprocess from CPPCheck");
+                e2.printStackTrace();
             }
             return output;
         }).collect(Collectors.joining());
@@ -126,7 +139,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
         Map<String, Diagnostic> diagnosticsFound = new HashMap<>();
 
         File input = new File(toolResults.toString()); //in xml file
-        File tempFile = new File(System.getProperty("user.dir") + "/out/cppcheckOutput.json");
+        File tempFile = new File("out/cppcheckOutput.json");
 
         String results = "";
 
