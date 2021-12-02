@@ -23,10 +23,8 @@
  */
 package tool;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -37,11 +35,8 @@ import java.util.List;
 import java.lang.Integer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 
 import org.json.JSONArray;
@@ -57,7 +52,7 @@ import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.utility.BigDecimalWithContext;
 import utilities.PiqueProperties;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
 public class FlawfinderToolWrapper extends Tool implements ITool  {
 
@@ -86,7 +81,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 
 		try {
-			System.out.println(helperFunctions.getOutputFromProgram(cmd));
+			System.out.println(HelperFunctions.getOutputFromProgram(cmd));
 
 		} catch (IOException  e) {
 			e.printStackTrace();
@@ -115,7 +110,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 		Path pathToResults = Paths.get(System.getProperty("user.dir") + "/out/flawfinderOutput.json");
 
 		try {
-			results = helperFunctions.readFileContent(pathToResults);
+			results = HelperFunctions.readFileContent(pathToResults);
 
 		} catch (IOException e) {
 			System.err.println("No results to read.");

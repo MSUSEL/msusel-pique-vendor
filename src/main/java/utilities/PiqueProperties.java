@@ -42,5 +42,15 @@ public class PiqueProperties {
         }
         return prop;
     }
+
+    public static boolean saveBenchmarkResults(){
+        switch (PiqueProperties.getProperties().getProperty("save.benchmark.results").toLowerCase()){
+            case "true":
+            case "yes":
+                return true;
+            default:
+                return false;
+        }
+    }
     
 }

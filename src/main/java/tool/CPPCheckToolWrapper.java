@@ -34,6 +34,7 @@ import java.lang.Integer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FilenameUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,7 +51,7 @@ import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import pique.utility.BigDecimalWithContext;
 import utilities.PiqueProperties;
-import utilities.helperFunctions;
+import utilities.HelperFunctions;
 
 public class CPPCheckToolWrapper extends Tool implements ITool  {
     private static final Logger LOGGER = LoggerFactory.getLogger(CPPCheckToolWrapper.class);
@@ -67,11 +68,16 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
      */
     @Override
     public Path analyze(Path projectLocation) {
-        File toolResults = new File(PiqueProperties.getProperties().getProperty("results.directory") + "cppcheckOutput.xml");
+        String fileLocation = PiqueProperties.getProperties().getProperty("results.directory");
+        if (PiqueProperties.saveBenchmarkResults()){
+            LOGGER.info("logging results to benchmark directory nested under the results directory");
+            fileLocation += "benchmark/";
+        }
+        File toolResults = new File(fileLocation + FilenameUtils.removeExtension(projectLocation.getFileName().toString())+ "--cppcheckOutput.xml");
         toolResults.delete();
         toolResults.getParentFile().mkdirs();
 
-        File toolSTDOUT = new File(PiqueProperties.getProperties().getProperty("results.directory") + "cppcheckSTDOUT.out");
+        File toolSTDOUT = new File(fileLocation + FilenameUtils.removeExtension(projectLocation.getFileName().toString())+ "--cppcheckSTDOUT.out");
         toolSTDOUT.delete(); // clear out the last output. May want to change this to rename rather than delete.
         toolSTDOUT.getParentFile().mkdirs();
 
@@ -144,13 +150,14 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
         String results = "";
 
         try {
-            results = helperFunctions.readFileContent(toolResults);
+            results = HelperFunctions.readFileContent(toolResults);
         } catch (IOException e) {
             System.err.println("No results to read.");
             return diagnosticsUniverseForTool;
         }
 
         try {
+            //rely on JSON object manipulation instead of xml. So this step is very redundant but it is easier to convert to json.
             JSONObject jsonResultsObject = XML.toJSONObject(results);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -168,7 +175,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
         try {
             String tempPathString = tempFile.getAbsolutePath();     //TODO: make from properties file
             Path tempPath = Paths.get(tempPathString);
-            results = helperFunctions.readFileContent(tempPath);
+            results = HelperFunctions.readFileContent(tempPath);
         } catch (IOException e) {
             System.err.println("No results to read.");
             return diagnosticsUniverseForTool;

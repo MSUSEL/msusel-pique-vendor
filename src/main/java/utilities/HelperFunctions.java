@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-public class helperFunctions {
+public class HelperFunctions {
 	public static String addDashtoCWEName(String cwe) {
 		String dashed = cwe;
 		if (!cwe.contains("-")) {
