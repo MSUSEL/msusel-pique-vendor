@@ -77,6 +77,8 @@ public class QualityModelDeriver {
         //why do we have projectRootFlag? TODO
         String projectRootFlag = "";
         Path cppCheckLocation = Paths.get(prop.getProperty("tool.cppcheck.filepath"));
+
+        //remove leading slashes from
         Path flawFinderLocation = Paths.get(prop.getProperty("tool.flawfinder.filepath"));
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
         Path comparisonMatrices = Paths.get(prop.getProperty("comparisons.directory"));
@@ -86,11 +88,11 @@ public class QualityModelDeriver {
         ITool cppCheckToolWrapper = new CPPCheckToolWrapper(cppCheckLocation);
         LOGGER.info("Initialized CPPCheck Tool Wrapper");
 
-        //ITool flawfinderToolWrapper = new FlawfinderToolWrapper(flawFinderLocation);
+        ITool flawfinderToolWrapper = new FlawfinderToolWrapper(flawFinderLocation);
+        LOGGER.info("Initialized Flawfinder Tool Wrapper");
 
         Set<ITool> tools = Stream.of(cppCheckToolWrapper).collect(Collectors.toSet());
-        //tools.addAll(Stream.of(flawFinderToolWrapper).collect(Collectors.toSet()));
-
+        tools.addAll(Stream.of(flawfinderToolWrapper).collect(Collectors.toSet()));
 
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();

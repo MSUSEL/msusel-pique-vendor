@@ -70,7 +70,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
     public Path analyze(Path projectLocation) {
         String fileLocation = PiqueProperties.getProperties().getProperty("results.directory");
         if (PiqueProperties.saveBenchmarkResults()){
-            LOGGER.info("logging results to benchmark directory nested under the results directory");
+            LOGGER.info("logging CPPCheck results to benchmark directory nested under the results directory");
             fileLocation += "benchmark/";
         }
         File toolResults = new File(fileLocation + FilenameUtils.removeExtension(projectLocation.getFileName().toString())+ "--cppcheckOutput.xml");
@@ -81,7 +81,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
         toolSTDOUT.delete(); // clear out the last output. May want to change this to rename rather than delete.
         toolSTDOUT.getParentFile().mkdirs();
 
-        String[] cmd = {"."+PiqueProperties.getProperties().getProperty("tool.cppcheck.filepath"),
+        String[] cmd = {"./"+PiqueProperties.getProperties().getProperty("tool.cppcheck.filepath"),
             projectLocation.toString(),
             "--enable=all",
             "--xml",
@@ -111,7 +111,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
      * @return the text output of the command. Includes input and error.
      * @throws IOException
      */
-    public static String getOutputFromProgram(String[] program, Logger logger) throws IOException {
+    public String getOutputFromProgram(String[] program, Logger logger) throws IOException {
         if(logger!=null) logger.info("Executing: " + String.join(" ", program));
         Process proc = Runtime.getRuntime().exec(program);
         return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
@@ -157,7 +157,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
         }
 
         try {
-            //rely on JSON object manipulation instead of xml. So this step is very redundant but it is easier to convert to json.
+            //rely on JSON object manipulation instead of xml. So this step is very redundant but it is easier to deal with json than xml.
             JSONObject jsonResultsObject = XML.toJSONObject(results);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));

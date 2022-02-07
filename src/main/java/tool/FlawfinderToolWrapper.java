@@ -23,26 +23,28 @@
  */
 package tool;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.List;
+import java.util.*;
 import java.lang.Integer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
@@ -54,12 +56,12 @@ import pique.utility.BigDecimalWithContext;
 import utilities.PiqueProperties;
 import utilities.HelperFunctions;
 
-public class FlawfinderToolWrapper extends Tool implements ITool  {
 
+public class FlawfinderToolWrapper extends Tool implements ITool  {
+	private static final Logger LOGGER = LoggerFactory.getLogger(FlawfinderToolWrapper.class);
 
 	public FlawfinderToolWrapper(Path toolRoot) {
 		super("flawfinder", toolRoot);
-
 	}
 
 	// Methods
@@ -70,35 +72,79 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 	 */
 	@Override
 	public Path analyze(Path projectLocation) {
-		File tempResults = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.csv");
-		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
-		tempResults.getParentFile().mkdirs();
+		String fileLocation = PiqueProperties.getProperties().getProperty("results.directory");
 
+		if (PiqueProperties.saveBenchmarkResults()){
+			LOGGER.info("logging flawfinder results to benchmark directory nested under the results directory");
+			fileLocation += "benchmark/";
+		}
+		File toolResults = new File(fileLocation + FilenameUtils.removeExtension(projectLocation.getFileName().toString())+ "--flawfinderOutput.csv");
+		toolResults.delete();
+		toolResults.getParentFile().mkdirs();
 
-		//TODO -- not .exe anymore
+		String[] cmd = {"python",
+			PiqueProperties.getProperties().getProperty("tool.flawfinder.filepath"),
+			"--csv",
+			projectLocation.toString()};
 
-		String cmd = String.format("cmd /c flawfinder.exe --csv %s -> %s",
-				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
+		LOGGER.info("Built flawfinder command: " + Arrays.toString(cmd)
+			.replace(",", "")  //remove the commas
+			.replace("[", "")  //remove the right bracket
+			.replace("]", "")  //remove the left bracket
+			.trim());           //remove trailing spaces from partially initialized arrays);
 
-		try {
-			System.out.println(HelperFunctions.getOutputFromProgram(cmd));
-
-		} catch (IOException  e) {
+		String out = "";
+		try (BufferedWriter writer = Files.newBufferedWriter(toolResults.toPath())) {
+			/*
+			flawfinder is weird... When you specify flawfinder an output format it spits that output to STDOUT, no to a file.
+			It is intended to be used with redirect operators (">"), but those don't work in java, so I am relying on calling
+			the redirectoutput method of Process.
+			So, instead of catching errors in a separate output stream, all output is sent to one file. That is why there is only one output file.
+			 */
+			out = getOutputFromProgram(cmd, LOGGER);
+			writer.write(out);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		return tempResults.toPath();
+		LOGGER.info("Finished analyzing: " + projectLocation);
+		return toolResults.toPath();
 	}
 
-
+	public String getOutputFromProgram(String[] program, Logger logger) throws IOException {
+		if(logger!=null) logger.info("Executing: " + String.join(" ", program));
+		Process proc = Runtime.getRuntime().exec(program);
+		return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
+			StringBuilder output = new StringBuilder();
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(isForOutput))) {
+				String line;
+				while ((line = br.readLine()) != null) {
+					if(logger!=null) {
+						logger.debug(line);
+						System.out.println(line);
+					}
+					output.append(line);
+					output.append("\n");
+				}
+			} catch (IOException e) {
+				logger.error("Failed to get output of execution.");
+				throw new RuntimeException(e);
+			} catch (SecurityException e2){
+				logger.error("Unable to create subprocess from CPPCheck");
+				e2.printStackTrace();
+			}
+			return output;
+		}).collect(Collectors.joining());
+	}
 
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		Map<String, Diagnostic> diagnosticsUniverseForTool = initializeDiagnostics();
 		Map<String, Diagnostic> diagnosticsFound = new HashMap<>();
 
+		//need to clean csv output (remove extra lines)
+		File input = cleanCSV(toolResults.toFile());
+
 		//Adapted from: https://kalliphant.com/jackson-convert-csv-json-example/
-		File input = new File(toolResults.toString());
 		File output = new File(System.getProperty("user.dir") + "/out/flawfinderOutput.json");
 		CsvSchema csvSchema = CsvSchema.builder().setUseHeader(true).build();
 		CsvMapper csvMapper = new CsvMapper();
@@ -154,6 +200,25 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 		}
 
 		return diagnosticsFound;
+	}
+
+	private File cleanCSV(File toolResults){
+		//https://stackoverflow.com/questions/34999999/java-how-to-remove-blank-lines-from-a-text-file
+		try {
+			List<String> lines = FileUtils.readLines(toolResults);
+			Iterator<String> i = lines.iterator();
+			while (i.hasNext()) {
+				String line = i.next();
+				if (line.isEmpty()) {
+					i.remove();
+				}
+			}
+			FileUtils.writeLines(toolResults, lines);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return toolResults;
 	}
 
 	public List<Object> returnCsvReadList(CsvSchema csvSchema, CsvMapper csvMapper, File input) {
