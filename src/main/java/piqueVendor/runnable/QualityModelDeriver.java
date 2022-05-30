@@ -23,10 +23,8 @@
  */
 package piqueVendor.runnable;
 
-import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -35,13 +33,10 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
-import pique.calibration.IBenchmarker;
-import pique.calibration.IWeighter;
-import pique.calibration.WeightResult;
-import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelExport;
 import pique.model.QualityModelImport;
+import pique.runnable.AQualityModelDeriver;
 import tool.CPPCheckToolWrapper;
 import tool.FlawfinderToolWrapper;
 import utilities.PiqueProperties;
@@ -54,22 +49,24 @@ import utilities.PiqueProperties;
  * (2) Elicitate weights
  * (3) Apply these results to the quality model to generate a fully derived quality model
  */
-public class QualityModelDeriver {
+public class QualityModelDeriver extends AQualityModelDeriver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(QualityModelDeriver.class);
 
-    public static void main(String[] args){
-        new QualityModelDeriver();
+
+    public QualityModelDeriver(String propertiesPath){
+        init(propertiesPath);
     }
 
     public QualityModelDeriver(){
-        init();
+        init(null);
     }
 
-    private void init(){
+    private void init(String propertiesLocation){
         LOGGER.info("Beginning deriver");
 
-        Properties prop = PiqueProperties.getProperties();
+        Properties prop = propertiesLocation==null ? PiqueProperties.getPropertiesDefault() : PiqueProperties.getProperties(propertiesLocation);
+
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         Path derivedModelFilePath = Paths.get(prop.getProperty("results.directory"));
 
@@ -97,44 +94,11 @@ public class QualityModelDeriver {
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 
-        QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag, comparisonMatrices);
+        QualityModel derivedQualityModel = deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
 
         Path jsonOutput = new QualityModelExport(derivedQualityModel).exportToJson(derivedQualityModel.getName(), derivedModelFilePath);
 
-        System.out.println("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath().toString());
+        LOGGER.info("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath().toString());
     }
 
-
-    public static QualityModel deriveModel(QualityModel qmDesign, Set<ITool> tools,
-                                           Path benchmarkRepository, String projectRootFlag, Path comparisonMatrices) {
-
-        // (1) Derive thresholds
-        IBenchmarker benchmarker = qmDesign.getBenchmarker();
-        Map<String, BigDecimal[]> measureNameThresholdMappings = benchmarker.deriveThresholds(
-                benchmarkRepository, qmDesign, tools, projectRootFlag);
-
-        // (2) Elicitate weights
-        IWeighter weighter = qmDesign.getWeighter();
-        // TODO (1.0): Consider, instead of weighting all nodes in one sweep here, dynamically assigning IWeighter
-        //  ojbects to each node to have them weight using JIT evaluation functions.
-        Set<WeightResult> weights = weighter.elicitateWeights(qmDesign, comparisonMatrices);
-        // TODO: assert WeightResult names match expected TQI, QualityAspect, and ProductFactor names from quality model description
-
-
-        // (3) Apply results to nodes in quality model by matching names
-        // Thresholds (ProductFactor nodes)
-        // TODO (1.0): Support now in place to apply thresholds to all nodes (if they exist), not just measures. Just
-        //  need to implement.
-        measureNameThresholdMappings.forEach((measureName, thresholds) -> {
-            qmDesign.getMeasure(measureName).setThresholds(thresholds);
-        });
-
-        // Weights (TQI and QualityAspect nodes)
-        weights.forEach(weightResult -> {
-            Map<String, ModelNode> allNodes = qmDesign.getAllQualityModelNodes();
-            allNodes.get(weightResult.getName()).setWeights(weightResult.getWeights());
-        });
-
-        return qmDesign;
-    }
 }

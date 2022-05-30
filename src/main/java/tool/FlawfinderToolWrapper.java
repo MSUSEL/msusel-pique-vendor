@@ -72,7 +72,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 	 */
 	@Override
 	public Path analyze(Path projectLocation) {
-		String fileLocation = PiqueProperties.getProperties().getProperty("results.directory");
+		String fileLocation = PiqueProperties.getPropertiesDefault().getProperty("results.directory");
 
 		if (PiqueProperties.saveBenchmarkResults()){
 			LOGGER.info("logging flawfinder results to benchmark directory nested under the results directory");
@@ -83,7 +83,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 		toolResults.getParentFile().mkdirs();
 
 		String[] cmd = {"python",
-			PiqueProperties.getProperties().getProperty("tool.flawfinder.filepath"),
+			PiqueProperties.getPropertiesDefault().getProperty("tool.flawfinder.filepath"),
 			"--csv",
 			projectLocation.toString()};
 
@@ -248,7 +248,7 @@ public class FlawfinderToolWrapper extends Tool implements ITool  {
 	// Creates and returns a set of CWE diagnostics without findings
 	private Map<String, Diagnostic> initializeDiagnostics() {
 		// load the qm structure
-		Properties prop = PiqueProperties.getProperties();
+		Properties prop = PiqueProperties.getPropertiesDefault();
 		Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
 		QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
 		QualityModel qmDescription = qmImport.importQualityModel();

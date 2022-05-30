@@ -33,11 +33,14 @@ import java.util.stream.Stream;
 
 import org.apache.commons.io.FilenameUtils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pique.analysis.ITool;
 import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
+import pique.runnable.ASingleProjectEvaluator;
 import tool.CPPCheckToolWrapper;
 import tool.FlawfinderToolWrapper;
 import utilities.PiqueProperties;
@@ -48,27 +51,30 @@ import utilities.PiqueProperties;
  * (e.g. qatch-csharp) to provide the language specific tools.
  */
 // TODO (1.0): turn into static methods (maybe unless logger problems)
-public class ProjectsEvaluator {
-
-    public static void main(String[] args){
-        new ProjectsEvaluator();
-    }
+public class SingleProjectEvaluator extends ASingleProjectEvaluator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SingleProjectEvaluator.class);
 
     private Project project;
 
+    //quick fix, FIXME
+    public SingleProjectEvaluator(){
+        init(null);
+    }
 
-    public ProjectsEvaluator(){
-        Properties prop = PiqueProperties.getProperties();
+    public SingleProjectEvaluator(String propertiesLocation){
+        init(propertiesLocation);
+    }
+
+    public void init(String propertiesLocation){
+        LOGGER.info("Beginning Evaluation");
+        Properties prop = propertiesLocation==null ? PiqueProperties.getPropertiesDefault() : PiqueProperties.getProperties(propertiesLocation);
 
         Path projectRoot = Paths.get(prop.getProperty("project.root"));
         Path resultsDir = Paths.get(prop.getProperty("results.directory"));
 
         // Initialize objects
-        String projectRootFlag = prop.getProperty("tool.filepath");
-        String projectRootFlag2 = prop.getProperty("tool2.filepath");
-        Path toolLocation = Paths.get(projectRootFlag);
-        Path toolLocation2 = Paths.get(projectRootFlag2);
-
+        Path toolLocation = Paths.get("tool.cppcheck.filepath");
+        Path toolLocation2 = Paths.get("tool.flawfinder.filepath");
         Path qmLocation = Paths.get("out/CVendorQualityModel.json");
 
         ITool flawfinderToolWrapper = new FlawfinderToolWrapper(toolLocation);
@@ -90,6 +96,7 @@ public class ProjectsEvaluator {
         }
 
     }
+
 
     public Project getEvaluatedProject() {
         return project;
@@ -153,74 +160,4 @@ public class ProjectsEvaluator {
     }
 
 
-    /**
-     * Assert input parameters are valid and create the output folder
-     *
-     * @param projectDir
-     *      Path to directory holding the project to be evaluated. Must exist.
-     * @param resultsDir
-     *      Directory to place the analysis results in. Does not need to exist initially.
-     * @param qmLocation
-     *      Path to the quality model file. Must exist.
-     */
-    private void initialize(Path projectDir, Path resultsDir, Path qmLocation) {
-        if (!projectDir.toFile().exists()) {
-            throw new IllegalArgumentException("Invalid projectDir path given.");
-        }
-        if (!qmLocation.toFile().exists() || !qmLocation.toFile().isFile()) {
-            throw new IllegalArgumentException("Invalid qmLocation path given.");
-        }
-
-        resultsDir.toFile().mkdirs();
-    }
-
-
-    /**
-     * Run static analysis tool evaluation process:
-     *   (1) run static analysis tool
-     *   (2) parse: get object representation of the diagnostics described by the QM
-     *   (3) make collection of diagnostic objects
-     *
-     * @param projectDir
-     *      Path to root directory of project to be analyzed.
-     * @param tool
-     *      Analyzer provided by language-specific instance necessary to find findings of the project.
-     * @return
-     *      A mapping of (Key: property name, Value: measure object) where the measure objects contain the
-     *      static analysis findings for that measure.
-     */
-    private Map<String, Diagnostic> runTool(Path projectDir, ITool tool) {
-
-        // (1) run static analysis tool
-        // TODO: turn this into a temp file that always deletes on/before program exit
-        Path analysisOutput = tool.analyze(projectDir);
-
-        // (2) prase output: make collection of {Key: diagnostic name, Value: diagnostic objects}
-        return tool.parseAnalysis(analysisOutput);
-    }
-
-
-    /**
-     * Sequence of state checks of the project's quality model before running evaluation.
-     * Throws runtime error if any expected state is not achieved.
-     *
-     * @param project
-     *      The project under evaluation. This project should have a contained qualityModel with
-     *      weight and threshold instances.
-     */
-    // TODO (1.0) Update once basic tests passing
-    private void validatePreEvaluationState(Project project) {
-        QualityModel projectQM = project.getQualityModel();
-
-        if (projectQM.getTqi().getWeights() == null) {
-            throw new RuntimeException("The project's quality model does not have any weights instantiated to its TQI node");
-        }
-
-        projectQM.getQualityAspects().values().forEach(characteristic -> {
-
-            if (characteristic.getWeights() == null) {
-                throw new RuntimeException("The project's quality model does not have any weights instantiated to its characteristic node");
-            }
-        });
-    }
 }

@@ -23,24 +23,35 @@
  */
 package utilities;
 
+import lombok.Getter;
+
 import java.io.File;
 import java.io.FileReader;
 import java.util.Properties;
-import java.io.File;
 
 public class PiqueProperties {
 
-    public static Properties getProperties(){
+    @Getter
+    protected static Properties properties;
 
-        Properties prop = new Properties();
+    public static Properties getProperties(String propertiesLocation){
+        properties = new Properties();
         try {
-            File propertiesFile = new File(System.getProperty("user.dir") + "/src/main/resources/piqueVendor.properties");
-            prop.load(new FileReader(propertiesFile));
+            File propertiesFile = new File(propertiesLocation);
+            properties.load(new FileReader(propertiesFile));
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        return prop;
+        return properties;
+    }
+
+    public static Properties getPropertiesDefault(){
+        if (getProperties() == null) {
+            return getProperties(System.getProperty("user.dir") + "/src/main/resources/piqueVendor.properties");
+        }else{
+            return getProperties();
+        }
     }
 
     public static boolean saveBenchmarkResults(){

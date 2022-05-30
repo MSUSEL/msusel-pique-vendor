@@ -68,7 +68,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
      */
     @Override
     public Path analyze(Path projectLocation) {
-        String fileLocation = PiqueProperties.getProperties().getProperty("results.directory");
+        String fileLocation = PiqueProperties.getPropertiesDefault().getProperty("results.directory");
         if (PiqueProperties.saveBenchmarkResults()){
             LOGGER.info("logging CPPCheck results to benchmark directory nested under the results directory");
             fileLocation += "benchmark/";
@@ -81,7 +81,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
         toolSTDOUT.delete(); // clear out the last output. May want to change this to rename rather than delete.
         toolSTDOUT.getParentFile().mkdirs();
 
-        String[] cmd = {"./"+PiqueProperties.getProperties().getProperty("tool.cppcheck.filepath"),
+        String[] cmd = {"./"+PiqueProperties.getPropertiesDefault().getProperty("tool.cppcheck.filepath"),
             projectLocation.toString(),
             "--enable=all",
             "--xml",
@@ -234,7 +234,7 @@ public class CPPCheckToolWrapper extends Tool implements ITool  {
     // Creates and returns a set of CWE diagnostics without findings
     private Map<String, Diagnostic> initializeDiagnostics() {
         // load the qm structure
-        Properties prop = PiqueProperties.getProperties();
+        Properties prop = PiqueProperties.getPropertiesDefault();
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
