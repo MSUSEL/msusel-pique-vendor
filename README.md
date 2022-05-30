@@ -23,7 +23,7 @@ ___
 - Python 3.6+
 
 ## Running
-With release v1.0, we have packaged PIQUE-vendor's required files into a zipped folder, included as a tagged release 1.0. This zipped folder includes the following folders/files:
+With release v1.0, we have packaged PIQUE-vendor's required files into a zipped folder named `pique-vendor-package`, included as a tagged release 1.0. This zipped folder includes the following folders/files:
 - benchmark -- holds 42 C source files that were used to calibrate the PIQUE model
 - comparisonMatrices -- holds pairwise comparisons of quality aspects and factors in the model
 - projectToAssess -- Place the files you want analyzed in this folder
