@@ -40,7 +40,7 @@ With release v1.0, we have packaged PIQUE-vendor's required files into a zipped 
 3. Run the model evaluator with `java -jar msusel-pique-vendor-1.0.0-jar-with-dependencies.jar -e piqueVendor.properties`. This generates a json file (<file-name>_evalResults.json) in the output directory named after the project(s) that was analyzed. 
 
 
-## Building
+## For Developers
 If you intend to develop on PIQUE-vendor, these instructions will get you set up:
 
 ## Build Environment
